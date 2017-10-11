@@ -58,7 +58,7 @@ namespace HowManyToEat
 
         private void button1_Click(object sender, EventArgs e)
         {
-            (new FormPropertyGrid(this.listView1)).Show();
+            (new FormAddIngredientToDish()).ShowDialog();
         }
     }
 }

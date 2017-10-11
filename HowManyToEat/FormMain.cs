@@ -50,5 +50,22 @@ namespace HowManyToEat
                 this.dishPanelOther.Dock = DockStyle.Fill;
             }
         }
+
+        private void 添加菜品ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new FormAddDishToProject()).ShowDialog();
+        }
+
+        private void 删除菜品ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TreeNode node = this.treeView1.SelectedNode;
+            if (node == null)
+            {
+                MessageBox.Show("请先选中要删除的菜品，然后再点击 删除 菜品 按钮。");
+                return;
+            }
+
+            this.treeView1.Nodes.Remove(node);
+        }
     }
 }

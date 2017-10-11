@@ -45,11 +45,35 @@
   <ItemGroup>
     <Compile Include="Dish.cs" />
     <Compile Include="DishList.cs" />
+    <Compile Include="FormAddIngredientToDish.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddIngredientToDish.Designer.cs">
+      <DependentUpon>FormAddIngredientToDish.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewIngrendient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewIngrendient.Designer.cs">
+      <DependentUpon>FormNewIngrendient.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddDishToProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddDishToProject.Designer.cs">
+      <DependentUpon>FormAddDishToProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewDish.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewDish.Designer.cs">
+      <DependentUpon>FormNewDish.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPropertyGrid.cs">
       <SubType>Form</SubType>
@@ -76,8 +100,20 @@
       <DependentUpon>UCProjectPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="WeightedIngredient.cs" />
+    <EmbeddedResource Include="FormAddIngredientToDish.resx">
+      <DependentUpon>FormAddIngredientToDish.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewIngrendient.resx">
+      <DependentUpon>FormNewIngrendient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddDishToProject.resx">
+      <DependentUpon>FormAddDishToProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewDish.resx">
+      <DependentUpon>FormNewDish.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPropertyGrid.resx">
       <DependentUpon>FormPropertyGrid.cs</DependentUpon>
