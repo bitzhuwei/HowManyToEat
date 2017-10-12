@@ -46,19 +46,13 @@
     <Compile Include="FormMain.UpdateResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormModifyDish.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormModifyDish.Designer.cs">
-      <DependentUpon>FormModifyDish.cs</DependentUpon>
-    </Compile>
     <Compile Include="PartyProject\Dish.cs" />
     <Compile Include="PartyProject\DishList.cs" />
-    <Compile Include="FormAddIngredientToDish.cs">
+    <Compile Include="FormNewDish.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddIngredientToDish.Designer.cs">
-      <DependentUpon>FormAddIngredientToDish.cs</DependentUpon>
+    <Compile Include="FormNewDish.Designer.cs">
+      <DependentUpon>FormNewDish.cs</DependentUpon>
     </Compile>
     <Compile Include="FormNewIngrendient.cs">
       <SubType>Form</SubType>
@@ -99,11 +93,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PartyProject\WeightedIngredient.cs" />
-    <EmbeddedResource Include="FormAddIngredientToDish.resx">
-      <DependentUpon>FormAddIngredientToDish.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormModifyDish.resx">
-      <DependentUpon>FormModifyDish.cs</DependentUpon>
+    <EmbeddedResource Include="FormNewDish.resx">
+      <DependentUpon>FormNewDish.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNewIngrendient.resx">
       <DependentUpon>FormNewIngrendient.cs</DependentUpon>
