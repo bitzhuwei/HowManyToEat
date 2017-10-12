@@ -75,6 +75,12 @@
     <Compile Include="FormNewDish.Designer.cs">
       <DependentUpon>FormNewDish.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPrintPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrintPreview.Designer.cs">
+      <DependentUpon>FormPrintPreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPropertyGrid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     <EmbeddedResource Include="FormNewDish.resx">
       <DependentUpon>FormNewDish.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPrintPreview.resx">
+      <DependentUpon>FormPrintPreview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPropertyGrid.resx">
       <DependentUpon>FormPropertyGrid.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +135,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UCDishPanel.resx">
       <DependentUpon>UCDishPanel.cs</DependentUpon>
@@ -142,6 +152,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="preview.png" />
+    <Content Include="printPreview.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
