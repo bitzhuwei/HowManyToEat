@@ -9,7 +9,7 @@ namespace HowManyToEat
     /// <summary>
     /// 多少？什么食材？
     /// </summary>
-    class WeightedIngredient
+    public class WeightedIngredient
     {
         private const string strWeight = "Weight";
         /// <summary>

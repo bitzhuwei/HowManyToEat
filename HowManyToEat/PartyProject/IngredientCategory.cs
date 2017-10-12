@@ -9,7 +9,7 @@ namespace HowManyToEat
     /// <summary>
     /// 类别，如“作料”，“菜”，“肉”。
     /// </summary>
-    class IngredientCategory
+    public class IngredientCategory
     {
         private const string strName = "Name";
         /// <summary>

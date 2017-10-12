@@ -9,7 +9,7 @@ namespace HowManyToEat
     /// <summary>
     /// 食材或工具（碗筷桌椅等）。
     /// </summary>
-    class Ingredient
+    public class Ingredient
     {
         private const string strName = "Name";
         /// <summary>

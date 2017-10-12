@@ -12,36 +12,64 @@ namespace HowManyToEat
 {
     public partial class FormMain : Form
     {
+        private PartyProject currentPartyProject;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        internal PartyProject CurrentPartyProject
+        {
+            get { return currentPartyProject; }
+            set
+            {
+                currentPartyProject = value;
+                this.UpdateTitle(value.Fullname);
+                this.UpdateMenu(value);
+            }
+        }
+
+        private void UpdateTitle(string filename)
+        {
+            this.Text = string.Format("{0} - 东大街宴会大厅", filename);
+        }
+
+        private void UpdateMenu(PartyProject partyProject)
+        {
+            this.numTableCount.Value = partyProject.Count;
+            this.lstLeftDishes.Items.Clear();
+            this.lstRightDishes.Items.Clear();
+            for (int i = 0; i <= partyProject.DishList.Count / 2; i++)
+            {
+                this.lstLeftDishes.Items.Add(partyProject.DishList[i]);
+            }
+            for (int i = partyProject.DishList.Count / 2 + 1; i < partyProject.DishList.Count; i++)
+            {
+                this.lstRightDishes.Items.Add(partyProject.DishList[i]);
+            }
+        }
+
         public FormMain()
         {
             InitializeComponent();
-        }
 
-        private void 添加菜品ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            (new FormAddDishToProject()).ShowDialog();
-        }
-
-        private void 删除菜品ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //var items = this.listView1.SelectedItems;
-            //if (items.Count == 0)
-            //{
-            //    MessageBox.Show("请先选中要删除的菜品，然后再点击 删除 菜品 按钮。");
-            //    return;
-            //}
-
-            //foreach (var item in items)
-            //{
-            //    this.listView1.Items.Remove(item as ListViewItem);
-            //}
+            this.CurrentPartyProject = new PartyProject();
         }
 
         private void 新建NToolStripButton_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(this.CurrentPartyProject.Fullname))
+            {
+                if (MessageBox.Show("是否保存当前的方案？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    this.CurrentPartyProject.Save();
+                }
+            }
+
+            this.CurrentPartyProject = new PartyProject();
+
             this.lstLeftDishes.Items.Clear();
             this.lstRightDishes.Items.Clear();
-            this.numericUpDown1.Value = 10;
+            this.numTableCount.Value = 10;
         }
 
         private void 打开OToolStripButton_Click(object sender, EventArgs e)
@@ -50,23 +78,27 @@ namespace HowManyToEat
             {
                 this.lstLeftDishes.Items.Clear();
                 this.lstRightDishes.Items.Clear();
-                var listViewItem1 = new System.Windows.Forms.ListViewItem("鱼香肉丝");
-                var listViewItem2 = new System.Windows.Forms.ListViewItem("豆芽菜");
-                var listViewItem3 = new System.Windows.Forms.ListViewItem("某菜3");
-                var listViewItem4 = new System.Windows.Forms.ListViewItem("某菜4");
-                var listViewItem5 = new System.Windows.Forms.ListViewItem("某菜5");
-                var listViewItem6 = new System.Windows.Forms.ListViewItem("某菜6");
-                var listViewItem7 = new System.Windows.Forms.ListViewItem("某菜7");
-                var listViewItem8 = new System.Windows.Forms.ListViewItem("筷子 10双");
-                var listViewItem9 = new System.Windows.Forms.ListViewItem("碗 10个");
-                var listViewItem10 = new System.Windows.Forms.ListViewItem("玻璃杯 10个");
-                var listViewItem11 = new System.Windows.Forms.ListViewItem("餐巾纸 2盒");
+
+                this.CurrentPartyProject = PartyProject.Load(this.openFileDialog1.FileName);
             }
         }
 
         private void 保存SToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (string.IsNullOrEmpty(this.CurrentPartyProject.Fullname))
+            {
+                if (this.saveProjectDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    this.CurrentPartyProject.Fullname = this.saveProjectDlg.FileName;
+                    this.CurrentPartyProject.Save();
+                    MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                this.CurrentPartyProject.Save();
+                MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void 另存为AToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,9 +106,9 @@ namespace HowManyToEat
             if (this.saveProjectDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string filename = this.saveProjectDlg.FileName;
+                this.CurrentPartyProject.SaveAs(filename);
+                this.CurrentPartyProject = PartyProject.Load(filename);
                 File.WriteAllText(filename, string.Format("{0} 另存为成功！", DateTime.Now));
-
-                MessageBox.Show("另存为 成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -84,30 +116,33 @@ namespace HowManyToEat
         {
             if (this.printDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                var printDocument1 = new System.Drawing.Printing.PrintDocument();
-                printDocument1.PrintPage += printDocument1_PrintPage;
-                printDocument1.Print();
+                // TODO:
+                //var printDocument1 = new System.Drawing.Printing.PrintDocument();
+                //printDocument1.PrintPage += printDocument1_PrintPage;
+                //printDocument1.Print();
             }
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            Bitmap image = null;
-            try
-            {
-                image = new Bitmap(@"printPreview.png");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("没有找到预定义的图片！");
-            }
+            // TODO:
+            //Bitmap image = null;
+            //try
+            //{
+            //    image = new Bitmap(@"printPreview.png");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("没有找到预定义的图片！");
+            //}
 
-            e.Graphics.DrawImage(image, 0, 0, image.Width, image.Height);
+            //e.Graphics.DrawImage(image, 0, 0, image.Width, image.Height);
         }
 
         private void 打印预览VToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            (new FormPrintPreview()).ShowDialog();
+            // TODO:
+            //(new FormPrintPreview()).ShowDialog();
         }
 
         private void 录入菜品ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -136,5 +171,114 @@ namespace HowManyToEat
             }
         }
 
+        private void 添加菜品leftDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmAddDishes = new FormAddDishToProject();
+            if (frmAddDishes.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                var dishes = frmAddDishes.SelectedDishes;
+                foreach (var item in dishes)
+                {
+                    var weighted = new WeightedDish() { Count = 1, Dish = item };
+                    this.lstLeftDishes.Items.Add(weighted);
+                }
+            }
+        }
+
+        private void 删除菜品leftDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var items = this.lstLeftDishes.SelectedItems;
+            foreach (var item in items)
+            {
+                this.lstLeftDishes.Items.Remove(item);
+            }
+        }
+
+        private void 上移leftDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int index = this.lstLeftDishes.SelectedIndex;
+            if (0 < index && index < this.lstLeftDishes.Items.Count)
+            {
+                var item = this.lstLeftDishes.Items[index];
+                this.lstLeftDishes.Items.Remove(item);
+                this.lstLeftDishes.Items.Insert(index - 1, item);
+            }
+        }
+
+        private void 下移leftDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int index = this.lstLeftDishes.SelectedIndex;
+            if (0 <= index && index + 1 < this.lstLeftDishes.Items.Count)
+            {
+                var item = this.lstLeftDishes.Items[index];
+                this.lstLeftDishes.Items.Remove(item);
+                this.lstLeftDishes.Items.Insert(index + 1, item);
+            }
+        }
+
+        private void 移到右侧leftDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var items = this.lstLeftDishes.SelectedItems;
+            foreach (var item in items)
+            {
+                this.lstLeftDishes.Items.Remove(item);
+                this.lstRightDishes.Items.Add(item);
+            }
+        }
+
+        private void 添加菜品rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmAddDishes = new FormAddDishToProject();
+            if (frmAddDishes.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                var dishes = frmAddDishes.SelectedDishes;
+                foreach (var item in dishes)
+                {
+                    var weighted = new WeightedDish() { Count = 1, Dish = item };
+                    this.lstRightDishes.Items.Add(weighted);
+                }
+            }
+        }
+
+        private void 删除菜品rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var items = this.lstRightDishes.SelectedItems;
+            foreach (var item in items)
+            {
+                this.lstRightDishes.Items.Remove(item);
+            }
+        }
+
+        private void 上移rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int index = this.lstRightDishes.SelectedIndex;
+            if (0 < index && index < this.lstRightDishes.Items.Count)
+            {
+                var item = this.lstRightDishes.Items[index];
+                this.lstRightDishes.Items.Remove(item);
+                this.lstRightDishes.Items.Insert(index - 1, item);
+            }
+        }
+
+        private void 下移rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int index = this.lstRightDishes.SelectedIndex;
+            if (0 <= index && index + 1 < this.lstRightDishes.Items.Count)
+            {
+                var item = this.lstRightDishes.Items[index];
+                this.lstRightDishes.Items.Remove(item);
+                this.lstRightDishes.Items.Insert(index + 1, item);
+            }
+        }
+
+        private void 移到左侧rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var items = this.lstRightDishes.SelectedItems;
+            foreach (var item in items)
+            {
+                this.lstRightDishes.Items.Remove(item);
+                this.lstLeftDishes.Items.Add(item);
+            }
+        }
     }
 }

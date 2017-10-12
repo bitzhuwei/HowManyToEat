@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormMain.UpdateResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PartyProject\Dish.cs" />
     <Compile Include="PartyProject\DishList.cs" />
     <Compile Include="FormAddIngredientToDish.cs">

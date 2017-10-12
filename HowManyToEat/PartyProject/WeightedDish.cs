@@ -9,7 +9,7 @@ namespace HowManyToEat
     /// <summary>
     /// 一道菜品，要几份？
     /// </summary>
-    class WeightedDish
+    public class WeightedDish
     {
         /// <summary>
         /// 什么菜品？

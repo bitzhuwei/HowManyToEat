@@ -11,6 +11,16 @@ namespace HowManyToEat
 {
     public partial class FormAddDishToProject : Form
     {
+        private List<Dish> selectedDishes = new List<Dish>();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<Dish> SelectedDishes
+        {
+            get { return selectedDishes; }
+        }
+
         public FormAddDishToProject()
         {
             InitializeComponent();

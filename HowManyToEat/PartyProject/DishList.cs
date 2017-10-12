@@ -9,7 +9,7 @@ namespace HowManyToEat
     /// <summary>
     /// 一席（桌）都有哪些菜？
     /// </summary>
-    class DishList : List<Dish>
+    public class DishList : List<Dish>
     {
         public XElement TXElement()
         {

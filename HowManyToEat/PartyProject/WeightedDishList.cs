@@ -9,7 +9,7 @@ namespace HowManyToEat
     /// <summary>
     /// 一席里所有的菜品。
     /// </summary>
-    class WeightedDishList : List<WeightedDish>
+    public class WeightedDishList : List<WeightedDish>
     {
         public XElement ToXElement()
         {
