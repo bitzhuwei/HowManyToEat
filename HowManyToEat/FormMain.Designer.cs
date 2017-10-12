@@ -97,6 +97,8 @@
             this.上移rightDishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.下移rightDishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.移到左侧rightDishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看所有菜品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看所有食材ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.leftDishesMenuStrip.SuspendLayout();
@@ -290,7 +292,9 @@
             this.自定义CToolStripMenuItem,
             this.选项OToolStripMenuItem,
             this.录入菜品ToolStripMenuItem,
-            this.录入食材ToolStripMenuItem});
+            this.录入食材ToolStripMenuItem,
+            this.查看所有菜品ToolStripMenuItem,
+            this.查看所有食材ToolStripMenuItem});
             this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
             this.工具TToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
             this.工具TToolStripMenuItem.Text = "工具(&T)";
@@ -299,27 +303,27 @@
             // 
             this.自定义CToolStripMenuItem.Enabled = false;
             this.自定义CToolStripMenuItem.Name = "自定义CToolStripMenuItem";
-            this.自定义CToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.自定义CToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.自定义CToolStripMenuItem.Text = "自定义(&C)";
             // 
             // 选项OToolStripMenuItem
             // 
             this.选项OToolStripMenuItem.Enabled = false;
             this.选项OToolStripMenuItem.Name = "选项OToolStripMenuItem";
-            this.选项OToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.选项OToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.选项OToolStripMenuItem.Text = "选项(&O)";
             // 
             // 录入菜品ToolStripMenuItem
             // 
             this.录入菜品ToolStripMenuItem.Name = "录入菜品ToolStripMenuItem";
-            this.录入菜品ToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.录入菜品ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.录入菜品ToolStripMenuItem.Text = "录入 菜品";
             this.录入菜品ToolStripMenuItem.Click += new System.EventHandler(this.录入菜品ToolStripMenuItem_Click);
             // 
             // 录入食材ToolStripMenuItem
             // 
             this.录入食材ToolStripMenuItem.Name = "录入食材ToolStripMenuItem";
-            this.录入食材ToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.录入食材ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.录入食材ToolStripMenuItem.Text = "录入 食材";
             this.录入食材ToolStripMenuItem.Click += new System.EventHandler(this.录入食材ToolStripMenuItem_Click);
             // 
@@ -594,6 +598,7 @@
             this.lstLeftDishes.Name = "lstLeftDishes";
             this.lstLeftDishes.Size = new System.Drawing.Size(208, 460);
             this.lstLeftDishes.TabIndex = 6;
+            this.lstLeftDishes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstLeftDishes_MouseDoubleClick);
             this.lstLeftDishes.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lstLeftDishes_MouseUp);
             // 
             // lstRightDishes
@@ -619,7 +624,7 @@
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
-            this.txtResult.Size = new System.Drawing.Size(488, 468);
+            this.txtResult.Size = new System.Drawing.Size(488, 460);
             this.txtResult.TabIndex = 7;
             // 
             // label2
@@ -677,6 +682,20 @@
             this.移到左侧rightDishesToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.移到左侧rightDishesToolStripMenuItem.Text = "移到左侧";
             this.移到左侧rightDishesToolStripMenuItem.Click += new System.EventHandler(this.移到左侧rightDishesToolStripMenuItem_Click);
+            // 
+            // 查看所有菜品ToolStripMenuItem
+            // 
+            this.查看所有菜品ToolStripMenuItem.Name = "查看所有菜品ToolStripMenuItem";
+            this.查看所有菜品ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.查看所有菜品ToolStripMenuItem.Text = "查看所有 菜品";
+            this.查看所有菜品ToolStripMenuItem.Click += new System.EventHandler(this.查看所有菜品ToolStripMenuItem_Click);
+            // 
+            // 查看所有食材ToolStripMenuItem
+            // 
+            this.查看所有食材ToolStripMenuItem.Name = "查看所有食材ToolStripMenuItem";
+            this.查看所有食材ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.查看所有食材ToolStripMenuItem.Text = "查看所有 食材";
+            this.查看所有食材ToolStripMenuItem.Click += new System.EventHandler(this.查看所有食材ToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -776,5 +795,7 @@
         private System.Windows.Forms.ToolStripMenuItem 上移rightDishesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 下移rightDishesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 移到左侧rightDishesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 查看所有菜品ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 查看所有食材ToolStripMenuItem;
     }
 }

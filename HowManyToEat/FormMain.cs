@@ -66,19 +66,12 @@ namespace HowManyToEat
             }
 
             this.CurrentPartyProject = new PartyProject();
-
-            this.lstLeftDishes.Items.Clear();
-            this.lstRightDishes.Items.Clear();
-            this.numTableCount.Value = 10;
         }
 
         private void 打开OToolStripButton_Click(object sender, EventArgs e)
         {
             if (this.openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                this.lstLeftDishes.Items.Clear();
-                this.lstRightDishes.Items.Clear();
-
                 this.CurrentPartyProject = PartyProject.Load(this.openFileDialog1.FileName);
             }
         }
@@ -147,6 +140,7 @@ namespace HowManyToEat
 
         private void 录入菜品ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // TODO:
             (new FormNewDish()).Show();
         }
 
@@ -279,6 +273,24 @@ namespace HowManyToEat
                 this.lstRightDishes.Items.Remove(item);
                 this.lstLeftDishes.Items.Add(item);
             }
+        }
+
+        private void lstLeftDishes_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+
+            }
+        }
+
+        private void 查看所有菜品ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 查看所有食材ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

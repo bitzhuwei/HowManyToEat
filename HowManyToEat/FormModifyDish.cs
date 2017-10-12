@@ -9,19 +9,9 @@ using System.Windows.Forms;
 
 namespace HowManyToEat
 {
-    public partial class FormAddDishToProject : Form
+    public partial class FormModifyDish : Form
     {
-        private List<Dish> selectedDishes = new List<Dish>();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<Dish> SelectedDishes
-        {
-            get { return selectedDishes; }
-        }
-
-        public FormAddDishToProject()
+        public FormModifyDish()
         {
             InitializeComponent();
         }
@@ -36,9 +26,19 @@ namespace HowManyToEat
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
-        private void btnNewDish_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            //(new FormNewDish()).ShowDialog();
+            //(new FormNewIngrendient()).ShowDialog();
+            (new FormNewDish()).ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var items = this.listView1.SelectedItems;
+            foreach (var item in items)
+            {
+                this.listView1.Items.Remove(item as ListViewItem);
+            }
         }
     }
 }

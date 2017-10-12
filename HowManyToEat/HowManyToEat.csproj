@@ -46,6 +46,12 @@
     <Compile Include="FormMain.UpdateResult.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormModifyDish.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormModifyDish.Designer.cs">
+      <DependentUpon>FormModifyDish.cs</DependentUpon>
+    </Compile>
     <Compile Include="PartyProject\Dish.cs" />
     <Compile Include="PartyProject\DishList.cs" />
     <Compile Include="FormAddIngredientToDish.cs">
@@ -72,12 +78,6 @@
     <Compile Include="FormAddDishToProject.Designer.cs">
       <DependentUpon>FormAddDishToProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormNewDish.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormNewDish.Designer.cs">
-      <DependentUpon>FormNewDish.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormPrintPreview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +102,9 @@
     <EmbeddedResource Include="FormAddIngredientToDish.resx">
       <DependentUpon>FormAddIngredientToDish.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormModifyDish.resx">
+      <DependentUpon>FormModifyDish.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormNewIngrendient.resx">
       <DependentUpon>FormNewIngrendient.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,9 +113,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddDishToProject.resx">
       <DependentUpon>FormAddDishToProject.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormNewDish.resx">
-      <DependentUpon>FormNewDish.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrintPreview.resx">
       <DependentUpon>FormPrintPreview.cs</DependentUpon>
