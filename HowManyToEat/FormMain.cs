@@ -17,39 +17,6 @@ namespace HowManyToEat
             InitializeComponent();
         }
 
-        private UCProjectPanel projectPanel = new UCProjectPanel();
-        private UCDishPanel dishPanelYuXiangRouSi = new UCDishPanel("YuXiangRouSi");
-        private UCDishPanel dishPanelDouYaCai = new UCDishPanel("DouYaCai");
-        private UCDishPanel dishPanelOther = new UCDishPanel("Other");
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            if (e.Node.Text == "某家某月某席")
-            {
-                this.splitContainer1.Panel2.Controls.Clear();
-                this.splitContainer1.Panel2.Controls.Add(this.projectPanel);
-                this.projectPanel.Dock = DockStyle.Fill;
-            }
-            else if (e.Node.Text == "鱼香肉丝")
-            {
-                this.splitContainer1.Panel2.Controls.Clear();
-                this.splitContainer1.Panel2.Controls.Add(this.dishPanelYuXiangRouSi);
-                this.dishPanelYuXiangRouSi.Dock = DockStyle.Fill;
-            }
-            else if (e.Node.Text == "豆芽菜")
-            {
-                this.splitContainer1.Panel2.Controls.Clear();
-                this.splitContainer1.Panel2.Controls.Add(this.dishPanelDouYaCai);
-                this.dishPanelDouYaCai.Dock = DockStyle.Fill;
-            }
-            else
-            {
-                this.splitContainer1.Panel2.Controls.Clear();
-                this.splitContainer1.Panel2.Controls.Add(this.dishPanelOther);
-                this.dishPanelOther.Dock = DockStyle.Fill;
-            }
-        }
-
         private void 添加菜品ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (new FormAddDishToProject()).ShowDialog();
@@ -57,22 +24,23 @@ namespace HowManyToEat
 
         private void 删除菜品ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var items = this.listView1.SelectedItems;
-            if (items.Count == 0)
-            {
-                MessageBox.Show("请先选中要删除的菜品，然后再点击 删除 菜品 按钮。");
-                return;
-            }
+            //var items = this.listView1.SelectedItems;
+            //if (items.Count == 0)
+            //{
+            //    MessageBox.Show("请先选中要删除的菜品，然后再点击 删除 菜品 按钮。");
+            //    return;
+            //}
 
-            foreach (var item in items)
-            {
-                this.listView1.Items.Remove(item as ListViewItem);
-            }
+            //foreach (var item in items)
+            //{
+            //    this.listView1.Items.Remove(item as ListViewItem);
+            //}
         }
 
         private void 新建NToolStripButton_Click(object sender, EventArgs e)
         {
-            this.listView1.Items.Clear();
+            this.lstLeftDishes.Items.Clear();
+            this.lstRightDishes.Items.Clear();
             this.numericUpDown1.Value = 10;
         }
 
@@ -80,7 +48,8 @@ namespace HowManyToEat
         {
             if (this.openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                this.listView1.Items.Clear();
+                this.lstLeftDishes.Items.Clear();
+                this.lstRightDishes.Items.Clear();
                 var listViewItem1 = new System.Windows.Forms.ListViewItem("鱼香肉丝");
                 var listViewItem2 = new System.Windows.Forms.ListViewItem("豆芽菜");
                 var listViewItem3 = new System.Windows.Forms.ListViewItem("某菜3");
@@ -92,7 +61,6 @@ namespace HowManyToEat
                 var listViewItem9 = new System.Windows.Forms.ListViewItem("碗 10个");
                 var listViewItem10 = new System.Windows.Forms.ListViewItem("玻璃杯 10个");
                 var listViewItem11 = new System.Windows.Forms.ListViewItem("餐巾纸 2盒");
-                this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4, listViewItem5, listViewItem6, listViewItem7, listViewItem8, listViewItem9, listViewItem10, listViewItem11 });
             }
         }
 
@@ -140,33 +108,6 @@ namespace HowManyToEat
         private void 打印预览VToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (new FormPrintPreview()).ShowDialog();
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var items = this.listView1.SelectedItems;
-            if (items.Count > 0)
-            {
-                var last = items[items.Count - 1];
-                if (last.Text == "鱼香肉丝")
-                {
-                    this.splitContainer1.Panel2.Controls.Clear();
-                    this.splitContainer1.Panel2.Controls.Add(this.dishPanelYuXiangRouSi);
-                    this.dishPanelYuXiangRouSi.Dock = DockStyle.Fill;
-                }
-                else if (last.Text == "豆芽菜")
-                {
-                    this.splitContainer1.Panel2.Controls.Clear();
-                    this.splitContainer1.Panel2.Controls.Add(this.dishPanelDouYaCai);
-                    this.dishPanelDouYaCai.Dock = DockStyle.Fill;
-                }
-                else
-                {
-                    this.splitContainer1.Panel2.Controls.Clear();
-                    this.splitContainer1.Panel2.Controls.Add(this.dishPanelOther);
-                    this.dishPanelOther.Dock = DockStyle.Fill;
-                }
-            }
         }
 
         private void 录入菜品ToolStripMenuItem_Click(object sender, EventArgs e)
