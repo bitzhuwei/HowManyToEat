@@ -75,7 +75,7 @@
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.帮助LToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.leftDishesMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.添加菜品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除菜品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -88,10 +88,20 @@
             this.lstRightDishes = new System.Windows.Forms.ListBox();
             this.txtResult = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.rightDishesMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.上移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.下移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.移到右侧ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.上移ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.下移ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.移到左侧ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
+            this.leftDishesMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.rightDishesMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -484,13 +494,16 @@
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // contextMenuStrip1
+            // leftDishesMenuStrip
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.leftDishesMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.添加菜品ToolStripMenuItem,
-            this.删除菜品ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 48);
+            this.删除菜品ToolStripMenuItem,
+            this.上移ToolStripMenuItem,
+            this.下移ToolStripMenuItem,
+            this.移到右侧ToolStripMenuItem});
+            this.leftDishesMenuStrip.Name = "contextMenuStrip1";
+            this.leftDishesMenuStrip.Size = new System.Drawing.Size(129, 114);
             // 
             // 添加菜品ToolStripMenuItem
             // 
@@ -560,6 +573,7 @@
             this.lstLeftDishes.Name = "lstLeftDishes";
             this.lstLeftDishes.Size = new System.Drawing.Size(208, 460);
             this.lstLeftDishes.TabIndex = 6;
+            this.lstLeftDishes.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lstLeftDishes_MouseUp);
             // 
             // lstRightDishes
             // 
@@ -574,20 +588,21 @@
             "餐巾纸 2盒"});
             this.lstRightDishes.Location = new System.Drawing.Point(226, 76);
             this.lstRightDishes.Name = "lstRightDishes";
-            this.lstRightDishes.Size = new System.Drawing.Size(206, 460);
+            this.lstRightDishes.Size = new System.Drawing.Size(208, 460);
             this.lstRightDishes.TabIndex = 6;
+            this.lstRightDishes.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lstRightDishes_MouseUp);
             // 
             // txtResult
             // 
-            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResult.Font = new System.Drawing.Font("宋体", 14F);
-            this.txtResult.Location = new System.Drawing.Point(438, 76);
+            this.txtResult.Location = new System.Drawing.Point(440, 76);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
-            this.txtResult.Size = new System.Drawing.Size(490, 468);
+            this.txtResult.Size = new System.Drawing.Size(488, 468);
             this.txtResult.TabIndex = 7;
             // 
             // label2
@@ -599,6 +614,65 @@
             this.label2.Size = new System.Drawing.Size(104, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "统计结果：";
+            // 
+            // rightDishesMenuStrip
+            // 
+            this.rightDishesMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.上移ToolStripMenuItem1,
+            this.下移ToolStripMenuItem1,
+            this.移到左侧ToolStripMenuItem});
+            this.rightDishesMenuStrip.Name = "contextMenuStrip1";
+            this.rightDishesMenuStrip.Size = new System.Drawing.Size(129, 114);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Text = "添加 菜品";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2.Text = "删除 菜品";
+            // 
+            // 上移ToolStripMenuItem
+            // 
+            this.上移ToolStripMenuItem.Name = "上移ToolStripMenuItem";
+            this.上移ToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.上移ToolStripMenuItem.Text = "上移";
+            // 
+            // 下移ToolStripMenuItem
+            // 
+            this.下移ToolStripMenuItem.Name = "下移ToolStripMenuItem";
+            this.下移ToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.下移ToolStripMenuItem.Text = "下移";
+            // 
+            // 移到右侧ToolStripMenuItem
+            // 
+            this.移到右侧ToolStripMenuItem.Name = "移到右侧ToolStripMenuItem";
+            this.移到右侧ToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.移到右侧ToolStripMenuItem.Text = "移到右侧";
+            // 
+            // 上移ToolStripMenuItem1
+            // 
+            this.上移ToolStripMenuItem1.Name = "上移ToolStripMenuItem1";
+            this.上移ToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.上移ToolStripMenuItem1.Text = "上移";
+            // 
+            // 下移ToolStripMenuItem1
+            // 
+            this.下移ToolStripMenuItem1.Name = "下移ToolStripMenuItem1";
+            this.下移ToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.下移ToolStripMenuItem1.Text = "下移";
+            // 
+            // 移到左侧ToolStripMenuItem
+            // 
+            this.移到左侧ToolStripMenuItem.Name = "移到左侧ToolStripMenuItem";
+            this.移到左侧ToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.移到左侧ToolStripMenuItem.Text = "移到左侧";
             // 
             // FormMain
             // 
@@ -621,8 +695,9 @@
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.leftDishesMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.rightDishesMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -672,7 +747,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripButton 帮助LToolStripButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip leftDishesMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem 添加菜品ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除菜品ToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
@@ -688,5 +763,14 @@
         private System.Windows.Forms.ListBox lstRightDishes;
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ContextMenuStrip rightDishesMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 上移ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 下移ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 移到右侧ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 上移ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 下移ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 移到左侧ToolStripMenuItem;
     }
 }

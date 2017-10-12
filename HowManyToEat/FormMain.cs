@@ -120,5 +120,21 @@ namespace HowManyToEat
             (new FormNewIngrendient()).Show();
         }
 
+        private void lstLeftDishes_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                this.leftDishesMenuStrip.Show(sender as Control, e.Location);
+            }
+        }
+
+        private void lstRightDishes_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                this.rightDishesMenuStrip.Show(sender as Control, e.Location);
+            }
+        }
+
     }
 }
