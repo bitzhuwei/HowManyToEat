@@ -31,5 +31,14 @@ namespace HowManyToEat
             //(new FormNewIngrendient()).ShowDialog();
             (new FormAddIngredientToDish()).ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var items = this.listView1.SelectedItems;
+            foreach (var item in items)
+            {
+                this.listView1.Items.Remove(item as ListViewItem);
+            }
+        }
     }
 }

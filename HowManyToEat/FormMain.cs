@@ -169,5 +169,15 @@ namespace HowManyToEat
             }
         }
 
+        private void 录入菜品ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new FormNewDish()).Show();
+        }
+
+        private void 录入食材ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new FormNewIngrendient()).Show();
+        }
+
     }
 }

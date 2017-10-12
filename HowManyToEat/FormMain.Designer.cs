@@ -65,6 +65,8 @@
             this.工具TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.自定义CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.选项OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.录入菜品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.录入食材ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.内容CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.索引IToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,6 +77,7 @@
             this.新建NToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.打开OToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.保存SToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.打印预览PToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.打印PToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.剪切UToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -84,6 +87,9 @@
             this.帮助LToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.添加菜品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除菜品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,16 +97,12 @@
             this.saveProjectDlg = new System.Windows.Forms.SaveFileDialog();
             this.saveResultDlg = new System.Windows.Forms.SaveFileDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.打印预览PToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -287,23 +289,40 @@
             // 
             this.工具TToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.自定义CToolStripMenuItem,
-            this.选项OToolStripMenuItem});
-            this.工具TToolStripMenuItem.Enabled = false;
+            this.选项OToolStripMenuItem,
+            this.录入菜品ToolStripMenuItem,
+            this.录入食材ToolStripMenuItem});
             this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
             this.工具TToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
             this.工具TToolStripMenuItem.Text = "工具(&T)";
             // 
             // 自定义CToolStripMenuItem
             // 
+            this.自定义CToolStripMenuItem.Enabled = false;
             this.自定义CToolStripMenuItem.Name = "自定义CToolStripMenuItem";
-            this.自定义CToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.自定义CToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.自定义CToolStripMenuItem.Text = "自定义(&C)";
             // 
             // 选项OToolStripMenuItem
             // 
+            this.选项OToolStripMenuItem.Enabled = false;
             this.选项OToolStripMenuItem.Name = "选项OToolStripMenuItem";
-            this.选项OToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.选项OToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.选项OToolStripMenuItem.Text = "选项(&O)";
+            // 
+            // 录入菜品ToolStripMenuItem
+            // 
+            this.录入菜品ToolStripMenuItem.Name = "录入菜品ToolStripMenuItem";
+            this.录入菜品ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.录入菜品ToolStripMenuItem.Text = "录入 菜品";
+            this.录入菜品ToolStripMenuItem.Click += new System.EventHandler(this.录入菜品ToolStripMenuItem_Click);
+            // 
+            // 录入食材ToolStripMenuItem
+            // 
+            this.录入食材ToolStripMenuItem.Name = "录入食材ToolStripMenuItem";
+            this.录入食材ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.录入食材ToolStripMenuItem.Text = "录入 食材";
+            this.录入食材ToolStripMenuItem.Click += new System.EventHandler(this.录入食材ToolStripMenuItem_Click);
             // 
             // 帮助HToolStripMenuItem
             // 
@@ -398,6 +417,16 @@
             this.保存SToolStripButton.Text = "保存(&S)";
             this.保存SToolStripButton.Click += new System.EventHandler(this.保存SToolStripButton_Click);
             // 
+            // 打印预览PToolStripButton
+            // 
+            this.打印预览PToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.打印预览PToolStripButton.Image = global::HowManyToEat.Properties.Resources.preview;
+            this.打印预览PToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.打印预览PToolStripButton.Name = "打印预览PToolStripButton";
+            this.打印预览PToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.打印预览PToolStripButton.Text = "打印(&P)";
+            this.打印预览PToolStripButton.Click += new System.EventHandler(this.打印预览VToolStripMenuItem_Click);
+            // 
             // 打印PToolStripButton
             // 
             this.打印PToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -481,6 +510,55 @@
             this.splitContainer1.SplitterDistance = 658;
             this.splitContainer1.TabIndex = 3;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(84, 3);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown1.TabIndex = 3;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 14F);
+            this.label1.Location = new System.Drawing.Point(12, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 19);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "席数：";
+            // 
+            // listView1
+            // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.ContextMenuStrip = this.contextMenuStrip1;
+            this.listView1.Font = new System.Drawing.Font("宋体", 14F);
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11});
+            this.listView1.Location = new System.Drawing.Point(3, 30);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(652, 464);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.SmallIcon;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -519,64 +597,6 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
-            // 打印预览PToolStripButton
-            // 
-            this.打印预览PToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.打印预览PToolStripButton.Image = global::HowManyToEat.Properties.Resources.preview;
-            this.打印预览PToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.打印预览PToolStripButton.Name = "打印预览PToolStripButton";
-            this.打印预览PToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.打印预览PToolStripButton.Text = "打印(&P)";
-            this.打印预览PToolStripButton.Click += new System.EventHandler(this.打印预览VToolStripMenuItem_Click);
-            // 
-            // listView1
-            // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.Font = new System.Drawing.Font("宋体", 14F);
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10,
-            listViewItem11});
-            this.listView1.Location = new System.Drawing.Point(3, 30);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(652, 464);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.SmallIcon;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(84, 3);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown1.TabIndex = 3;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 14F);
-            this.label1.Location = new System.Drawing.Point(12, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 19);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "席数：";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -596,8 +616,8 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -659,5 +679,7 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem 录入菜品ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 录入食材ToolStripMenuItem;
     }
 }

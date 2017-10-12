@@ -25,5 +25,10 @@ namespace HowManyToEat
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("成功添加新食材！");
+        }
     }
 }
