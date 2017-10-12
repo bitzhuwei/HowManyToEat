@@ -559,6 +559,8 @@
             // 
             // lstLeftDishes
             // 
+            this.lstLeftDishes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lstLeftDishes.Font = new System.Drawing.Font("宋体", 18F);
             this.lstLeftDishes.FormattingEnabled = true;
             this.lstLeftDishes.ItemHeight = 24;
@@ -577,6 +579,8 @@
             // 
             // lstRightDishes
             // 
+            this.lstRightDishes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lstRightDishes.Font = new System.Drawing.Font("宋体", 18F);
             this.lstRightDishes.FormattingEnabled = true;
             this.lstRightDishes.ItemHeight = 24;
@@ -629,13 +633,13 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItem1.Text = "添加 菜品";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItem2.Text = "删除 菜品";
             // 
             // 上移ToolStripMenuItem

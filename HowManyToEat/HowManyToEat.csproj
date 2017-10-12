@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dish.cs" />
-    <Compile Include="DishList.cs" />
+    <Compile Include="PartyProject\Dish.cs" />
+    <Compile Include="PartyProject\DishList.cs" />
     <Compile Include="FormAddIngredientToDish.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,25 +87,15 @@
     <Compile Include="FormPropertyGrid.Designer.cs">
       <DependentUpon>FormPropertyGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ingredient.cs" />
-    <Compile Include="IngredientCategory.cs" />
-    <Compile Include="IngredientUnit.cs" />
-    <Compile Include="PartyProject.cs" />
+    <Compile Include="PartyProject\Ingredient.cs" />
+    <Compile Include="PartyProject\IngredientCategory.cs" />
+    <Compile Include="obj\IngredientUnit.cs" />
+    <Compile Include="PartyProject\PartyProject.cs" />
+    <Compile Include="PartyProject\WeightedDish.cs" />
+    <Compile Include="PartyProject\WeightedDishList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UCDishPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UCDishPanel.Designer.cs">
-      <DependentUpon>UCDishPanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UCProjectPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UCProjectPanel.Designer.cs">
-      <DependentUpon>UCProjectPanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WeightedIngredient.cs" />
+    <Compile Include="PartyProject\WeightedIngredient.cs" />
     <EmbeddedResource Include="FormAddIngredientToDish.resx">
       <DependentUpon>FormAddIngredientToDish.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,12 +127,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UCDishPanel.resx">
-      <DependentUpon>UCDishPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UCProjectPanel.resx">
-      <DependentUpon>UCProjectPanel.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
