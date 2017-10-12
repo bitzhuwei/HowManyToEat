@@ -15,8 +15,6 @@ namespace HowManyToEat
         public FormMain()
         {
             InitializeComponent();
-
-            this.treeView1.ExpandAll();
         }
 
         private UCProjectPanel projectPanel = new UCProjectPanel();
@@ -59,41 +57,42 @@ namespace HowManyToEat
 
         private void 删除菜品ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TreeNode node = this.treeView1.SelectedNode;
-            if (node == null)
+            var items = this.listView1.SelectedItems;
+            if (items.Count == 0)
             {
                 MessageBox.Show("请先选中要删除的菜品，然后再点击 删除 菜品 按钮。");
                 return;
             }
 
-            this.treeView1.Nodes.Remove(node);
+            foreach (var item in items)
+            {
+                this.listView1.Items.Remove(item as ListViewItem);
+            }
         }
 
         private void 新建NToolStripButton_Click(object sender, EventArgs e)
         {
-            this.treeView1.Nodes.Clear();
-            var treeNode9 = new TreeNode("某家某月某席");
-            this.treeView1.Nodes.Add(treeNode9);
-            this.treeView1.ExpandAll();
+            this.listView1.Items.Clear();
+            this.numericUpDown1.Value = 10;
         }
 
         private void 打开OToolStripButton_Click(object sender, EventArgs e)
         {
             if (this.openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                this.treeView1.Nodes.Clear();
-                var treeNode1 = new TreeNode("鱼香肉丝");
-                var treeNode2 = new TreeNode("豆芽菜");
-                var treeNode3 = new TreeNode("某菜2");
-                var treeNode4 = new TreeNode("某菜3");
-                var treeNode5 = new TreeNode("某菜4");
-                var treeNode6 = new TreeNode("某菜5");
-                var treeNode7 = new TreeNode("某菜6");
-                var treeNode8 = new TreeNode("某菜7");
-                var treeNode9 = new TreeNode("某家某月某席", new TreeNode[] { treeNode1, treeNode2, treeNode3, treeNode4, treeNode5, treeNode6, treeNode7, treeNode8 });
-                this.treeView1.Nodes.Add(treeNode9);
-                this.treeView1.ExpandAll();
-
+                this.listView1.Items.Clear();
+                var listViewItem1 = new System.Windows.Forms.ListViewItem("鱼香肉丝");
+                var listViewItem2 = new System.Windows.Forms.ListViewItem("豆芽菜");
+                var listViewItem3 = new System.Windows.Forms.ListViewItem("某菜3");
+                var listViewItem4 = new System.Windows.Forms.ListViewItem("某菜4");
+                var listViewItem5 = new System.Windows.Forms.ListViewItem("某菜5");
+                var listViewItem6 = new System.Windows.Forms.ListViewItem("某菜6");
+                var listViewItem7 = new System.Windows.Forms.ListViewItem("某菜7");
+                var listViewItem8 = new System.Windows.Forms.ListViewItem("筷子 10双");
+                var listViewItem9 = new System.Windows.Forms.ListViewItem("碗 10个");
+                var listViewItem10 = new System.Windows.Forms.ListViewItem("玻璃杯 10个");
+                var listViewItem11 = new System.Windows.Forms.ListViewItem("餐巾纸 2盒");
+                this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4, listViewItem5, listViewItem6, listViewItem7, listViewItem8, listViewItem9, listViewItem10, listViewItem11 });
             }
         }
 
@@ -141,6 +140,33 @@ namespace HowManyToEat
         private void 打印预览VToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (new FormPrintPreview()).ShowDialog();
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var items = this.listView1.SelectedItems;
+            if (items.Count > 0)
+            {
+                var last = items[items.Count - 1];
+                if (last.Text == "鱼香肉丝")
+                {
+                    this.splitContainer1.Panel2.Controls.Clear();
+                    this.splitContainer1.Panel2.Controls.Add(this.dishPanelYuXiangRouSi);
+                    this.dishPanelYuXiangRouSi.Dock = DockStyle.Fill;
+                }
+                else if (last.Text == "豆芽菜")
+                {
+                    this.splitContainer1.Panel2.Controls.Clear();
+                    this.splitContainer1.Panel2.Controls.Add(this.dishPanelDouYaCai);
+                    this.dishPanelDouYaCai.Dock = DockStyle.Fill;
+                }
+                else
+                {
+                    this.splitContainer1.Panel2.Controls.Clear();
+                    this.splitContainer1.Panel2.Controls.Add(this.dishPanelOther);
+                    this.dishPanelOther.Dock = DockStyle.Fill;
+                }
+            }
         }
 
     }

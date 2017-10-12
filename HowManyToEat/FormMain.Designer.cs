@@ -30,23 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("鱼香肉丝");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("豆芽菜");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("某菜2");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("某菜3");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("某菜4");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("某菜5");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("某菜6");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("某菜7");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("某家某月某席", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8});
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("鱼香肉丝");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("豆芽菜");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("某菜3");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("某菜4");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("某菜5");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("某菜6");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("某菜7");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("筷子 10双");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("碗 10个");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("玻璃杯 10个");
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("餐巾纸 2盒");
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,7 +84,6 @@
             this.帮助LToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.添加菜品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除菜品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,11 +92,15 @@
             this.saveResultDlg = new System.Windows.Forms.SaveFileDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.打印预览PToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -477,42 +474,12 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
+            this.splitContainer1.Panel1.Controls.Add(this.numericUpDown1);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.listView1);
             this.splitContainer1.Size = new System.Drawing.Size(940, 497);
-            this.splitContainer1.SplitterDistance = 313;
+            this.splitContainer1.SplitterDistance = 658;
             this.splitContainer1.TabIndex = 3;
-            // 
-            // treeView1
-            // 
-            this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Font = new System.Drawing.Font("宋体", 14F);
-            this.treeView1.FullRowSelect = true;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Name = "treeView1";
-            treeNode1.Name = "节点10";
-            treeNode1.Text = "鱼香肉丝";
-            treeNode2.Name = "节点11";
-            treeNode2.Text = "豆芽菜";
-            treeNode3.Name = "节点12";
-            treeNode3.Text = "某菜2";
-            treeNode4.Name = "节点13";
-            treeNode4.Text = "某菜3";
-            treeNode5.Name = "节点14";
-            treeNode5.Text = "某菜4";
-            treeNode6.Name = "节点15";
-            treeNode6.Text = "某菜5";
-            treeNode7.Name = "节点16";
-            treeNode7.Text = "某菜6";
-            treeNode8.Name = "节点17";
-            treeNode8.Text = "某菜7";
-            treeNode9.Name = "节点9";
-            treeNode9.Text = "某家某月某席";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9});
-            this.treeView1.Size = new System.Drawing.Size(313, 497);
-            this.treeView1.TabIndex = 0;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // contextMenuStrip1
             // 
@@ -562,6 +529,54 @@
             this.打印预览PToolStripButton.Text = "打印(&P)";
             this.打印预览PToolStripButton.Click += new System.EventHandler(this.打印预览VToolStripMenuItem_Click);
             // 
+            // listView1
+            // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Font = new System.Drawing.Font("宋体", 14F);
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11});
+            this.listView1.Location = new System.Drawing.Point(3, 30);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(652, 464);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.SmallIcon;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(84, 3);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown1.TabIndex = 3;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 14F);
+            this.label1.Location = new System.Drawing.Point(12, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 19);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "席数：";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -573,14 +588,16 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
-            this.Text = "材料统计 - 东大街宴会大厅";
+            this.Text = "材料统计 - 东大街宴会大厅 - 某月某家2天方案";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -631,7 +648,6 @@
         private System.Windows.Forms.ToolStripButton 帮助LToolStripButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 添加菜品ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除菜品ToolStripMenuItem;
@@ -640,5 +656,8 @@
         private System.Windows.Forms.SaveFileDialog saveResultDlg;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.ToolStripButton 打印预览PToolStripButton;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label1;
     }
 }
