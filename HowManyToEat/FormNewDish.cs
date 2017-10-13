@@ -28,5 +28,11 @@ namespace HowManyToEat
                 curentViewIndex = curentViewIndex % views.Length;
             }
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.timer1.Enabled = false;
+            this.lblSucessTip.Visible = false;
+        }
     }
 }

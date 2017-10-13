@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("佐料", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("蔬菜", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("家禽", System.Windows.Forms.HorizontalAlignment.Left);
@@ -53,7 +54,6 @@
             System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("醋 15克");
             System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("大米 5两");
             this.button2 = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,6 +67,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
+            this.lblSucessTip = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // button2
@@ -76,20 +78,10 @@
             this.button2.Location = new System.Drawing.Point(242, 476);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(109, 23);
-            this.button2.TabIndex = 5;
+            this.button2.TabIndex = 10;
             this.button2.Text = "修改选中的食材...";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Visible = false;
-            // 
-            // btnOK
-            // 
-            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(796, 476);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(64, 23);
-            this.btnOK.TabIndex = 6;
-            this.btnOK.Text = "保存";
-            this.btnOK.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
@@ -99,7 +91,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(64, 23);
             this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "取消";
+            this.btnCancel.Text = "关闭";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -108,7 +100,7 @@
             this.button1.Location = new System.Drawing.Point(127, 476);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 23);
-            this.button1.TabIndex = 8;
+            this.button1.TabIndex = 9;
             this.button1.Text = "录入新食材...";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Visible = false;
@@ -167,7 +159,7 @@
             this.listView1.Location = new System.Drawing.Point(12, 66);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(607, 404);
-            this.listView1.TabIndex = 3;
+            this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.SmallIcon;
             // 
@@ -206,7 +198,7 @@
             this.listView2.Location = new System.Drawing.Point(706, 66);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(224, 404);
-            this.listView2.TabIndex = 3;
+            this.listView2.TabIndex = 5;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.SmallIcon;
             // 
@@ -226,7 +218,7 @@
             this.btnSwitchView.Location = new System.Drawing.Point(12, 476);
             this.btnSwitchView.Name = "btnSwitchView";
             this.btnSwitchView.Size = new System.Drawing.Size(109, 23);
-            this.btnSwitchView.TabIndex = 6;
+            this.btnSwitchView.TabIndex = 8;
             this.btnSwitchView.Text = "切换视图";
             this.btnSwitchView.UseVisualStyleBackColor = true;
             this.btnSwitchView.Click += new System.EventHandler(this.btnSwitchView_Click);
@@ -238,7 +230,7 @@
             this.button3.Location = new System.Drawing.Point(625, 109);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 50);
-            this.button3.TabIndex = 6;
+            this.button3.TabIndex = 2;
             this.button3.Text = "添加->";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.btnSwitchView_Click);
@@ -250,7 +242,7 @@
             this.button4.Location = new System.Drawing.Point(625, 165);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 50);
-            this.button4.TabIndex = 6;
+            this.button4.TabIndex = 3;
             this.button4.Text = "<-撤回";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.btnSwitchView_Click);
@@ -262,7 +254,7 @@
             this.button5.Location = new System.Drawing.Point(625, 221);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 50);
-            this.button5.TabIndex = 6;
+            this.button5.TabIndex = 4;
             this.button5.Text = "修改";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.btnSwitchView_Click);
@@ -273,7 +265,7 @@
             this.textBox1.Location = new System.Drawing.Point(118, 12);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(271, 29);
-            this.textBox1.TabIndex = 10;
+            this.textBox1.TabIndex = 0;
             this.textBox1.Text = "一碗米饭";
             // 
             // label3
@@ -289,18 +281,36 @@
             // button6
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(628, 476);
+            this.button6.Location = new System.Drawing.Point(698, 476);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(162, 23);
             this.button6.TabIndex = 6;
             this.button6.Text = "保存并继续录入新菜品";
             this.button6.UseVisualStyleBackColor = true;
             // 
+            // lblSucessTip
+            // 
+            this.lblSucessTip.AutoSize = true;
+            this.lblSucessTip.Font = new System.Drawing.Font("宋体", 14F);
+            this.lblSucessTip.ForeColor = System.Drawing.Color.Green;
+            this.lblSucessTip.Location = new System.Drawing.Point(588, 480);
+            this.lblSucessTip.Name = "lblSucessTip";
+            this.lblSucessTip.Size = new System.Drawing.Size(104, 19);
+            this.lblSucessTip.TabIndex = 16;
+            this.lblSucessTip.Text = "保存成功！";
+            this.lblSucessTip.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormNewDish
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 511);
+            this.Controls.Add(this.lblSucessTip);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
@@ -309,7 +319,6 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnSwitchView);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
@@ -326,7 +335,6 @@
         #endregion
 
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
@@ -340,5 +348,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label lblSucessTip;
+        private System.Windows.Forms.Timer timer1;
     }
 }
