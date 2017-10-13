@@ -53,35 +53,35 @@
             System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("酱油 10克");
             System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("醋 15克");
             System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("大米 5两");
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnModifyIngredient = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNewIngrendient = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.lstIngredient = new System.Windows.Forms.ListView();
+            this.lstSelectedIngredient = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSwitchView = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDishName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnSaveAndContinue = new System.Windows.Forms.Button();
             this.lblSucessTip = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // button2
+            // btnModifyIngredient
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(242, 476);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "修改选中的食材...";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
+            this.btnModifyIngredient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnModifyIngredient.Enabled = false;
+            this.btnModifyIngredient.Location = new System.Drawing.Point(242, 476);
+            this.btnModifyIngredient.Name = "btnModifyIngredient";
+            this.btnModifyIngredient.Size = new System.Drawing.Size(109, 23);
+            this.btnModifyIngredient.TabIndex = 10;
+            this.btnModifyIngredient.Text = "修改选中的食材...";
+            this.btnModifyIngredient.UseVisualStyleBackColor = true;
+            this.btnModifyIngredient.Visible = false;
             // 
             // btnCancel
             // 
@@ -94,16 +94,16 @@
             this.btnCancel.Text = "关闭";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnNewIngrendient
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(127, 476);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "录入新食材...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
+            this.btnNewIngrendient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnNewIngrendient.Location = new System.Drawing.Point(127, 476);
+            this.btnNewIngrendient.Name = "btnNewIngrendient";
+            this.btnNewIngrendient.Size = new System.Drawing.Size(109, 23);
+            this.btnNewIngrendient.TabIndex = 9;
+            this.btnNewIngrendient.Text = "录入新食材...";
+            this.btnNewIngrendient.UseVisualStyleBackColor = true;
+            this.btnNewIngrendient.Visible = false;
             // 
             // label1
             // 
@@ -115,12 +115,12 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "请在下方列表中选择您需要的食材（双击或选中后点击\"添加->\"按钮）";
             // 
-            // listView1
+            // lstIngredient
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lstIngredient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.Font = new System.Drawing.Font("宋体", 14F);
+            this.lstIngredient.Font = new System.Drawing.Font("宋体", 14F);
             listViewGroup1.Header = "佐料";
             listViewGroup1.Name = "listViewGroup1";
             listViewGroup2.Header = "蔬菜";
@@ -131,7 +131,7 @@
             listViewGroup4.Name = "listViewGroup4";
             listViewGroup5.Header = "主粮";
             listViewGroup5.Name = "listViewGroup5";
-            this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            this.lstIngredient.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             listViewGroup1,
             listViewGroup2,
             listViewGroup3,
@@ -146,7 +146,7 @@
             listViewItem7.Group = listViewGroup4;
             listViewItem8.Group = listViewGroup3;
             listViewItem9.Group = listViewGroup5;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.lstIngredient.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
             listViewItem3,
@@ -156,18 +156,18 @@
             listViewItem7,
             listViewItem8,
             listViewItem9});
-            this.listView1.Location = new System.Drawing.Point(12, 66);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(607, 404);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.SmallIcon;
+            this.lstIngredient.Location = new System.Drawing.Point(12, 66);
+            this.lstIngredient.Name = "lstIngredient";
+            this.lstIngredient.Size = new System.Drawing.Size(607, 404);
+            this.lstIngredient.TabIndex = 1;
+            this.lstIngredient.UseCompatibleStateImageBehavior = false;
+            this.lstIngredient.View = System.Windows.Forms.View.SmallIcon;
             // 
-            // listView2
+            // lstSelectedIngredient
             // 
-            this.listView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lstSelectedIngredient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView2.Font = new System.Drawing.Font("宋体", 14F);
+            this.lstSelectedIngredient.Font = new System.Drawing.Font("宋体", 14F);
             listViewGroup6.Header = "佐料";
             listViewGroup6.Name = "listViewGroup1";
             listViewGroup7.Header = "蔬菜";
@@ -178,7 +178,7 @@
             listViewGroup9.Name = "listViewGroup4";
             listViewGroup10.Header = "主粮";
             listViewGroup10.Name = "listViewGroup5";
-            this.listView2.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            this.lstSelectedIngredient.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             listViewGroup6,
             listViewGroup7,
             listViewGroup8,
@@ -189,18 +189,18 @@
             listViewItem12.Group = listViewGroup6;
             listViewItem13.Group = listViewGroup6;
             listViewItem14.Group = listViewGroup10;
-            this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.lstSelectedIngredient.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem10,
             listViewItem11,
             listViewItem12,
             listViewItem13,
             listViewItem14});
-            this.listView2.Location = new System.Drawing.Point(706, 66);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(224, 404);
-            this.listView2.TabIndex = 5;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.SmallIcon;
+            this.lstSelectedIngredient.Location = new System.Drawing.Point(706, 66);
+            this.lstSelectedIngredient.Name = "lstSelectedIngredient";
+            this.lstSelectedIngredient.Size = new System.Drawing.Size(224, 404);
+            this.lstSelectedIngredient.TabIndex = 5;
+            this.lstSelectedIngredient.UseCompatibleStateImageBehavior = false;
+            this.lstSelectedIngredient.View = System.Windows.Forms.View.SmallIcon;
             // 
             // label2
             // 
@@ -259,14 +259,14 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.btnSwitchView_Click);
             // 
-            // textBox1
+            // txtDishName
             // 
-            this.textBox1.Font = new System.Drawing.Font("宋体", 14F);
-            this.textBox1.Location = new System.Drawing.Point(118, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(271, 29);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "一碗米饭";
+            this.txtDishName.Font = new System.Drawing.Font("宋体", 14F);
+            this.txtDishName.Location = new System.Drawing.Point(118, 12);
+            this.txtDishName.Name = "txtDishName";
+            this.txtDishName.Size = new System.Drawing.Size(271, 29);
+            this.txtDishName.TabIndex = 0;
+            this.txtDishName.Text = "一碗米饭";
             // 
             // label3
             // 
@@ -278,15 +278,15 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "菜品名称：";
             // 
-            // button6
+            // btnSaveAndContinue
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(698, 476);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(162, 23);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "保存并继续录入新菜品";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnSaveAndContinue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveAndContinue.Location = new System.Drawing.Point(698, 476);
+            this.btnSaveAndContinue.Name = "btnSaveAndContinue";
+            this.btnSaveAndContinue.Size = new System.Drawing.Size(162, 23);
+            this.btnSaveAndContinue.TabIndex = 6;
+            this.btnSaveAndContinue.Text = "保存并继续录入新菜品";
+            this.btnSaveAndContinue.UseVisualStyleBackColor = true;
             // 
             // lblSucessTip
             // 
@@ -311,20 +311,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 511);
             this.Controls.Add(this.lblSucessTip);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDishName);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnModifyIngredient);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnSwitchView);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.btnSaveAndContinue);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnNewIngrendient);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listView2);
+            this.Controls.Add(this.lstSelectedIngredient);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lstIngredient);
             this.Name = "FormNewDish";
             this.Text = "录入新菜品";
             this.ResumeLayout(false);
@@ -334,20 +334,20 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnModifyIngredient;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNewIngrendient;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView lstIngredient;
+        private System.Windows.Forms.ListView lstSelectedIngredient;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSwitchView;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDishName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnSaveAndContinue;
         private System.Windows.Forms.Label lblSucessTip;
         private System.Windows.Forms.Timer timer1;
     }

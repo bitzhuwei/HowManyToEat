@@ -335,15 +335,19 @@ namespace HowManyToEat
             e.DrawBackground();
 
             var listBox = sender as ListBox;
-            var weightedDish = listBox.Items[e.Index] as WeightedDish;
-            if (weightedDish.Dish.HiddenWhenPrinting)
+            int index = e.Index;
+            if (0 <= index && index < listBox.Items.Count)
             {
-                e.Graphics.DrawString(weightedDish.ToString(), e.Font, this.grayBrush, e.Bounds);
-            }
-            else
-            {
-                if (this.foreColorBrush == null) { this.foreColorBrush = new SolidBrush(e.ForeColor); }
-                e.Graphics.DrawString(weightedDish.ToString(), e.Font, this.foreColorBrush, e.Bounds);
+                var weightedDish = listBox.Items[e.Index] as WeightedDish;
+                if (weightedDish.Dish.HiddenWhenPrinting)
+                {
+                    e.Graphics.DrawString(weightedDish.ToString(), e.Font, this.grayBrush, e.Bounds);
+                }
+                else
+                {
+                    if (this.foreColorBrush == null) { this.foreColorBrush = new SolidBrush(e.ForeColor); }
+                    e.Graphics.DrawString(weightedDish.ToString(), e.Font, this.foreColorBrush, e.Bounds);
+                }
             }
 
             e.DrawFocusRectangle();
