@@ -11,6 +11,9 @@ namespace HowManyToEat
 {
     public partial class FormNewDish : Form
     {
+        private List<string> selectedIngredientList = new List<string>();
+        private Dictionary<string, ListViewGroup> groups = new Dictionary<string, ListViewGroup>();
+
         public FormNewDish()
         {
             InitializeComponent();
@@ -21,6 +24,8 @@ namespace HowManyToEat
         void FormNewDish_Load(object sender, EventArgs e)
         {
             this.lstIngredient.Items.Clear();
+            this.lstSelectedIngredient.Items.Clear();
+
             IDictionary<string, Ingredient> ingredientDict = Ingredient.GetAll();
             var groups = new Dictionary<string, ListViewGroup>();
             foreach (var item in ingredientDict)
@@ -33,7 +38,7 @@ namespace HowManyToEat
                     groups.Add(category, group);
                     this.lstIngredient.Groups.Add(group);
                 }
-                this.lstIngredient.Items.Add(new ListViewItem(name, groups[category]));
+                this.lstIngredient.Items.Add(new ListViewItem(name, groups[category]) { Tag = item.Value });
             }
         }
 
@@ -54,6 +59,101 @@ namespace HowManyToEat
         {
             this.timer1.Enabled = false;
             this.lblSucessTip.Visible = false;
+        }
+
+        private void btnAddIngredientToDish_Click(object sender, EventArgs e)
+        {
+            foreach (var item in this.lstIngredient.SelectedItems)
+            {
+                var obj = item as ListViewItem;
+                string name = obj.Text;
+                if (!this.selectedIngredientList.Contains(name))
+                {
+                    var ingredient = obj.Tag as Ingredient;
+                    string category = ingredient.Category.Name;
+                    if (!this.groups.ContainsKey(category))
+                    {
+                        var group = new ListViewGroup(category);
+                        this.groups.Add(category, group);
+                        this.lstSelectedIngredient.Groups.Add(group);
+                    }
+
+                    var weighted = new WeightedIngredient() { Ingredient = ingredient, Weight = 0 };
+                    this.lstSelectedIngredient.Items.Add(new ListViewItem(weighted.ToString(), this.groups[category]) { Tag = weighted });
+                    this.selectedIngredientList.Add(name);
+                }
+            }
+        }
+
+        private void btnRemoveIngredientFromDish_Click(object sender, EventArgs e)
+        {
+            foreach (var item in this.lstSelectedIngredient.SelectedItems)
+            {
+                var obj = item as ListViewItem;
+                var name = obj.Text;
+                this.lstSelectedIngredient.Items.Remove(obj);
+                this.selectedIngredientList.Remove(name);
+            }
+        }
+
+        private void btnModifyWeightedIngredient_Click(object sender, EventArgs e)
+        {
+            foreach (var item in this.lstSelectedIngredient.SelectedItems)
+            {
+                var obj = item as ListViewItem;
+                var name = obj.Text;
+                var weighted = obj.Tag as WeightedIngredient;
+                var frmModify = new FormModifyWeightedIngrendient(weighted);
+                frmModify.ShowDialog();
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btnSaveAndContinue_Click(object sender, EventArgs e)
+        {
+            this.btnSaveAndContinue.Enabled = false;
+
+            if (TryAdd())
+            {
+                this.lblSucessTip.Visible = true;
+                this.timer1.Enabled = true;
+            }
+
+            this.btnSaveAndContinue.Enabled = true;
+        }
+
+        private bool TryAdd()
+        {
+            string dishName = this.txtDishName.Text.Trim();
+            if (string.IsNullOrEmpty(dishName))
+            {
+                MessageBox.Show(string.Format("菜品名称不能为空!", dishName), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            IDictionary<string, Dish> dishDict = Dish.GetAll();
+            if (dishDict.ContainsKey(dishName))
+            {
+                MessageBox.Show(string.Format("已存在名为[{0}]的菜品!", dishName), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            var dish = new Dish() { Name = dishName };
+            foreach (var item in this.lstSelectedIngredient.Items)
+            {
+                var obj = item as ListViewItem;
+                var weighted = obj.Tag as WeightedIngredient;
+                dish.Add(weighted);
+            }
+            dishDict.Add(dishName, dish);
+            Dish.SaveDatabase(typeof(Dish).Name);
+
+            return true;
         }
     }
 }

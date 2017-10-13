@@ -46,6 +46,12 @@
     <Compile Include="FormMain.UpdateResult.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormModifyWeightedIngrendient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormModifyWeightedIngrendient.Designer.cs">
+      <DependentUpon>FormModifyWeightedIngrendient.cs</DependentUpon>
+    </Compile>
     <Compile Include="PartyProject\Dish.cs" />
     <Compile Include="PartyProject\DishList.cs" />
     <Compile Include="FormNewDish.cs">
@@ -86,13 +92,16 @@
     </Compile>
     <Compile Include="PartyProject\Ingredient.cs" />
     <Compile Include="PartyProject\IngredientCategory.cs" />
-    <Compile Include="obj\IngredientUnit.cs" />
+    <Compile Include="PartyProject\IngredientUnit.cs" />
     <Compile Include="PartyProject\PartyProject.cs" />
     <Compile Include="PartyProject\WeightedDish.cs" />
     <Compile Include="PartyProject\WeightedDishList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PartyProject\WeightedIngredient.cs" />
+    <EmbeddedResource Include="FormModifyWeightedIngrendient.resx">
+      <DependentUpon>FormModifyWeightedIngrendient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormNewDish.resx">
       <DependentUpon>FormNewDish.cs</DependentUpon>
     </EmbeddedResource>

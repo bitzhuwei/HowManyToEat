@@ -177,6 +177,7 @@
             // 
             // lblSucessTip
             // 
+            this.lblSucessTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSucessTip.AutoSize = true;
             this.lblSucessTip.Font = new System.Drawing.Font("宋体", 14F);
             this.lblSucessTip.ForeColor = System.Drawing.Color.Green;

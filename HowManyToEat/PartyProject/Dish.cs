@@ -95,5 +95,18 @@ namespace HowManyToEat
                 throw new ArgumentException(string.Format("数据库中没有指定的[{0}]菜品！", name), "name");
             }
         }
+
+        internal static void SaveDatabase(string filename)
+        {
+            var xml = new XElement(typeof(IngredientCategory).Name,
+                from item in dictionary.Values select item.ToXElement());
+
+            if (!filename.ToLower().EndsWith(".xml"))
+            {
+                filename = filename + ".xml";
+            }
+
+            xml.Save(filename);
+        }
     }
 }
