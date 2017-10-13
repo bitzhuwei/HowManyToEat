@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<IngredientCategory>
+  <IngredientCategory Name="蔬菜" />
+  <IngredientCategory Name="家禽" />
+  <IngredientCategory Name="佐料" />
+  <IngredientCategory Name="餐具" />
+  <IngredientCategory Name="家畜" />
+</IngredientCategory>

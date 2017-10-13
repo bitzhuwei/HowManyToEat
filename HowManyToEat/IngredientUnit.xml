@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<IngredientUnit>
+  <IngredientUnit UnitName="斤" />
+  <IngredientUnit UnitName="两" />
+  <IngredientUnit UnitName="个" />
+  <IngredientUnit UnitName="双" />
+</IngredientUnit>

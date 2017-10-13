@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ingredient>
+  <Ingredient Name="青椒" Category="蔬菜" UnitName="斤" Price="0" />
+  <Ingredient Name="胡萝卜" Category="蔬菜" UnitName="斤" Price="0" />
+  <Ingredient Name="茄子" Category="蔬菜" UnitName="斤" Price="0" />
+  <Ingredient Name="鸡肉" Category="家禽" UnitName="斤" Price="0" />
+  <Ingredient Name="醋" Category="佐料" UnitName="两" Price="0" />
+  <Ingredient Name="酱油" Category="佐料" UnitName="两" Price="0" />
+  <Ingredient Name="大蒜" Category="蔬菜" UnitName="两" Price="0" />
+  <Ingredient Name="大葱" Category="蔬菜" UnitName="两" Price="0" />
+  <Ingredient Name="生姜" Category="蔬菜" UnitName="两" Price="0" />
+  <Ingredient Name="豆芽" Category="蔬菜" UnitName="斤" Price="0" />
+  <Ingredient Name="大盘子" Category="餐具" UnitName="个" Price="0" />
+  <Ingredient Name="小盘子" Category="餐具" UnitName="个" Price="0" />
+  <Ingredient Name="小碗" Category="餐具" UnitName="个" Price="0" />
+  <Ingredient Name="大碗" Category="餐具" UnitName="个" Price="0" />
+  <Ingredient Name="筷子" Category="餐具" UnitName="双" Price="0" />
+  <Ingredient Name="小勺子" Category="餐具" UnitName="个" Price="0" />
+  <Ingredient Name="玻璃杯" Category="餐具" UnitName="个" Price="0" />
+  <Ingredient Name="小酒杯" Category="餐具" UnitName="个" Price="0" />
+  <Ingredient Name="猪头肉" Category="家畜" UnitName="斤" Price="0" />
+  <Ingredient Name="猪里脊" Category="家畜" UnitName="斤" Price="0" />
+  <Ingredient Name="猪蹄" Category="家畜" UnitName="斤" Price="0" />
+  <Ingredient Name="猪腿" Category="家畜" UnitName="斤" Price="0" />
+</Ingredient>
