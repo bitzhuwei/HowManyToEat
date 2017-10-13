@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,17 +45,6 @@
             this.lblSucessTip = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btnOK
-            // 
-            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(291, 165);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(109, 23);
-            this.btnOK.TabIndex = 13;
-            this.btnOK.Text = "保存";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -64,8 +52,8 @@
             this.btnCancel.Location = new System.Drawing.Point(406, 165);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 23);
-            this.btnCancel.TabIndex = 14;
-            this.btnCancel.Text = "取消";
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "关闭";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -95,7 +83,7 @@
             this.txtName.Location = new System.Drawing.Point(123, 12);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(392, 29);
-            this.txtName.TabIndex = 16;
+            this.txtName.TabIndex = 0;
             this.txtName.Text = "青椒";
             // 
             // label2
@@ -126,7 +114,7 @@
             this.txtUnit.Location = new System.Drawing.Point(123, 82);
             this.txtUnit.Name = "txtUnit";
             this.txtUnit.Size = new System.Drawing.Size(392, 29);
-            this.txtUnit.TabIndex = 16;
+            this.txtUnit.TabIndex = 2;
             this.txtUnit.Text = "斤";
             // 
             // label4
@@ -147,16 +135,16 @@
             this.txtPrice.Location = new System.Drawing.Point(123, 117);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(392, 29);
-            this.txtPrice.TabIndex = 16;
+            this.txtPrice.TabIndex = 3;
             this.txtPrice.Text = "0";
             // 
             // btnSaveAndContinue
             // 
             this.btnSaveAndContinue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveAndContinue.Location = new System.Drawing.Point(156, 165);
+            this.btnSaveAndContinue.Location = new System.Drawing.Point(271, 165);
             this.btnSaveAndContinue.Name = "btnSaveAndContinue";
             this.btnSaveAndContinue.Size = new System.Drawing.Size(129, 23);
-            this.btnSaveAndContinue.TabIndex = 13;
+            this.btnSaveAndContinue.TabIndex = 4;
             this.btnSaveAndContinue.Text = "保存并继续录入";
             this.btnSaveAndContinue.UseVisualStyleBackColor = true;
             this.btnSaveAndContinue.Click += new System.EventHandler(this.btnSaveAndContinue_Click);
@@ -179,7 +167,7 @@
             this.txtCategory.Location = new System.Drawing.Point(123, 47);
             this.txtCategory.Name = "txtCategory";
             this.txtCategory.Size = new System.Drawing.Size(392, 29);
-            this.txtCategory.TabIndex = 16;
+            this.txtCategory.TabIndex = 1;
             this.txtCategory.Text = "蔬菜";
             // 
             // timer1
@@ -192,7 +180,7 @@
             this.lblSucessTip.AutoSize = true;
             this.lblSucessTip.Font = new System.Drawing.Font("宋体", 14F);
             this.lblSucessTip.ForeColor = System.Drawing.Color.Green;
-            this.lblSucessTip.Location = new System.Drawing.Point(46, 169);
+            this.lblSucessTip.Location = new System.Drawing.Point(161, 164);
             this.lblSucessTip.Name = "lblSucessTip";
             this.lblSucessTip.Size = new System.Drawing.Size(104, 19);
             this.lblSucessTip.TabIndex = 15;
@@ -201,7 +189,6 @@
             // 
             // FormNewIngrendient
             // 
-            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
@@ -216,7 +203,6 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSaveAndContinue);
-            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
@@ -230,7 +216,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;

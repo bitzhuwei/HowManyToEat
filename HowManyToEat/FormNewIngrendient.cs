@@ -16,19 +16,6 @@ namespace HowManyToEat
             InitializeComponent();
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            this.btnOK.Enabled = false;
-            if (TryAdd())
-            {
-                this.lblSucessTip.Visible = true;
-                this.timer1.Enabled = true;
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                this.Close();
-            }
-            this.btnOK.Enabled = true;
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
