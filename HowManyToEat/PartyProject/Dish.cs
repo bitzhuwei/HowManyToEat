@@ -16,6 +16,12 @@ namespace HowManyToEat
         /// </summary>
         public bool HiddenWhenPrinting { get; set; }
 
+        private const string strName = "Name";
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Name { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -23,6 +29,7 @@ namespace HowManyToEat
         public XElement ToXElement()
         {
             return new XElement(typeof(Dish).Name,
+                new XAttribute(strName, this.Name),
                 from item in this select item.ToXElement());
         }
 
@@ -35,7 +42,7 @@ namespace HowManyToEat
         {
             if (xml == null || xml.Name != typeof(Dish).Name) { throw new ArgumentException(); }
 
-            Dish result = new Dish();
+            Dish result = new Dish() { Name = xml.Attribute(strName).Value };
             foreach (var item in xml.Elements(typeof(WeightedIngredient).Name))
             {
                 WeightedIngredient ingredient = WeightedIngredient.Parse(item);
@@ -45,5 +52,48 @@ namespace HowManyToEat
             return result;
         }
 
+        private static Dictionary<string, Dish> dictionary = new Dictionary<string, Dish>();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename"></param>
+        public static void LoadDatabase(string filename)
+        {
+            XElement xml = XElement.Load(filename);
+            if (xml == null || xml.Name != typeof(Dish).Name) { throw new ArgumentException(); }
+
+            foreach (var item in xml.Elements(typeof(Dish).Name))
+            {
+                Dish dish = Dish.Parse(item);
+                if (dictionary.ContainsKey(dish.Name))
+                { throw new Exception(string.Format("发现重复的食材[{0}]！", dish.Name)); }
+
+                dictionary.Add(dish.Name, dish);
+            }
+        }
+
+        public static IDictionary<string, Dish> GetAll()
+        {
+            return dictionary;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        internal static Dish Select(string name)
+        {
+            Dish result;
+            if (dictionary.TryGetValue(name, out result))
+            {
+                return result;
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("数据库中没有指定的[{0}]菜品！", name), "name");
+            }
+        }
     }
 }

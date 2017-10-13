@@ -45,12 +45,17 @@ namespace HowManyToEat
 
             foreach (var item in xml.Elements(typeof(IngredientCategory).Name))
             {
-                IngredientCategory category = IngredientCategory.Parse(xml);
+                IngredientCategory category = IngredientCategory.Parse(item);
                 if (dictionary.ContainsKey(category.Name))
-                { throw new Exception(string.Format("发现重复的类别[{0}]！", category.Name)); }
+                { throw new Exception(string.Format("发现重复的食材类别[{0}]！", category.Name)); }
 
                 dictionary.Add(category.Name, category);
             }
+        }
+
+        public static IDictionary<string, IngredientCategory> GetAll()
+        {
+            return dictionary;
         }
 
         /// <summary>
@@ -69,6 +74,19 @@ namespace HowManyToEat
             {
                 throw new ArgumentException(string.Format("数据库中没有指定的[{0}]类别！", name), "name");
             }
+        }
+
+        internal static void SaveDatabase(string filename)
+        {
+            var xml = new XElement(typeof(IngredientCategory).Name,
+                from item in dictionary.Values select item.ToXElement());
+
+            if (!filename.ToLower().EndsWith(".xml"))
+            {
+                filename = filename + ".xml";
+            }
+
+            xml.Save(filename);
         }
     }
 }

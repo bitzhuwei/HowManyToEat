@@ -79,6 +79,12 @@ namespace HowManyToEat
         {
             if (string.IsNullOrEmpty(this.Fullname)) { throw new ArgumentException(); }
 
+            string filename = this.Fullname;
+            if (!filename.ToLower().EndsWith(".xml"))
+            {
+                filename = filename + ".xml";
+            }
+
             this.ToXElement().Save(this.Fullname);
         }
 
@@ -88,6 +94,11 @@ namespace HowManyToEat
         /// <param name="fullname"></param>
         public void SaveAs(string fullname)
         {
+            if (!fullname.ToLower().EndsWith(".xml"))
+            {
+                fullname = fullname + ".xml";
+            }
+
             this.ToXElement().Save(fullname);
         }
     }

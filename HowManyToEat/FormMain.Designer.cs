@@ -641,6 +641,7 @@
             // 
             this.lstRightDishes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.lstRightDishes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lstRightDishes.Font = new System.Drawing.Font("宋体", 18F);
             this.lstRightDishes.FormattingEnabled = true;
             this.lstRightDishes.ItemHeight = 24;

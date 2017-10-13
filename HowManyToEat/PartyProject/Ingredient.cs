@@ -33,7 +33,7 @@ namespace HowManyToEat
         /// <summary>
         /// 单价。
         /// </summary>
-        public int Price { get; set; }
+        public float Price { get; set; }
 
         public XElement ToXElement()
         {
@@ -51,7 +51,7 @@ namespace HowManyToEat
             string name = xml.Attribute(strName).Value;
             IngredientCategory category = IngredientCategory.Select(xml.Attribute(strCategory).Value);
             IngredientUnit unitName = IngredientUnit.Select(xml.Attribute(strUnitName).Value);
-            int price = int.Parse(xml.Attribute(strPrice).Value);
+            float price = float.Parse(xml.Attribute(strPrice).Value);
 
             return new Ingredient() { Name = name, Category = category, UnitName = unitName, Price = price };
         }
@@ -69,12 +69,21 @@ namespace HowManyToEat
 
             foreach (var item in xml.Elements(typeof(Ingredient).Name))
             {
-                Ingredient category = Ingredient.Parse(xml);
-                if (dictionary.ContainsKey(category.Name))
-                { throw new Exception(string.Format("发现重复的菜品[{0}]！", category.Name)); }
+                Ingredient ingredient = Ingredient.Parse(item);
+                if (dictionary.ContainsKey(ingredient.Name))
+                { throw new Exception(string.Format("发现重复的食材[{0}]！", ingredient.Name)); }
 
-                dictionary.Add(category.Name, category);
+                dictionary.Add(ingredient.Name, ingredient);
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static IDictionary<string, Ingredient> GetAll()
+        {
+            return dictionary;
         }
 
         /// <summary>
@@ -93,6 +102,23 @@ namespace HowManyToEat
             {
                 throw new ArgumentException(string.Format("数据库中没有指定的[{0}]食材(工具)！", name), "name");
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename"></param>
+        public static void SaveDatabase(string filename)
+        {
+            var xml = new XElement(typeof(Ingredient).Name,
+                from item in dictionary.Values select item.ToXElement());
+
+            if (!filename.ToLower().EndsWith(".xml"))
+            {
+                filename = filename + ".xml";
+            }
+
+            xml.Save(filename);
         }
     }
 }

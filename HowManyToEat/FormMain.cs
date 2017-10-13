@@ -56,6 +56,10 @@ namespace HowManyToEat
 
             this.CurrentPartyProject = new PartyProject();
             this.grayBrush = new SolidBrush(Color.Gray);
+
+            IngredientCategory.LoadDatabase(typeof(IngredientCategory).Name + ".xml");
+            IngredientUnit.LoadDatabase(typeof(IngredientUnit).Name + ".xml");
+            Ingredient.LoadDatabase(typeof(Ingredient).Name + ".xml");
         }
 
         private void 新建NToolStripButton_Click(object sender, EventArgs e)

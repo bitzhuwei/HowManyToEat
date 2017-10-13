@@ -12,7 +12,6 @@ namespace HowManyToEat
     public partial class FormAddDishToProject : Form
     {
         private List<Dish> selectedDishes = new List<Dish>();
-
         /// <summary>
         /// 
         /// </summary>
@@ -24,6 +23,18 @@ namespace HowManyToEat
         public FormAddDishToProject()
         {
             InitializeComponent();
+
+            this.Load += FormAddDishToProject_Load;
+        }
+
+        void FormAddDishToProject_Load(object sender, EventArgs e)
+        {
+            IDictionary<string, Dish> dishList = Dish.GetAll();
+
+            foreach (var item in dishList)
+            {
+                this.listView1.Items.Add(item.Key);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -33,6 +44,12 @@ namespace HowManyToEat
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            foreach (var item in this.listView1.SelectedItems)
+            {
+                var dish = Dish.Select(item as string);
+                this.SelectedDishes.Add(dish);
+            }
+
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
