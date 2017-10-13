@@ -13,6 +13,8 @@ namespace HowManyToEat
     public partial class FormMain : Form
     {
         private PartyProject currentPartyProject;
+        private Brush grayBrush;
+        private Brush foreColorBrush;
 
         /// <summary>
         /// 
@@ -38,11 +40,11 @@ namespace HowManyToEat
             this.numTableCount.Value = partyProject.Count;
             this.lstLeftDishes.Items.Clear();
             this.lstRightDishes.Items.Clear();
-            for (int i = 0; i <= partyProject.DishList.Count / 2; i++)
+            for (int i = 0; i < (partyProject.DishList.Count + 1) / 2; i++)
             {
                 this.lstLeftDishes.Items.Add(partyProject.DishList[i]);
             }
-            for (int i = partyProject.DishList.Count / 2 + 1; i < partyProject.DishList.Count; i++)
+            for (int i = (partyProject.DishList.Count + 1) / 2; i < partyProject.DishList.Count; i++)
             {
                 this.lstRightDishes.Items.Add(partyProject.DishList[i]);
             }
@@ -53,6 +55,7 @@ namespace HowManyToEat
             InitializeComponent();
 
             this.CurrentPartyProject = new PartyProject();
+            this.grayBrush = new SolidBrush(Color.Gray);
         }
 
         private void 新建NToolStripButton_Click(object sender, EventArgs e)
@@ -220,6 +223,26 @@ namespace HowManyToEat
             }
         }
 
+        private void 打印时隐藏leftDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var items = this.lstLeftDishes.SelectedItems;
+            foreach (var item in items)
+            {
+                var weightedDish = item as WeightedDish;
+                weightedDish.Dish.HiddenWhenPrinting = true;
+            }
+        }
+
+        private void 打印时显示leftDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var items = this.lstLeftDishes.SelectedItems;
+            foreach (var item in items)
+            {
+                var dish = item as Dish;
+                dish.HiddenWhenPrinting = false;
+            }
+        }
+
         private void 添加菜品rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frmAddDishes = new FormAddDishToProject();
@@ -275,6 +298,16 @@ namespace HowManyToEat
             }
         }
 
+        private void 打印时隐藏rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 打印时显示rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void lstLeftDishes_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
@@ -292,5 +325,25 @@ namespace HowManyToEat
         {
 
         }
+
+        private void lstbothDishes_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+
+            var listBox = sender as ListBox;
+            var weightedDish = listBox.Items[e.Index] as WeightedDish;
+            if (weightedDish.Dish.HiddenWhenPrinting)
+            {
+                e.Graphics.DrawString(weightedDish.ToString(), e.Font, this.grayBrush, e.Bounds);
+            }
+            else
+            {
+                if (this.foreColorBrush == null) { this.foreColorBrush = new SolidBrush(e.ForeColor); }
+                e.Graphics.DrawString(weightedDish.ToString(), e.Font, this.foreColorBrush, e.Bounds);
+            }
+
+            e.DrawFocusRectangle();
+        }
+
     }
 }

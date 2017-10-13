@@ -11,12 +11,26 @@ namespace HowManyToEat
     /// </summary>
     public class Dish : List<WeightedIngredient>
     {
+        /// <summary>
+        /// 打印时隐藏（即不打印出来）
+        /// </summary>
+        public bool HiddenWhenPrinting { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public XElement ToXElement()
         {
             return new XElement(typeof(Dish).Name,
                 from item in this select item.ToXElement());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xml"></param>
+        /// <returns></returns>
         public static Dish Parse(XElement xml)
         {
             if (xml == null || xml.Name != typeof(Dish).Name) { throw new ArgumentException(); }

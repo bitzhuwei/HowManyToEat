@@ -28,6 +28,14 @@ namespace HowManyToEat
         /// </summary>
         public WeightedDishList DishList { get; private set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public PartyProject()
+        {
+            this.DishList = new WeightedDishList();
+        }
+
         public XElement ToXElement()
         {
             return new XElement(typeof(PartyProject).Name,
