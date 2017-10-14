@@ -103,7 +103,7 @@ namespace HowManyToEat
 
         internal static void SaveDatabase(string filename)
         {
-            var xml = new XElement(typeof(IngredientCategory).Name,
+            var xml = new XElement(typeof(Dish).Name,
                 from item in dictionary.Values select item.ToXElement());
 
             if (!filename.ToLower().EndsWith(".xml"))

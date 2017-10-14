@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dish>
+  <Dish Name="一碗米饭">
+    <WeightedIngredient Weight="1">
+      <Ingredient Name="小碗" Category="餐具" UnitName="个" Price="0" />
+    </WeightedIngredient>
+    <WeightedIngredient Weight="1.2">
+      <Ingredient Name="筷子" Category="餐具" UnitName="双" Price="0" />
+    </WeightedIngredient>
+    <WeightedIngredient Weight="0.1">
+      <Ingredient Name="大米" Category="主粮" UnitName="斤" Price="0" />
+    </WeightedIngredient>
+  </Dish>
+</Dish>

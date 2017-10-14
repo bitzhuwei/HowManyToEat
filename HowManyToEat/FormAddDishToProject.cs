@@ -33,7 +33,8 @@ namespace HowManyToEat
 
             foreach (var item in dishList)
             {
-                this.listView1.Items.Add(item.Key);
+                var obj = new ListViewItem(item.Key) { Tag = item.Value };
+                this.listView1.Items.Add(obj);
             }
         }
 
@@ -46,8 +47,8 @@ namespace HowManyToEat
         {
             foreach (var item in this.listView1.SelectedItems)
             {
-                var dish = Dish.Select(item as string);
-                this.SelectedDishes.Add(dish);
+                var obj = item as ListViewItem;
+                this.SelectedDishes.Add(obj.Tag as Dish);
             }
 
             this.DialogResult = System.Windows.Forms.DialogResult.OK;

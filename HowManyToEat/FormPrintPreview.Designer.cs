@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -42,12 +42,17 @@
             this.printPreviewControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.printPreviewControl1.AutoZoom = false;
             this.printPreviewControl1.Document = this.printDocument1;
             this.printPreviewControl1.Location = new System.Drawing.Point(12, 12);
             this.printPreviewControl1.Name = "printPreviewControl1";
             this.printPreviewControl1.Size = new System.Drawing.Size(476, 660);
             this.printPreviewControl1.TabIndex = 0;
             this.printPreviewControl1.Zoom = 0.57057313943541488D;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // btnOK
             // 
@@ -70,10 +75,6 @@
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // printDialog1
             // 
@@ -105,6 +106,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.printPreviewControl1);
             this.Name = "FormPrintPreview";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "打印预览";
             this.ResumeLayout(false);
 

@@ -52,6 +52,12 @@
     <Compile Include="FormModifyWeightedIngrendient.Designer.cs">
       <DependentUpon>FormModifyWeightedIngrendient.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormModifyWeightedDish.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormModifyWeightedDish.Designer.cs">
+      <DependentUpon>FormModifyWeightedDish.cs</DependentUpon>
+    </Compile>
     <Compile Include="PartyProject\Dish.cs" />
     <Compile Include="PartyProject\DishList.cs" />
     <Compile Include="FormNewDish.cs">
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPropertyGrid.resx">
       <DependentUpon>FormPropertyGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormModifyWeightedDish.resx">
+      <DependentUpon>FormModifyWeightedDish.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

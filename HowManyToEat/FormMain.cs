@@ -40,13 +40,15 @@ namespace HowManyToEat
             this.numTableCount.Value = partyProject.Count;
             this.lstLeftDishes.Items.Clear();
             this.lstRightDishes.Items.Clear();
-            for (int i = 0; i < (partyProject.DishList.Count + 1) / 2; i++)
+
+            for (int i = 0; i < partyProject.LeftDishList.Count; i++)
             {
-                this.lstLeftDishes.Items.Add(partyProject.DishList[i]);
+                this.lstLeftDishes.Items.Add(partyProject.LeftDishList[i]);
             }
-            for (int i = (partyProject.DishList.Count + 1) / 2; i < partyProject.DishList.Count; i++)
+
+            for (int i = 0; i < partyProject.RightDishList.Count; i++)
             {
-                this.lstRightDishes.Items.Add(partyProject.DishList[i]);
+                this.lstRightDishes.Items.Add(partyProject.RightDishList[i]);
             }
         }
 
@@ -55,11 +57,12 @@ namespace HowManyToEat
             InitializeComponent();
 
             this.CurrentPartyProject = new PartyProject();
-            this.grayBrush = new SolidBrush(Color.Gray);
+            this.grayBrush = new SolidBrush(Color.LightGray);
 
             IngredientCategory.LoadDatabase(typeof(IngredientCategory).Name + ".xml");
             IngredientUnit.LoadDatabase(typeof(IngredientUnit).Name + ".xml");
             Ingredient.LoadDatabase(typeof(Ingredient).Name + ".xml");
+            Dish.LoadDatabase(typeof(Dish).Name + ".xml");
         }
 
         private void 新建NToolStripButton_Click(object sender, EventArgs e)
@@ -91,12 +94,14 @@ namespace HowManyToEat
                 {
                     this.CurrentPartyProject.Fullname = this.saveProjectDlg.FileName;
                     this.CurrentPartyProject.Save();
+                    this.UpdateTitle(this.CurrentPartyProject.Fullname);
                     MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
                 this.CurrentPartyProject.Save();
+                this.UpdateTitle(this.CurrentPartyProject.Fullname);
                 MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -108,13 +113,14 @@ namespace HowManyToEat
                 string filename = this.saveProjectDlg.FileName;
                 this.CurrentPartyProject.SaveAs(filename);
                 this.CurrentPartyProject = PartyProject.Load(filename);
-                File.WriteAllText(filename, string.Format("{0} 另存为成功！", DateTime.Now));
+                MessageBox.Show("另存为成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void 打印PToolStripButton_Click(object sender, EventArgs e)
         {
-            if (this.printDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            MessageBox.Show("此功能尚未实现！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //if (this.printDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 // TODO:
                 //var printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -142,12 +148,12 @@ namespace HowManyToEat
         private void 打印预览VToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // TODO:
+            MessageBox.Show("此功能尚未实现！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //(new FormPrintPreview()).ShowDialog();
         }
 
         private void 录入菜品ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO:
             (new FormNewDish()).Show();
         }
 
@@ -180,18 +186,24 @@ namespace HowManyToEat
                 var dishes = frmAddDishes.SelectedDishes;
                 foreach (var item in dishes)
                 {
-                    var weighted = new WeightedDish() { Count = 1, Dish = item };
+                    var weighted = new WeightedDish(item, 1);
                     this.lstLeftDishes.Items.Add(weighted);
+                    this.CurrentPartyProject.LeftDishList.Add(weighted);
                 }
             }
         }
 
         private void 删除菜品leftDishesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var items = this.lstLeftDishes.SelectedItems;
-            foreach (var item in items)
+            var list = new List<WeightedDish>();
+            foreach (var item in this.lstLeftDishes.SelectedItems)
+            {
+                list.Add(item as WeightedDish);
+            }
+            foreach (var item in list)
             {
                 this.lstLeftDishes.Items.Remove(item);
+                this.CurrentPartyProject.LeftDishList.Remove(item);
             }
         }
 
@@ -200,9 +212,11 @@ namespace HowManyToEat
             int index = this.lstLeftDishes.SelectedIndex;
             if (0 < index && index < this.lstLeftDishes.Items.Count)
             {
-                var item = this.lstLeftDishes.Items[index];
+                var item = this.lstLeftDishes.Items[index] as WeightedDish;
                 this.lstLeftDishes.Items.Remove(item);
                 this.lstLeftDishes.Items.Insert(index - 1, item);
+                this.CurrentPartyProject.LeftDishList.Remove(item);
+                this.CurrentPartyProject.LeftDishList.Insert(index - 1, item);
             }
         }
 
@@ -211,19 +225,28 @@ namespace HowManyToEat
             int index = this.lstLeftDishes.SelectedIndex;
             if (0 <= index && index + 1 < this.lstLeftDishes.Items.Count)
             {
-                var item = this.lstLeftDishes.Items[index];
+                var item = this.lstLeftDishes.Items[index] as WeightedDish;
                 this.lstLeftDishes.Items.Remove(item);
                 this.lstLeftDishes.Items.Insert(index + 1, item);
+                this.CurrentPartyProject.LeftDishList.Remove(item);
+                this.CurrentPartyProject.LeftDishList.Insert(index + 1, item);
             }
         }
 
         private void 移到右侧leftDishesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var items = this.lstLeftDishes.SelectedItems;
-            foreach (var item in items)
+            var list = new List<WeightedDish>();
+            foreach (var item in this.lstLeftDishes.SelectedItems)
+            {
+                var obj = item as WeightedDish;
+                list.Add(obj);
+            }
+            foreach (var item in list)
             {
                 this.lstLeftDishes.Items.Remove(item);
                 this.lstRightDishes.Items.Add(item);
+                this.CurrentPartyProject.LeftDishList.Remove(item);
+                this.CurrentPartyProject.RightDishList.Add(item);
             }
         }
 
@@ -235,6 +258,7 @@ namespace HowManyToEat
                 var weightedDish = item as WeightedDish;
                 weightedDish.Dish.HiddenWhenPrinting = true;
             }
+            this.lstLeftDishes.Invalidate();
         }
 
         private void 打印时显示leftDishesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -242,9 +266,10 @@ namespace HowManyToEat
             var items = this.lstLeftDishes.SelectedItems;
             foreach (var item in items)
             {
-                var dish = item as Dish;
-                dish.HiddenWhenPrinting = false;
+                var weightedDish = item as WeightedDish;
+                weightedDish.Dish.HiddenWhenPrinting = false;
             }
+            this.lstLeftDishes.Invalidate();
         }
 
         private void 添加菜品rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -255,18 +280,24 @@ namespace HowManyToEat
                 var dishes = frmAddDishes.SelectedDishes;
                 foreach (var item in dishes)
                 {
-                    var weighted = new WeightedDish() { Count = 1, Dish = item };
+                    var weighted = new WeightedDish(item, 1);
                     this.lstRightDishes.Items.Add(weighted);
+                    this.CurrentPartyProject.RightDishList.Add(weighted);
                 }
             }
         }
 
         private void 删除菜品rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var items = this.lstRightDishes.SelectedItems;
-            foreach (var item in items)
+            var list = new List<WeightedDish>();
+            foreach (var item in this.lstRightDishes.SelectedItems)
+            {
+                list.Add(item as WeightedDish);
+            }
+            foreach (var item in list)
             {
                 this.lstRightDishes.Items.Remove(item);
+                this.CurrentPartyProject.RightDishList.Remove(item);
             }
         }
 
@@ -275,9 +306,11 @@ namespace HowManyToEat
             int index = this.lstRightDishes.SelectedIndex;
             if (0 < index && index < this.lstRightDishes.Items.Count)
             {
-                var item = this.lstRightDishes.Items[index];
+                var item = this.lstRightDishes.Items[index] as WeightedDish;
                 this.lstRightDishes.Items.Remove(item);
                 this.lstRightDishes.Items.Insert(index - 1, item);
+                this.CurrentPartyProject.RightDishList.Remove(item);
+                this.CurrentPartyProject.RightDishList.Insert(index - 1, item);
             }
         }
 
@@ -286,47 +319,88 @@ namespace HowManyToEat
             int index = this.lstRightDishes.SelectedIndex;
             if (0 <= index && index + 1 < this.lstRightDishes.Items.Count)
             {
-                var item = this.lstRightDishes.Items[index];
+                var item = this.lstRightDishes.Items[index] as WeightedDish;
                 this.lstRightDishes.Items.Remove(item);
                 this.lstRightDishes.Items.Insert(index + 1, item);
+                this.CurrentPartyProject.RightDishList.Remove(item);
+                this.CurrentPartyProject.RightDishList.Insert(index + 1, item);
             }
         }
 
         private void 移到左侧rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var items = this.lstRightDishes.SelectedItems;
-            foreach (var item in items)
+            var list = new List<WeightedDish>();
+            foreach (var item in this.lstRightDishes.SelectedItems)
+            {
+                var obj = item as WeightedDish;
+                list.Add(obj);
+            }
+            foreach (var item in list)
             {
                 this.lstRightDishes.Items.Remove(item);
                 this.lstLeftDishes.Items.Add(item);
+                this.CurrentPartyProject.RightDishList.Remove(item);
+                this.CurrentPartyProject.LeftDishList.Add(item);
             }
         }
 
         private void 打印时隐藏rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var items = this.lstRightDishes.SelectedItems;
+            foreach (var item in items)
+            {
+                var weightedDish = item as WeightedDish;
+                weightedDish.Dish.HiddenWhenPrinting = true;
+            }
+            this.lstRightDishes.Invalidate();
         }
 
         private void 打印时显示rightDishesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var items = this.lstRightDishes.SelectedItems;
+            foreach (var item in items)
+            {
+                var weightedDish = item as WeightedDish;
+                weightedDish.Dish.HiddenWhenPrinting = false;
+            }
+            this.lstRightDishes.Invalidate();
         }
 
         private void lstLeftDishes_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
+                foreach (var item in this.lstLeftDishes.SelectedItems)
+                {
+                    var obj = item as WeightedDish;
+                    var frm = new FormModifyWeightedDish(obj);
+                    frm.ShowDialog();
+                }
+            }
+        }
 
+        private void lstRightDishes_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                foreach (var item in this.lstRightDishes.SelectedItems)
+                {
+                    var obj = item as WeightedDish;
+                    var frm = new FormModifyWeightedDish(obj);
+                    frm.ShowDialog();
+                }
             }
         }
 
         private void 查看所有菜品ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("此功能尚未实现！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
         private void 查看所有食材ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("此功能尚未实现！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -352,6 +426,12 @@ namespace HowManyToEat
 
             e.DrawFocusRectangle();
         }
+
+        private void numTableCount_ValueChanged(object sender, EventArgs e)
+        {
+            this.CurrentPartyProject.Count = (int)this.numTableCount.Value;
+        }
+
 
     }
 }

@@ -23,34 +23,59 @@ namespace HowManyToEat
         /// </summary>
         public int Count { get; set; }
 
+        private const string strLeftDishes = "LeftDishes";
         /// <summary>
-        /// 每一席（桌）都有哪些菜？
+        /// 每一席（桌）都有哪些菜（左栏）？
         /// </summary>
-        public WeightedDishList DishList { get; private set; }
+        public WeightedDishList LeftDishList { get; private set; }
+
+        private const string strRightDishes = "RightDishes";
+        /// <summary>
+        /// 每一席（桌）都有哪些菜（右栏）？
+        /// </summary>
+        public WeightedDishList RightDishList { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
         public PartyProject()
         {
-            this.DishList = new WeightedDishList();
+            this.LeftDishList = new WeightedDishList();
+            this.RightDishList = new WeightedDishList();
+            this.Count = 10;
         }
 
         public XElement ToXElement()
         {
             return new XElement(typeof(PartyProject).Name,
                 new XAttribute(strCount, this.Count),
-                this.DishList.ToXElement());
+                new XElement(strLeftDishes,
+                    from item in this.LeftDishList select item.ToXElement()),
+                new XElement(strRightDishes,
+                    from item in this.RightDishList select item.ToXElement()));
         }
 
         public static PartyProject Parse(XElement xml)
         {
             if (xml == null || xml.Name != typeof(PartyProject).Name) { throw new ArgumentException(); }
 
+            var result = new PartyProject();
             int count = int.Parse(xml.Attribute(strCount).Value);
-            WeightedDishList dishList = WeightedDishList.Parse(xml.Element(typeof(WeightedDishList).Name));
+            result.Count = count;
+            XElement leftDishList = xml.Element(strLeftDishes);
+            foreach (var item in leftDishList.Elements(typeof(WeightedDish).Name))
+            {
+                WeightedDish dish = WeightedDish.Parse(item);
+                result.LeftDishList.Add(dish);
+            }
+            XElement rightDishList = xml.Element(strRightDishes);
+            foreach (var item in rightDishList.Elements(typeof(WeightedDish).Name))
+            {
+                WeightedDish dish = WeightedDish.Parse(item);
+                result.RightDishList.Add(dish);
+            }
 
-            return new PartyProject() { Count = count, DishList = dishList };
+            return result;
         }
 
         /// <summary>

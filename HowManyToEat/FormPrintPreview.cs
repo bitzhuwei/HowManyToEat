@@ -24,7 +24,7 @@ namespace HowManyToEat
             {
                 image = new Bitmap(@"printPreview.png");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("没有找到预定义的图片！");
             }
@@ -49,7 +49,7 @@ namespace HowManyToEat
                 {
                     image = new Bitmap(@"printPreview.png");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("没有找到预定义的图片！");
                 }

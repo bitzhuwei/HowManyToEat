@@ -174,6 +174,7 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
             this.Name = "FormModifyWeightedIngrendient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "修改食材使用量";
             this.ResumeLayout(false);
             this.PerformLayout();

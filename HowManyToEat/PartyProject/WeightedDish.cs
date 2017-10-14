@@ -14,13 +14,26 @@ namespace HowManyToEat
         /// <summary>
         /// 什么菜品？
         /// </summary>
-        public Dish Dish { get; set; }
+        public Dish Dish { get; private set; }
 
         private const string strCount = "Count";
         /// <summary>
         /// 几份？
         /// </summary>
         public int Count { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dish"></param>
+        /// <param name="count"></param>
+        public WeightedDish(Dish dish, int count = 1)
+        {
+            if (dish == null) { throw new ArgumentNullException(); }
+
+            this.Dish = dish;
+            this.Count = count;
+        }
 
         public override string ToString()
         {
@@ -41,7 +54,7 @@ namespace HowManyToEat
         {
             return new XElement(typeof(WeightedDish).Name,
                 new XAttribute(strCount, this.Count),
-                this.Dish.ToXElement());
+                new XElement(typeof(Dish).Name, this.Dish.Name));
         }
 
         internal static WeightedDish Parse(XElement xml)
@@ -49,9 +62,10 @@ namespace HowManyToEat
             if (xml == null || xml.Name != typeof(WeightedDish).Name) { throw new ArgumentException(); }
 
             int count = int.Parse(xml.Attribute(strCount).Value);
-            Dish dish = Dish.Parse(xml.Element(typeof(Dish).Name));
+            string dishName = xml.Element(typeof(Dish).Name).Value;
+            Dish dish = Dish.Select(dishName);
 
-            return new WeightedDish() { Count = count, Dish = dish };
+            return new WeightedDish(dish, count);
         }
     }
 }

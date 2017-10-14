@@ -23,6 +23,7 @@ namespace HowManyToEat
 
         void FormNewDish_Load(object sender, EventArgs e)
         {
+            this.txtDishName.Text = string.Empty;
             this.lstIngredient.Items.Clear();
             this.lstSelectedIngredient.Items.Clear();
 
@@ -145,6 +146,10 @@ namespace HowManyToEat
             {
                 this.lblSucessTip.Visible = true;
                 this.timer1.Enabled = true;
+                this.lstSelectedIngredient.Items.Clear();
+                this.selectedIngredientList.Clear();
+                this.groups.Clear();
+                this.txtDishName.Text = string.Empty;
             }
 
             this.btnSaveAndContinue.Enabled = true;
