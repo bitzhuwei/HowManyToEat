@@ -755,6 +755,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "材料统计 - 东大街宴会大厅 - 某月某家2天方案";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
