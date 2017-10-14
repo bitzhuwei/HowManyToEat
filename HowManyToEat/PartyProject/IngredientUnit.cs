@@ -15,12 +15,17 @@ namespace HowManyToEat
         /// <summary>
         /// 
         /// </summary>
-        public string UnitName { get; set; }
+        public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0}", this.Name);
+        }
 
         public XElement ToXElement()
         {
             return new XElement(typeof(IngredientUnit).Name,
-                new XAttribute(strUnitName, this.UnitName));
+                new XAttribute(strUnitName, this.Name));
         }
 
         public static IngredientUnit Parse(XElement xml)
@@ -29,7 +34,7 @@ namespace HowManyToEat
 
             string unitName = xml.Attribute(strUnitName).Value;
 
-            return new IngredientUnit() { UnitName = unitName };
+            return new IngredientUnit() { Name = unitName };
         }
 
         private static readonly Dictionary<string, IngredientUnit> dictionary = new Dictionary<string, IngredientUnit>();
@@ -46,10 +51,10 @@ namespace HowManyToEat
             foreach (var item in xml.Elements(typeof(IngredientUnit).Name))
             {
                 IngredientUnit unit = IngredientUnit.Parse(item);
-                if (dictionary.ContainsKey(unit.UnitName))
-                { throw new Exception(string.Format("发现重复的单位名称[{0}]！", unit.UnitName)); }
+                if (dictionary.ContainsKey(unit.Name))
+                { throw new Exception(string.Format("发现重复的单位名称[{0}]！", unit.Name)); }
 
-                dictionary.Add(unit.UnitName, unit);
+                dictionary.Add(unit.Name, unit);
             }
         }
 

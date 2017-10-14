@@ -31,14 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.txtWeight = new System.Windows.Forms.TextBox();
-            this.txtCategory = new System.Windows.Forms.TextBox();
+            this.txtUnit = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtCategory = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -48,7 +48,7 @@
             this.btnOK.Location = new System.Drawing.Point(292, 160);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(109, 23);
-            this.btnOK.TabIndex = 20;
+            this.btnOK.TabIndex = 1;
             this.btnOK.Text = "确定";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -60,22 +60,22 @@
             this.btnCancel.Location = new System.Drawing.Point(407, 161);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 23);
-            this.btnCancel.TabIndex = 21;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("宋体", 14F);
-            this.textBox1.Location = new System.Drawing.Point(120, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(396, 29);
-            this.textBox1.TabIndex = 23;
-            this.textBox1.Text = "胡萝卜";
+            this.txtName.Font = new System.Drawing.Font("宋体", 14F);
+            this.txtName.Location = new System.Drawing.Point(120, 12);
+            this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
+            this.txtName.Size = new System.Drawing.Size(396, 29);
+            this.txtName.TabIndex = 3;
+            this.txtName.Text = "胡萝卜";
             // 
             // label1
             // 
@@ -99,20 +99,20 @@
             this.txtWeight.Location = new System.Drawing.Point(120, 117);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(396, 29);
-            this.txtWeight.TabIndex = 18;
+            this.txtWeight.TabIndex = 0;
             this.txtWeight.Text = "0";
             // 
-            // txtCategory
+            // txtUnit
             // 
-            this.txtCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtUnit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCategory.Font = new System.Drawing.Font("宋体", 14F);
-            this.txtCategory.Location = new System.Drawing.Point(120, 82);
-            this.txtCategory.Name = "txtCategory";
-            this.txtCategory.ReadOnly = true;
-            this.txtCategory.Size = new System.Drawing.Size(396, 29);
-            this.txtCategory.TabIndex = 17;
-            this.txtCategory.Text = "斤";
+            this.txtUnit.Font = new System.Drawing.Font("宋体", 14F);
+            this.txtUnit.Location = new System.Drawing.Point(120, 82);
+            this.txtUnit.Name = "txtUnit";
+            this.txtUnit.ReadOnly = true;
+            this.txtUnit.Size = new System.Drawing.Size(396, 29);
+            this.txtUnit.TabIndex = 5;
+            this.txtUnit.Text = "斤";
             // 
             // label5
             // 
@@ -134,17 +134,17 @@
             this.label2.TabIndex = 27;
             this.label2.Text = "食材类别：";
             // 
-            // txtName
+            // txtCategory
             // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Font = new System.Drawing.Font("宋体", 14F);
-            this.txtName.Location = new System.Drawing.Point(120, 47);
-            this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(396, 29);
-            this.txtName.TabIndex = 16;
-            this.txtName.Text = "蔬菜";
+            this.txtCategory.Font = new System.Drawing.Font("宋体", 14F);
+            this.txtCategory.Location = new System.Drawing.Point(120, 47);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.ReadOnly = true;
+            this.txtCategory.Size = new System.Drawing.Size(396, 29);
+            this.txtCategory.TabIndex = 4;
+            this.txtCategory.Text = "蔬菜";
             // 
             // label3
             // 
@@ -165,13 +165,13 @@
             this.ClientSize = new System.Drawing.Size(528, 196);
             this.Controls.Add(this.txtWeight);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtCategory);
+            this.Controls.Add(this.txtUnit);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
             this.Name = "FormModifyWeightedIngrendient";
             this.Text = "修改食材使用量";
@@ -184,14 +184,14 @@
 
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox txtWeight;
-        private System.Windows.Forms.TextBox txtCategory;
+        private System.Windows.Forms.TextBox txtUnit;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtCategory;
         private System.Windows.Forms.Label label3;
     }
 }

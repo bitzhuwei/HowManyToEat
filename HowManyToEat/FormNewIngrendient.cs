@@ -65,8 +65,8 @@ namespace HowManyToEat
             }
 
             var category = new IngredientCategory() { Name = categoryName };
-            var unit = new IngredientUnit() { UnitName = unitName };
-            var ingredient = new Ingredient() { Name = name, Category = category, UnitName = unit, Price = price };
+            var unit = new IngredientUnit() { Name = unitName };
+            var ingredient = new Ingredient() { Name = name, Category = category, Unit = unit, Price = price };
             {
                 IDictionary<string, Ingredient> ingredientDict = Ingredient.GetAll();
                 if (ingredientDict.ContainsKey(ingredient.Name))
@@ -86,9 +86,9 @@ namespace HowManyToEat
 
                 {
                     IDictionary<string, IngredientUnit> dict = IngredientUnit.GetAll();
-                    if (!dict.ContainsKey(unit.UnitName))
+                    if (!dict.ContainsKey(unit.Name))
                     {
-                        dict.Add(unit.UnitName, unit);
+                        dict.Add(unit.Name, unit);
                         IngredientUnit.SaveDatabase(typeof(IngredientUnit).Name);
                     }
                 }

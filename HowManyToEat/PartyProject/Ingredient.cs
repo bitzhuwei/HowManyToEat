@@ -27,7 +27,7 @@ namespace HowManyToEat
         /// <summary>
         /// 单位名词，如“斤”，“两”，“克”，“个”。
         /// </summary>
-        public IngredientUnit UnitName { get; set; }
+        public IngredientUnit Unit { get; set; }
 
         private const string strPrice = "Price";
         /// <summary>
@@ -35,12 +35,17 @@ namespace HowManyToEat
         /// </summary>
         public float Price { get; set; }
 
+        public override string ToString()
+        {
+            return string.Format("{0}({1})", this.Name, this.Unit);
+        }
+
         public XElement ToXElement()
         {
             return new XElement(typeof(Ingredient).Name,
                 new XAttribute(strName, this.Name),
                 new XAttribute(strCategory, this.Category.Name),
-                new XAttribute(strUnitName, this.UnitName.UnitName),
+                new XAttribute(strUnitName, this.Unit.Name),
                 new XAttribute(strPrice, this.Price));
         }
 
@@ -53,7 +58,7 @@ namespace HowManyToEat
             IngredientUnit unitName = IngredientUnit.Select(xml.Attribute(strUnitName).Value);
             float price = float.Parse(xml.Attribute(strPrice).Value);
 
-            return new Ingredient() { Name = name, Category = category, UnitName = unitName, Price = price };
+            return new Ingredient() { Name = name, Category = category, Unit = unitName, Price = price };
         }
 
         private static readonly Dictionary<string, Ingredient> dictionary = new Dictionary<string, Ingredient>();

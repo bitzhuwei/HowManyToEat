@@ -22,6 +22,22 @@ namespace HowManyToEat
         /// </summary>
         public Ingredient Ingredient { get; set; }
 
+        public override string ToString()
+        {
+            var ingredient = this.Ingredient;
+            if (ingredient == null)
+            {
+                return string.Format("[没有指定食材]");
+            }
+            else
+            {
+                string name = ingredient.Name;
+                string unit = ingredient.Unit.Name;
+                float weight = this.Weight;
+                return string.Format("{0}:{1}{2}", name, weight, unit);
+            }
+        }
+
         internal XElement ToXElement()
         {
             return new XElement(typeof(WeightedIngredient).Name,

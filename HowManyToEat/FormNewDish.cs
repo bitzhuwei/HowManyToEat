@@ -63,7 +63,17 @@ namespace HowManyToEat
 
         private void btnAddIngredientToDish_Click(object sender, EventArgs e)
         {
-            foreach (var item in this.lstIngredient.SelectedItems)
+            AddIngredientsToDish(this.lstIngredient.SelectedItems);
+        }
+
+        private void lstIngredient_DoubleClick(object sender, EventArgs e)
+        {
+            AddIngredientsToDish(this.lstIngredient.SelectedItems);
+        }
+
+        private void AddIngredientsToDish(ListView.SelectedListViewItemCollection items)
+        {
+            foreach (var item in items)
             {
                 var obj = item as ListViewItem;
                 string name = obj.Text;
@@ -98,13 +108,26 @@ namespace HowManyToEat
 
         private void btnModifyWeightedIngredient_Click(object sender, EventArgs e)
         {
-            foreach (var item in this.lstSelectedIngredient.SelectedItems)
+            ModifyWeightedIngredients(this.lstSelectedIngredient.SelectedItems);
+        }
+
+        private void lstSelectedIngredient_DoubleClick(object sender, EventArgs e)
+        {
+            ModifyWeightedIngredients(this.lstSelectedIngredient.SelectedItems);
+        }
+
+        private void ModifyWeightedIngredients(ListView.SelectedListViewItemCollection items)
+        {
+            foreach (var item in items)
             {
                 var obj = item as ListViewItem;
                 var name = obj.Text;
                 var weighted = obj.Tag as WeightedIngredient;
                 var frmModify = new FormModifyWeightedIngrendient(weighted);
-                frmModify.ShowDialog();
+                if (frmModify.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    obj.Text = weighted.ToString();
+                }
             }
         }
 
@@ -155,5 +178,7 @@ namespace HowManyToEat
 
             return true;
         }
+
+
     }
 }

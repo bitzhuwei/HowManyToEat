@@ -30,6 +30,11 @@ namespace HowManyToEat
             InitializeComponent();
 
             this.weighted = weighted;
+
+            this.txtName.Text = weighted.Ingredient.Name;
+            this.txtCategory.Text = weighted.Ingredient.Category.ToString();
+            this.txtUnit.Text = weighted.Ingredient.Unit.ToString();
+            this.txtWeight.Text = weighted.Weight.ToString();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
