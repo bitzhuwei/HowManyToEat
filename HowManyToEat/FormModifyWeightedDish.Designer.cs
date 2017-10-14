@@ -44,7 +44,7 @@
             this.txtCount.Location = new System.Drawing.Point(122, 47);
             this.txtCount.Name = "txtCount";
             this.txtCount.Size = new System.Drawing.Size(392, 29);
-            this.txtCount.TabIndex = 19;
+            this.txtCount.TabIndex = 0;
             this.txtCount.Text = "1";
             // 
             // label4
@@ -66,7 +66,7 @@
             this.txtName.Name = "txtName";
             this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(392, 29);
-            this.txtName.TabIndex = 16;
+            this.txtName.TabIndex = 3;
             this.txtName.Text = "鱼香肉丝";
             // 
             // label2
@@ -85,7 +85,7 @@
             this.btnOK.Location = new System.Drawing.Point(291, 90);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(109, 23);
-            this.btnOK.TabIndex = 27;
+            this.btnOK.TabIndex = 1;
             this.btnOK.Text = "确定";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -97,7 +97,7 @@
             this.btnCancel.Location = new System.Drawing.Point(406, 90);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 23);
-            this.btnCancel.TabIndex = 28;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);

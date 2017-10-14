@@ -77,7 +77,6 @@
             this.lstLeftDishes = new System.Windows.Forms.ListBox();
             this.lstRightDishes = new System.Windows.Forms.ListBox();
             this.txtResult = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.rightDishesMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.添加菜品rightDishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除菜品rightDishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,6 +102,7 @@
             this.剪切TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.复制CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.粘贴PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCalculate = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.leftDishesMenuStrip.SuspendLayout();
@@ -494,22 +494,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResult.Font = new System.Drawing.Font("宋体", 14F);
-            this.txtResult.Location = new System.Drawing.Point(492, 76);
+            this.txtResult.Location = new System.Drawing.Point(492, 82);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
-            this.txtResult.Size = new System.Drawing.Size(436, 460);
+            this.txtResult.Size = new System.Drawing.Size(436, 454);
             this.txtResult.TabIndex = 7;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 14F);
-            this.label2.Location = new System.Drawing.Point(488, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 19);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "统计结果：";
             // 
             // rightDishesMenuStrip
             // 
@@ -739,16 +729,26 @@
             this.粘贴PToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.粘贴PToolStripMenuItem.Text = "粘贴(&P)";
             // 
+            // btnCalculate
+            // 
+            this.btnCalculate.Location = new System.Drawing.Point(492, 53);
+            this.btnCalculate.Name = "btnCalculate";
+            this.btnCalculate.Size = new System.Drawing.Size(75, 23);
+            this.btnCalculate.TabIndex = 8;
+            this.btnCalculate.Text = "统计结果";
+            this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(940, 569);
+            this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.lstRightDishes);
             this.Controls.Add(this.lstLeftDishes);
             this.Controls.Add(this.numTableCount);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
@@ -827,7 +827,6 @@
         private System.Windows.Forms.ListBox lstLeftDishes;
         private System.Windows.Forms.ListBox lstRightDishes;
         private System.Windows.Forms.TextBox txtResult;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ContextMenuStrip rightDishesMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem 添加菜品rightDishesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除菜品rightDishesToolStripMenuItem;
@@ -843,5 +842,6 @@
         private System.Windows.Forms.ToolStripMenuItem 打印时显示leftDishesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打印时隐藏rightDishesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打印时显示rightDishesToolStripMenuItem;
+        private System.Windows.Forms.Button btnCalculate;
     }
 }

@@ -432,6 +432,48 @@ namespace HowManyToEat
             this.CurrentPartyProject.Count = (int)this.numTableCount.Value;
         }
 
+        private void btnCalculate_Click(object sender, EventArgs e)
+        {
+            var ingredientDict = new Dictionary<string, WeightedIngredient>();
+            foreach (var weightedDish in this.CurrentPartyProject.LeftDishList)
+            {
+                Calculate(ingredientDict, weightedDish);
+            }
+            foreach (var weightedDish in this.CurrentPartyProject.RightDishList)
+            {
+                Calculate(ingredientDict, weightedDish);
+            }
+
+            var list = ingredientDict.Values.ToList();
+            list.OrderBy(x => x.Ingredient.Category.Name);
+
+            var builder = new StringBuilder();
+            foreach (var item in list)
+            {
+                builder.Append(item); builder.Append(", ");
+            }
+
+            this.txtResult.Text = builder.ToString();
+        }
+
+        private static void Calculate(Dictionary<string, WeightedIngredient> ingredientDict, WeightedDish weightedDish)
+        {
+            int count = weightedDish.Count;
+            foreach (var weightedIngredient in weightedDish.Dish)
+            {
+                WeightedIngredient current;
+                if (ingredientDict.TryGetValue(weightedIngredient.Ingredient.Name, out current))
+                {
+                    current.Weight += (count * weightedIngredient.Weight);
+                }
+                else
+                {
+                    current = new WeightedIngredient() { Ingredient = weightedIngredient.Ingredient, Weight = count * weightedIngredient.Weight };
+                    ingredientDict.Add(current.Ingredient.Name, current);
+                }
+            }
+        }
+
 
     }
 }
