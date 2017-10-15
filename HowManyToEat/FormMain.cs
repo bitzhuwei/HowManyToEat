@@ -368,28 +368,30 @@ namespace HowManyToEat
 
         private void lstLeftDishes_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                foreach (var item in this.lstLeftDishes.SelectedItems)
-                {
-                    var obj = item as WeightedDish;
-                    var frm = new FormModifyWeightedDish(obj);
-                    frm.ShowDialog();
-                }
-            }
+            // 修改份数
+            //if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            //{
+            //    foreach (var item in this.lstLeftDishes.SelectedItems)
+            //    {
+            //        var obj = item as WeightedDish;
+            //        var frm = new FormModifyWeightedDish(obj);
+            //        frm.ShowDialog();
+            //    }
+            //}
         }
 
         private void lstRightDishes_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                foreach (var item in this.lstRightDishes.SelectedItems)
-                {
-                    var obj = item as WeightedDish;
-                    var frm = new FormModifyWeightedDish(obj);
-                    frm.ShowDialog();
-                }
-            }
+            // 修改份数
+            //if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            //{
+            //    foreach (var item in this.lstRightDishes.SelectedItems)
+            //    {
+            //        var obj = item as WeightedDish;
+            //        var frm = new FormModifyWeightedDish(obj);
+            //        frm.ShowDialog();
+            //    }
+            //}
         }
 
         private void 查看所有菜品ToolStripMenuItem_Click(object sender, EventArgs e)

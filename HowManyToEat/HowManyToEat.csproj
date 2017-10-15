@@ -100,6 +100,7 @@
     <Compile Include="PartyProject\IngredientCategory.cs" />
     <Compile Include="PartyProject\IngredientUnit.cs" />
     <Compile Include="PartyProject\PartyProject.cs" />
+    <Compile Include="PartyProject\ToBitmap.cs" />
     <Compile Include="PartyProject\WeightedDish.cs" />
     <Compile Include="PartyProject\WeightedDishList.cs" />
     <Compile Include="Program.cs" />

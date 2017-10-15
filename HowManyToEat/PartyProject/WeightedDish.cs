@@ -46,7 +46,7 @@ namespace HowManyToEat
             {
                 string name = dish.Name;
                 int count = this.Count;
-                return string.Format("{0}:{1}份", name, count);
+                return string.Format("{0}", name);
             }
         }
 

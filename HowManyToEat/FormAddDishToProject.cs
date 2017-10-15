@@ -29,6 +29,8 @@ namespace HowManyToEat
 
         void FormAddDishToProject_Load(object sender, EventArgs e)
         {
+            this.listView1.Items.Clear();
+
             IDictionary<string, Dish> dishList = Dish.GetAll();
 
             foreach (var item in dishList)
