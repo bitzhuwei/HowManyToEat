@@ -462,7 +462,7 @@ namespace HowManyToEat
             var builder = new StringBuilder();
             foreach (var item in list)
             {
-                builder.Append(item); builder.Append(", ");
+                builder.Append(item); builder.Append("， ");
             }
 
             this.txtResult.Text = builder.ToString();

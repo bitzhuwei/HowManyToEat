@@ -49,7 +49,7 @@ namespace HowManyToEat
                 WeightedIngredient weighted = list[i];
                 builder.Append(string.Format(
                     "{0}:{1}{2}", weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit));
-                builder.Append(", ");
+                builder.Append("， ");
             }
 
             if (list.Count > 0 && lastIndex + 1 < list.Count)
@@ -71,7 +71,7 @@ namespace HowManyToEat
                 WeightedIngredient weighted = list[i];
                 builder.Append(string.Format(
                     "{0}:{1}{2}", weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit));
-                builder.Append(", ");
+                builder.Append("， ");
             }
 
             string str = builder.ToString();
@@ -87,7 +87,7 @@ namespace HowManyToEat
             var builder = new StringBuilder();
             for (int i = 0; i < list.Count; i++)
             {
-                builder.Append(list[i]); builder.Append(", ");
+                builder.Append(list[i]); builder.Append("， ");
                 string str = builder.ToString();
                 SizeF size = graphics.MeasureString(str, font, width - x * 2 - (int)Math.Ceiling(maxWidth) * 2 - y * 2);
                 if (maxHeight < size.Height)
