@@ -147,9 +147,7 @@ namespace HowManyToEat
 
         private void 打印预览VToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO:
-            MessageBox.Show("此功能尚未实现！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //(new FormPrintPreview()).ShowDialog();
+            (new FormPrintPreview(this.CurrentPartyProject)).ShowDialog();
         }
 
         private void 录入菜品ToolStripMenuItem_Click(object sender, EventArgs e)
