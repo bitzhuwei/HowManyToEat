@@ -139,6 +139,10 @@ namespace HowManyToEat
                             this.ReloadIngredientCategory();
                             this.cmbCategory.SelectedItem = null;
                         }
+                        else
+                        {
+                            this.cmbCategory.SelectedIndex = -1;
+                        }
                     }
                 }
             }

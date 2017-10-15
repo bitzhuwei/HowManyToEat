@@ -95,5 +95,53 @@ namespace HowManyToEat
             }
         }
 
+        private void btnHighest_Click(object sender, EventArgs e)
+        {
+            int index = this.lstCategory.SelectedIndex;
+            if (0 < index && index < this.lstCategory.Items.Count)
+            {
+                var item = this.lstCategory.Items[index];
+                this.lstCategory.Items.Remove(item);
+                this.lstCategory.Items.Insert(0, item);
+                this.lstCategory.SelectedIndex = 0;
+            }
+        }
+
+        private void btnHigher_Click(object sender, EventArgs e)
+        {
+            int index = this.lstCategory.SelectedIndex;
+            if (0 < index && index < this.lstCategory.Items.Count)
+            {
+                var item = this.lstCategory.Items[index];
+                this.lstCategory.Items.Remove(item);
+                this.lstCategory.Items.Insert(index - 1, item);
+                this.lstCategory.SelectedIndex = index - 1;
+            }
+        }
+
+        private void btnLower_Click(object sender, EventArgs e)
+        {
+            int index = this.lstCategory.SelectedIndex;
+            if (0 <= index && index + 1 < this.lstCategory.Items.Count)
+            {
+                var item = this.lstCategory.Items[index];
+                this.lstCategory.Items.Remove(item);
+                this.lstCategory.Items.Insert(index + 1, item);
+                this.lstCategory.SelectedIndex = index + 1;
+            }
+        }
+
+        private void btnLowest_Click(object sender, EventArgs e)
+        {
+            int index = this.lstCategory.SelectedIndex;
+            if (0 <= index && index + 1 < this.lstCategory.Items.Count)
+            {
+                var item = this.lstCategory.Items[index];
+                this.lstCategory.Items.Remove(item);
+                this.lstCategory.Items.Add(item);
+                this.lstCategory.SelectedIndex = this.lstCategory.Items.Count - 1;
+            }
+        }
+
     }
 }

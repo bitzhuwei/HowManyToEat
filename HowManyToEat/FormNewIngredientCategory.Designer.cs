@@ -138,6 +138,7 @@
             this.btnHighest.TabIndex = 17;
             this.btnHighest.Text = "设置为最高优先级";
             this.btnHighest.UseVisualStyleBackColor = true;
+            this.btnHighest.Click += new System.EventHandler(this.btnHighest_Click);
             // 
             // btnHigher
             // 
@@ -149,6 +150,7 @@
             this.btnHigher.TabIndex = 17;
             this.btnHigher.Text = "提高一级优先级";
             this.btnHigher.UseVisualStyleBackColor = true;
+            this.btnHigher.Click += new System.EventHandler(this.btnHigher_Click);
             // 
             // btnLower
             // 
@@ -160,6 +162,7 @@
             this.btnLower.TabIndex = 17;
             this.btnLower.Text = "降低一级优先级";
             this.btnLower.UseVisualStyleBackColor = true;
+            this.btnLower.Click += new System.EventHandler(this.btnLower_Click);
             // 
             // btnLowest
             // 
@@ -171,6 +174,7 @@
             this.btnLowest.TabIndex = 17;
             this.btnLowest.Text = "设置为最低优先级";
             this.btnLowest.UseVisualStyleBackColor = true;
+            this.btnLowest.Click += new System.EventHandler(this.btnLowest_Click);
             // 
             // FormNewIngredientCategory
             // 
