@@ -103,6 +103,7 @@
             this.打印时隐藏rightDishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打印时显示rightDishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCalculate = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.leftDishesMenuStrip.SuspendLayout();
@@ -739,6 +740,10 @@
             this.btnCalculate.UseVisualStyleBackColor = true;
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -844,5 +849,6 @@
         private System.Windows.Forms.ToolStripMenuItem 打印时隐藏rightDishesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打印时显示rightDishesToolStripMenuItem;
         private System.Windows.Forms.Button btnCalculate;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

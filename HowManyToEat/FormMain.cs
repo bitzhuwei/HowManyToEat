@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -59,6 +60,18 @@ namespace HowManyToEat
             this.CurrentPartyProject = new PartyProject();
             this.grayBrush = new SolidBrush(Color.LightGray);
 
+            this.CurrentFont = new Font("宋体", 32, GraphicsUnit.Pixel);
+            this.CurrentBrush = new SolidBrush(Color.Black);
+            this.CurrentPen = new Pen(this.CurrentBrush);
+
+            foreach (PaperSize item in this.printDocument1.PrinterSettings.PaperSizes)
+            {
+                if (item.PaperName.Equals("A4"))
+                {
+                    this.printDocument1.DefaultPageSettings.PaperSize = item;
+                    break;
+                }
+            }
             IngredientCategory.LoadDatabase(typeof(IngredientCategory).Name + ".xml");
             IngredientUnit.LoadDatabase(typeof(IngredientUnit).Name + ".xml");
             Ingredient.LoadDatabase(typeof(Ingredient).Name + ".xml");
@@ -119,30 +132,21 @@ namespace HowManyToEat
 
         private void 打印PToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("此功能尚未实现！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //if (this.printDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (this.printDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                // TODO:
-                //var printDocument1 = new System.Drawing.Printing.PrintDocument();
-                //printDocument1.PrintPage += printDocument1_PrintPage;
-                //printDocument1.Print();
+                this.printDocument1.Print();
             }
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            // TODO:
-            //Bitmap image = null;
-            //try
-            //{
-            //    image = new Bitmap(@"printPreview.png");
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("没有找到预定义的图片！");
-            //}
-
-            //e.Graphics.DrawImage(image, 0, 0, image.Width, image.Height);
+            PartyProject project = this.CurrentPartyProject;
+            if (project != null)
+            {
+                Bitmap image = project.DumpBitmap(this.CurrentFont, this.CurrentPen, this.CurrentBrush);
+                Rectangle destRect = new Rectangle(0, 0, image.Width, image.Height);
+                e.Graphics.DrawImage(image, destRect, destRect, GraphicsUnit.Pixel);
+            }
         }
 
         private void 打印预览VToolStripMenuItem_Click(object sender, EventArgs e)
@@ -475,5 +479,11 @@ namespace HowManyToEat
         }
 
 
+
+        public System.Drawing.Font CurrentFont { get; set; }
+
+        public Pen CurrentPen { get; set; }
+
+        public Brush CurrentBrush { get; set; }
     }
 }
