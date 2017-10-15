@@ -398,14 +398,12 @@ namespace HowManyToEat
 
         private void 查看所有菜品ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("此功能尚未实现！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            (new FormAllDishes()).ShowDialog();
         }
 
         private void 查看所有食材ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("此功能尚未实现！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            (new FormAllIngredients()).ShowDialog();
         }
 
         private void lstbothDishes_DrawItem(object sender, DrawItemEventArgs e)
