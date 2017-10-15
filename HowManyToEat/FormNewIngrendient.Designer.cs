@@ -40,9 +40,9 @@
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.btnSaveAndContinue = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtCategory = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblSucessTip = new System.Windows.Forms.Label();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -159,17 +159,6 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "食材类别：";
             // 
-            // txtCategory
-            // 
-            this.txtCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCategory.Font = new System.Drawing.Font("宋体", 14F);
-            this.txtCategory.Location = new System.Drawing.Point(123, 47);
-            this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Size = new System.Drawing.Size(392, 29);
-            this.txtCategory.TabIndex = 1;
-            this.txtCategory.Text = "蔬菜";
-            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
@@ -188,18 +177,29 @@
             this.lblSucessTip.Text = "保存成功！";
             this.lblSucessTip.Visible = false;
             // 
+            // cmbCategory
+            // 
+            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategory.Font = new System.Drawing.Font("宋体", 14F);
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(123, 47);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(392, 27);
+            this.cmbCategory.TabIndex = 16;
+            this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
+            // 
             // FormNewIngrendient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(527, 200);
+            this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.lblSucessTip);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtUnit);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
@@ -228,8 +228,8 @@
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Button btnSaveAndContinue;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtCategory;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblSucessTip;
+        private System.Windows.Forms.ComboBox cmbCategory;
     }
 }

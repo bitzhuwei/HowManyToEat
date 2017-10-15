@@ -18,7 +18,7 @@ namespace HowManyToEat
 
         private const string strCount = "Count";
         /// <summary>
-        /// 几份？
+        /// 几份？（根据客户需求，目前此属性始终为1）
         /// </summary>
         public int Count { get; set; }
 

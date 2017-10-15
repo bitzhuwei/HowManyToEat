@@ -11,9 +11,30 @@ namespace HowManyToEat
 {
     public partial class FormNewIngrendient : Form
     {
+        private const string newCatetory = "新建...";
         public FormNewIngrendient()
         {
             InitializeComponent();
+
+            this.Load += FormNewIngrendient_Load;
+        }
+
+        void FormNewIngrendient_Load(object sender, EventArgs e)
+        {
+            ReloadIngredientCategory();
+        }
+
+        private void ReloadIngredientCategory()
+        {
+            this.cmbCategory.Items.Clear();
+            IDictionary<string, IngredientCategory> dict = IngredientCategory.GetAll();
+            foreach (var item in dict.Values)
+            {
+                this.cmbCategory.Items.Add(item);
+            }
+            {
+                this.cmbCategory.Items.Add(newCatetory);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -43,17 +64,23 @@ namespace HowManyToEat
                 return false;
             }
 
-            string categoryName = this.txtCategory.Text.Trim();
-            if (string.IsNullOrEmpty(categoryName))
-            {
-                MessageBox.Show("食材类别不能为空！");
-                return false;
-            }
+            //string categoryName = this.txtCategory.Text.Trim();
+            //if (string.IsNullOrEmpty(categoryName))
+            //{
+            //    MessageBox.Show("食材类别不能为空！");
+            //    return false;
+            //}
 
             string unitName = this.txtUnit.Text.Trim();
             if (string.IsNullOrEmpty(unitName))
             {
                 MessageBox.Show("食材单位不能为空！");
+                return false;
+            }
+            var category = this.cmbCategory.SelectedItem as IngredientCategory;
+            if (category == null)
+            {
+                MessageBox.Show("食材类别不能为空！");
                 return false;
             }
 
@@ -64,7 +91,6 @@ namespace HowManyToEat
                 return false;
             }
 
-            var category = new IngredientCategory() { Name = categoryName };
             var unit = new IngredientUnit() { Name = unitName };
             var ingredient = new Ingredient() { Name = name, Category = category, Unit = unit, Price = price };
             {
@@ -74,16 +100,6 @@ namespace HowManyToEat
                     MessageBox.Show(string.Format("已存在名为【{0}】的食材！", name), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return false;
                 }
-
-                {
-                    IDictionary<string, IngredientCategory> dict = IngredientCategory.GetAll();
-                    if (!dict.ContainsKey(category.Name))
-                    {
-                        dict.Add(category.Name, category);
-                        IngredientCategory.SaveDatabase(typeof(IngredientCategory).Name);
-                    }
-                }
-
                 {
                     IDictionary<string, IngredientUnit> dict = IngredientUnit.GetAll();
                     if (!dict.ContainsKey(unit.Name))
@@ -92,7 +108,6 @@ namespace HowManyToEat
                         IngredientUnit.SaveDatabase(typeof(IngredientUnit).Name);
                     }
                 }
-
                 {
                     ingredientDict.Add(ingredient.Name, ingredient);
                     Ingredient.SaveDatabase(typeof(Ingredient).Name);
@@ -106,6 +121,27 @@ namespace HowManyToEat
         {
             this.timer1.Enabled = false;
             this.lblSucessTip.Visible = false;
+        }
+
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var item = this.cmbCategory.SelectedItem;
+            if (item != null)
+            {
+                if (item is string)
+                {
+                    var str = item as string;
+                    if (str == newCatetory)
+                    {
+                        var frm = new FormNewIngredientCategory();
+                        if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            this.ReloadIngredientCategory();
+                            this.cmbCategory.SelectedItem = null;
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace HowManyToEat
         /// <param name="font"></param>
         /// <param name="brush"></param>
         /// <returns></returns>
-        public static Bitmap DumpBitmap(this PartyProject project, Font font, Pen pen, Brush brush)
+        public static Bitmap DumpBitmap(this PartyProject project, int tableCount, Font font, Pen pen, Brush brush)
         {
             if (project == null) { return null; }
 
@@ -34,19 +34,22 @@ namespace HowManyToEat
                 List<WeightedIngredient> list = GetIngredientList(project);
                 // 找到右侧陈列的食材（最后一个食材的索引）
                 int lastIndex = GetLastIndex(font, width, x, y, graphics, maxWidth, maxHeight, list);
-                DrawRightIngrendients(font, brush, width, x, y, graphics, maxWidth, maxHeight, list, lastIndex);
-                DrawDownIngredients(font, brush, width, x, y, graphics, maxHeight, list, lastIndex);
+                DrawRightIngrendients(tableCount, font, brush, width, x, y, graphics, maxWidth, maxHeight, list, lastIndex);
+                DrawDownIngredients(tableCount, font, brush, width, x, y, graphics, maxHeight, list, lastIndex);
             }
 
             return bitmap;
         }
 
-        private static void DrawDownIngredients(Font font, Brush brush, int width, int x, int y, Graphics graphics, float maxHeight, List<WeightedIngredient> list, int lastIndex)
+        private static void DrawDownIngredients(int tableCount, Font font, Brush brush, int width, int x, int y, Graphics graphics, float maxHeight, List<WeightedIngredient> list, int lastIndex)
         {
             var builder = new StringBuilder();
             for (int i = lastIndex + 1; i < list.Count - 1; i++)
             {
-                builder.Append(list[i]); builder.Append(", ");
+                WeightedIngredient weighted = list[i];
+                builder.Append(string.Format(
+                    "{0}:{1}{2}", weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit));
+                builder.Append(", ");
             }
 
             if (list.Count > 0 && lastIndex + 1 < list.Count)
@@ -60,12 +63,15 @@ namespace HowManyToEat
                 x * 2, y * 2 + maxHeight, size.Width, size.Height));
         }
 
-        private static void DrawRightIngrendients(Font font, Brush brush, int width, int x, int y, Graphics graphics, float maxWidth, float maxHeight, List<WeightedIngredient> list, int lastIndex)
+        private static void DrawRightIngrendients(int tableCount, Font font, Brush brush, int width, int x, int y, Graphics graphics, float maxWidth, float maxHeight, List<WeightedIngredient> list, int lastIndex)
         {
             var builder = new StringBuilder();
             for (int i = 0; i < lastIndex + 1; i++)
             {
-                builder.Append(list[i]); builder.Append(", ");
+                WeightedIngredient weighted = list[i];
+                builder.Append(string.Format(
+                    "{0}:{1}{2}", weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit));
+                builder.Append(", ");
             }
 
             string str = builder.ToString();

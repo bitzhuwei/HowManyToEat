@@ -17,6 +17,12 @@ namespace HowManyToEat
         /// </summary>
         public string Name { get; set; }
 
+        private const string strPriority = "Priority";
+        /// <summary>
+        /// 数量越小越优先。
+        /// </summary>
+        public int Priority { get; set; }
+
         public override string ToString()
         {
             return string.Format("{0}", this.Name);
@@ -25,7 +31,8 @@ namespace HowManyToEat
         public XElement ToXElement()
         {
             return new XElement(typeof(IngredientCategory).Name,
-                new XAttribute(strName, this.Name));
+                new XAttribute(strName, this.Name),
+                new XAttribute(strPriority, this.Priority));
         }
 
         public static IngredientCategory Parse(XElement xml)
@@ -33,8 +40,9 @@ namespace HowManyToEat
             if (xml == null || xml.Name != typeof(IngredientCategory).Name) { throw new ArgumentException(); }
 
             string name = xml.Attribute(strName).Value;
+            int priority = int.Parse(xml.Attribute(strPriority).Value);
 
-            return new IngredientCategory() { Name = name };
+            return new IngredientCategory() { Name = name, Priority = priority };
         }
 
         private static readonly Dictionary<string, IngredientCategory> dictionary = new Dictionary<string, IngredientCategory>();

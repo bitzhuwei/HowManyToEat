@@ -150,7 +150,8 @@ namespace HowManyToEat
             PartyProject project = this.CurrentPartyProject;
             if (project != null)
             {
-                Bitmap image = project.DumpBitmap(this.CurrentFont, this.CurrentPen, this.CurrentBrush);
+                int tableCount = (int)this.numTableCount.Value;
+                Bitmap image = project.DumpBitmap(tableCount, this.CurrentFont, this.CurrentPen, this.CurrentBrush);
                 Rectangle destRect = new Rectangle(0, 0, image.Width, image.Height);
                 e.Graphics.DrawImage(image, destRect, destRect, GraphicsUnit.Pixel);
             }
@@ -158,7 +159,7 @@ namespace HowManyToEat
 
         private void 打印预览VToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            (new FormPrintPreview(this.CurrentPartyProject)).ShowDialog();
+            (new FormPrintPreview(this.CurrentPartyProject, (int)this.numTableCount.Value)).ShowDialog();
         }
 
         private void 录入菜品ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -443,14 +444,15 @@ namespace HowManyToEat
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+            int tableCount = (int)this.numTableCount.Value;
             var ingredientDict = new Dictionary<string, WeightedIngredient>();
             foreach (var weightedDish in this.CurrentPartyProject.LeftDishList)
             {
-                Calculate(ingredientDict, weightedDish);
+                Calculate(ingredientDict, weightedDish, tableCount);
             }
             foreach (var weightedDish in this.CurrentPartyProject.RightDishList)
             {
-                Calculate(ingredientDict, weightedDish);
+                Calculate(ingredientDict, weightedDish, tableCount);
             }
 
             var list = ingredientDict.Values.ToList();
@@ -465,7 +467,7 @@ namespace HowManyToEat
             this.txtResult.Text = builder.ToString();
         }
 
-        private static void Calculate(Dictionary<string, WeightedIngredient> ingredientDict, WeightedDish weightedDish)
+        private static void Calculate(Dictionary<string, WeightedIngredient> ingredientDict, WeightedDish weightedDish, int tableCount)
         {
             int count = weightedDish.Count;
             foreach (var weightedIngredient in weightedDish.Dish)
@@ -473,11 +475,11 @@ namespace HowManyToEat
                 WeightedIngredient current;
                 if (ingredientDict.TryGetValue(weightedIngredient.Ingredient.Name, out current))
                 {
-                    current.Weight += (count * weightedIngredient.Weight);
+                    current.Weight += (tableCount * count * weightedIngredient.Weight);
                 }
                 else
                 {
-                    current = new WeightedIngredient() { Ingredient = weightedIngredient.Ingredient, Weight = count * weightedIngredient.Weight };
+                    current = new WeightedIngredient() { Ingredient = weightedIngredient.Ingredient, Weight = tableCount * count * weightedIngredient.Weight };
                     ingredientDict.Add(current.Ingredient.Name, current);
                 }
             }
