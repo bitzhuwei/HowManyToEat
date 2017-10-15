@@ -23,6 +23,21 @@ namespace HowManyToEat
         /// </summary>
         public int Priority { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null) { return false; }
+
+            var right = obj as IngredientCategory;
+            if (right == null) { return false; }
+
+            return (this.Name == right.Name && this.Priority == right.Priority);
+        }
+
+        public override int GetHashCode()
+        {
+            return string.Format("{0}#{1}", this.Name, this.Priority).GetHashCode();
+        }
+
         public override string ToString()
         {
             return string.Format("{0}", this.Name);

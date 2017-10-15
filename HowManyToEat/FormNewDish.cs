@@ -28,18 +28,18 @@ namespace HowManyToEat
             this.lstSelectedIngredient.Items.Clear();
 
             IDictionary<string, Ingredient> ingredientDict = Ingredient.GetAll();
-            var groups = new Dictionary<string, ListViewGroup>();
-            foreach (var item in ingredientDict)
+            var groupedIngredients = from item in ingredientDict.Values
+                                     group item by item.Category into g
+                                     orderby g.Key.Priority ascending
+                                     select g;
+            foreach (var group in groupedIngredients)
             {
-                string name = item.Key;
-                string category = item.Value.Category.Name;
-                if (!groups.ContainsKey(category))
+                var listViewGroup = new ListViewGroup(group.Key.Name);
+                this.lstIngredient.Groups.Add(listViewGroup);
+                foreach (var ingredient in group)
                 {
-                    var group = new ListViewGroup(category);
-                    groups.Add(category, group);
-                    this.lstIngredient.Groups.Add(group);
+                    this.lstIngredient.Items.Add(new ListViewItem(ingredient.Name, listViewGroup) { Tag = ingredient });
                 }
-                this.lstIngredient.Items.Add(new ListViewItem(name, groups[category]) { Tag = item.Value });
             }
         }
 
