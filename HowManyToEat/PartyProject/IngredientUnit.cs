@@ -52,7 +52,7 @@ namespace HowManyToEat
             {
                 IngredientUnit unit = IngredientUnit.Parse(item);
                 if (dictionary.ContainsKey(unit.Name))
-                { throw new Exception(string.Format("发现重复的单位名称[{0}]！", unit.Name)); }
+                { throw new Exception(string.Format("发现重复的单位名称【{0}】！", unit.Name)); }
 
                 dictionary.Add(unit.Name, unit);
             }
@@ -76,7 +76,7 @@ namespace HowManyToEat
             }
             else
             {
-                throw new ArgumentException(string.Format("数据库中没有指定的[{0}]单位名称！", unitName), "unitName");
+                throw new ArgumentException(string.Format("数据库中没有指定的【{0}】单位名称！", unitName), "unitName");
             }
         }
 

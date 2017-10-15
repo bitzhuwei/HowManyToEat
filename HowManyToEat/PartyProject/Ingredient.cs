@@ -76,7 +76,7 @@ namespace HowManyToEat
             {
                 Ingredient ingredient = Ingredient.Parse(item);
                 if (dictionary.ContainsKey(ingredient.Name))
-                { throw new Exception(string.Format("发现重复的食材[{0}]！", ingredient.Name)); }
+                { throw new Exception(string.Format("发现重复的食材【{0}】！", ingredient.Name)); }
 
                 dictionary.Add(ingredient.Name, ingredient);
             }
@@ -105,7 +105,7 @@ namespace HowManyToEat
             }
             else
             {
-                throw new ArgumentException(string.Format("数据库中没有指定的[{0}]食材(工具)！", name), "name");
+                throw new ArgumentException(string.Format("数据库中没有指定的【{0}】食材(工具)！", name), "name");
             }
         }
 

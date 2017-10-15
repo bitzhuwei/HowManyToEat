@@ -52,7 +52,7 @@ namespace HowManyToEat
             {
                 IngredientCategory category = IngredientCategory.Parse(item);
                 if (dictionary.ContainsKey(category.Name))
-                { throw new Exception(string.Format("发现重复的食材类别[{0}]！", category.Name)); }
+                { throw new Exception(string.Format("发现重复的食材类别【{0}】！", category.Name)); }
 
                 dictionary.Add(category.Name, category);
             }
@@ -77,7 +77,7 @@ namespace HowManyToEat
             }
             else
             {
-                throw new ArgumentException(string.Format("数据库中没有指定的[{0}]类别！", name), "name");
+                throw new ArgumentException(string.Format("数据库中没有指定的【{0}】类别！", name), "name");
             }
         }
 

@@ -167,7 +167,7 @@ namespace HowManyToEat
             IDictionary<string, Dish> dishDict = Dish.GetAll();
             if (dishDict.ContainsKey(dishName))
             {
-                MessageBox.Show(string.Format("已存在名为[{0}]的菜品!", dishName), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(string.Format("已存在名为【{0}】的菜品!", dishName), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
 

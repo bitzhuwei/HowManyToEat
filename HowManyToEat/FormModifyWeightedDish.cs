@@ -32,7 +32,7 @@ namespace HowManyToEat
             int value;
             if (!int.TryParse(this.txtCount.Text, out value))
             {
-                MessageBox.Show(string.Format("数量格式[{0}]错误，无法解析！", this.txtCount.Text), "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("数量格式【{0}】错误，无法解析！", this.txtCount.Text), "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

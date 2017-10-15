@@ -95,7 +95,14 @@ namespace HowManyToEat
         {
             if (this.openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                this.CurrentPartyProject = PartyProject.Load(this.openFileDialog1.FileName);
+                try
+                {
+                    this.CurrentPartyProject = PartyProject.Load(this.openFileDialog1.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "错误");
+                }
             }
         }
 

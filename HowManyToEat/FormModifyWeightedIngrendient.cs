@@ -42,7 +42,7 @@ namespace HowManyToEat
             float value;
             if (!float.TryParse(this.txtWeight.Text, out value))
             {
-                MessageBox.Show(string.Format("数量格式[{0}]异常，无法解析！", this.txtWeight.Text), "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("数量格式【{0}】异常，无法解析！", this.txtWeight.Text), "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
