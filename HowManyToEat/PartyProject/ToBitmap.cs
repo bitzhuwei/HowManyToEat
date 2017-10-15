@@ -111,8 +111,9 @@ namespace HowManyToEat
                 Calculate(ingredientDict, weightedDish);
             }
 
-            var list = ingredientDict.Values.ToList();
-            list.OrderBy(t => t.Ingredient.Category.Name);
+            var list = (from item in ingredientDict.Values
+                        orderby item.Ingredient.Category.Priority
+                        select item).ToList();
             return list;
         }
 
