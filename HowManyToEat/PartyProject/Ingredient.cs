@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -69,6 +70,8 @@ namespace HowManyToEat
         /// <param name="filename"></param>
         public static void LoadDatabase(string filename)
         {
+            if (!File.Exists(filename)) { return; }
+
             XElement xml = XElement.Load(filename);
             if (xml == null || xml.Name != typeof(Ingredient).Name) { throw new ArgumentException(); }
 

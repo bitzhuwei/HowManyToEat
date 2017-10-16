@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -11,16 +12,34 @@ namespace HowManyToEat
     /// </summary>
     public class Dish : List<WeightedIngredient>
     {
+        private const string strId = "Id";
         /// <summary>
-        /// 打印时隐藏（即不打印出来）
+        /// 
         /// </summary>
-        public bool HiddenWhenPrinting { get; set; }
+        public Guid Id { get; private set; }
 
         private const string strName = "Name";
         /// <summary>
         /// 
         /// </summary>
         public string Name { get; set; }
+
+        private const string strHiddenWhenPrinting = "HiddenWhenPrinting";
+        /// <summary>
+        /// 打印时隐藏（即不打印出来）
+        /// </summary>
+        public bool HiddenWhenPrinting { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Dish() { this.Id = Guid.NewGuid(); }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        public Dish(Guid id) { this.Id = id; }
 
         public override string ToString()
         {
@@ -34,7 +53,9 @@ namespace HowManyToEat
         public XElement ToXElement()
         {
             return new XElement(typeof(Dish).Name,
+                new XAttribute(strId, this.Id),
                 new XAttribute(strName, this.Name),
+                new XAttribute(strHiddenWhenPrinting, this.HiddenWhenPrinting),
                 from item in this select item.ToXElement());
         }
 
@@ -47,7 +68,10 @@ namespace HowManyToEat
         {
             if (xml == null || xml.Name != typeof(Dish).Name) { throw new ArgumentException(); }
 
-            Dish result = new Dish() { Name = xml.Attribute(strName).Value };
+            Guid id = new Guid(xml.Attribute(strId).Value);
+            string name = xml.Attribute(strName).Value;
+            bool hidden = bool.Parse(xml.Attribute(strHiddenWhenPrinting).Value);
+            Dish result = new Dish(id) { Name = name, HiddenWhenPrinting = hidden };
             foreach (var item in xml.Elements(typeof(WeightedIngredient).Name))
             {
                 WeightedIngredient ingredient = WeightedIngredient.Parse(item);
@@ -65,6 +89,8 @@ namespace HowManyToEat
         /// <param name="filename"></param>
         public static void LoadDatabase(string filename)
         {
+            if (!File.Exists(filename)) { return; }
+
             XElement xml = XElement.Load(filename);
             if (xml == null || xml.Name != typeof(Dish).Name) { throw new ArgumentException(); }
 
