@@ -9,30 +9,47 @@ using System.Windows.Forms;
 
 namespace HowManyToEat
 {
-    public partial class FormNewDish : Form
+    public partial class FormUpdateDish : Form
     {
         private List<string> selectedIngredientList = new List<string>();
         private Dictionary<string, ListViewGroup> groups = new Dictionary<string, ListViewGroup>();
 
-        public IList<Dish> NewDishList = new List<Dish>();
-
-        public FormNewDish()
+        public FormUpdateDish(Dish dish)
         {
             InitializeComponent();
+
+            if (dish == null) { throw new ArgumentNullException("dish"); }
+
+            this.currentDish = dish;
 
             this.Load += FormNewDish_Load;
         }
 
         void FormNewDish_Load(object sender, EventArgs e)
         {
-            this.txtDishName.Text = string.Empty;
+            this.txtDishName.Text = this.currentDish.Name;
 
-            this.ReloadIngredients();
+            ReloadAllIngredients();
 
-            this.lstSelectedIngredient.Items.Clear();
+            {
+                this.lstSelectedIngredient.Items.Clear();
+                var groupedIngredients = from weighted in this.currentDish
+                                         group weighted by weighted.Ingredient.Category into g
+                                         orderby g.Key.Priority ascending
+                                         select g;
+                foreach (var group in groupedIngredients)
+                {
+                    var listViewGroup = new ListViewGroup(group.Key.Name);
+                    this.lstSelectedIngredient.Groups.Add(listViewGroup);
+                    foreach (var weighted in group)
+                    {
+                        this.lstSelectedIngredient.Items.Add(new ListViewItem(weighted.ToString(), listViewGroup) { Tag = weighted });
+                    }
+                }
+            }
         }
 
-        private void ReloadIngredients()
+        private void ReloadAllIngredients()
         {
             this.lstIngredient.Items.Clear();
             IDictionary<Guid, Ingredient> ingredientDict = Ingredient.GetAll();
@@ -53,6 +70,7 @@ namespace HowManyToEat
 
         private int curentViewIndex = 3;
         private static readonly View[] views = new View[] { View.Details, View.LargeIcon, View.List, View.SmallIcon, View.Tile };
+        private Dish currentDish;
         private void btnSwitchView_Click(object sender, EventArgs e)
         {
             this.lstIngredient.View = views[(curentViewIndex + 1) % views.Length];
@@ -62,12 +80,6 @@ namespace HowManyToEat
             {
                 curentViewIndex = curentViewIndex % views.Length;
             }
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            this.timer1.Enabled = false;
-            this.lblSucessTip.Visible = false;
         }
 
         private void btnAddIngredientToDish_Click(object sender, EventArgs e)
@@ -143,24 +155,18 @@ namespace HowManyToEat
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+
             this.Close();
         }
 
-        private void btnSaveAndContinue_Click(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
-            this.btnSaveAndContinue.Enabled = false;
-
             if (TryAdd())
             {
-                this.lblSucessTip.Visible = true;
-                this.timer1.Enabled = true;
-                this.lstSelectedIngredient.Items.Clear();
-                this.selectedIngredientList.Clear();
-                this.groups.Clear();
-                this.txtDishName.Text = string.Empty;
-            }
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
 
-            this.btnSaveAndContinue.Enabled = true;
+                this.Close();
+            }
         }
 
         private bool TryAdd()
@@ -172,61 +178,43 @@ namespace HowManyToEat
                 return false;
             }
 
-            IDictionary<Guid, Dish> dishDict = Dish.GetAll();
-            {
-                var result = from item in dishDict.Values
-                             where item.Name == dishName
-                             select item;
-                if (result.Count() > 0)
-                {
-                    MessageBox.Show(string.Format("已存在名为【{0}】的菜品!", dishName), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
-                }
-            }
-
-            var dish = new Dish() { Name = dishName };
+            var dish = this.currentDish;
+            dish.Name = this.txtDishName.Text;
+            dish.Clear();
             foreach (var item in this.lstSelectedIngredient.Items)
             {
                 var obj = item as ListViewItem;
                 var weighted = obj.Tag as WeightedIngredient;
                 dish.Add(weighted);
             }
-            dishDict.Add(dish.Id, dish);
             Dish.SaveDatabase(typeof(Dish).Name);
 
-            this.NewDishList.Add(dish);
-
             return true;
-        }
-
-        private void btnModifyIngredient_Click(object sender, EventArgs e)
-        {
-            foreach (var item in this.lstIngredient.SelectedItems)
-            {
-                var obj = item as ListViewItem;
-                var ingredient = obj.Tag as Ingredient;
-                var frm = new FormUpdateIngredient(ingredient);
-                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    this.ReloadIngredients();
-                }
-            }
-        }
-
-        private void lstIngredient_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.btnModifyIngredient.Enabled = this.lstIngredient.SelectedItems.Count > 0;
         }
 
         private void btnNewIngrendient_Click(object sender, EventArgs e)
         {
             var frm = new FormNewIngrendient();
-            frm.ShowDialog();
-            if (frm.NewIngrendientList.Count > 0)
+            if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                this.ReloadIngredients();
+                this.ReloadAllIngredients();
             }
         }
+
+        private void btnModifyIngredient_Click(object sender, EventArgs e)
+        {
+            foreach (var item in this.lstIngredient.Items)
+            {
+                var obj = item as ListViewItem;
+                var ingredient = obj.Tag as Ingredient;
+                var frmModify = new FormUpdateIngredient(ingredient);
+                if (frmModify.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    obj.Text = ingredient.ToString();
+                }
+            }
+        }
+
 
     }
 }

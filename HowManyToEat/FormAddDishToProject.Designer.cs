@@ -64,15 +64,15 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.btnNewDish = new System.Windows.Forms.Button();
-            this.btnModifyDish = new System.Windows.Forms.Button();
+            this.btnUpdateDish = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Font = new System.Drawing.Font("宋体", 14F);
             listViewGroup1.Header = "肉类";
@@ -127,6 +127,7 @@
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.SmallIcon;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -147,20 +148,19 @@
             this.btnNewDish.TabIndex = 1;
             this.btnNewDish.Text = "录入新菜品...";
             this.btnNewDish.UseVisualStyleBackColor = true;
-            this.btnNewDish.Visible = false;
             this.btnNewDish.Click += new System.EventHandler(this.btnNewDish_Click);
             // 
             // btnModifyDish
             // 
-            this.btnModifyDish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnModifyDish.Enabled = false;
-            this.btnModifyDish.Location = new System.Drawing.Point(127, 406);
-            this.btnModifyDish.Name = "btnModifyDish";
-            this.btnModifyDish.Size = new System.Drawing.Size(109, 23);
-            this.btnModifyDish.TabIndex = 2;
-            this.btnModifyDish.Text = "修改选中的菜品...";
-            this.btnModifyDish.UseVisualStyleBackColor = true;
-            this.btnModifyDish.Visible = false;
+            this.btnUpdateDish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnUpdateDish.Enabled = false;
+            this.btnUpdateDish.Location = new System.Drawing.Point(127, 406);
+            this.btnUpdateDish.Name = "btnUpdateDish";
+            this.btnUpdateDish.Size = new System.Drawing.Size(109, 23);
+            this.btnUpdateDish.TabIndex = 2;
+            this.btnUpdateDish.Text = "修改选中的菜品...";
+            this.btnUpdateDish.UseVisualStyleBackColor = true;
+            this.btnUpdateDish.Click += new System.EventHandler(this.btnUpdateDish_Click);
             // 
             // btnCancel
             // 
@@ -192,14 +192,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(624, 441);
-            this.Controls.Add(this.btnModifyDish);
+            this.Controls.Add(this.btnUpdateDish);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnNewDish);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
             this.Name = "FormAddDishToProject";
-            this.Text = "添加 菜品";
+            this.Text = "添加 菜品 到 方案";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,7 +210,7 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNewDish;
-        private System.Windows.Forms.Button btnModifyDish;
+        private System.Windows.Forms.Button btnUpdateDish;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
     }

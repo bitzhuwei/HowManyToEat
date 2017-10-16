@@ -90,6 +90,7 @@ namespace HowManyToEat
         private void lstIngredient_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             this.btnDelete.Enabled = this.lstIngredient.SelectedItems.Count > 0;
+            this.btnUpdate.Enabled = this.lstIngredient.SelectedItems.Count > 0;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

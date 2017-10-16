@@ -29,6 +29,11 @@ namespace HowManyToEat
 
         void FormAddDishToProject_Load(object sender, EventArgs e)
         {
+            ReloadDishes();
+        }
+
+        private void ReloadDishes()
+        {
             this.listView1.Items.Clear();
 
             IDictionary<Guid, Dish> dishList = Dish.GetAll();
@@ -58,7 +63,33 @@ namespace HowManyToEat
 
         private void btnNewDish_Click(object sender, EventArgs e)
         {
-            //(new FormNewDish()).ShowDialog();
+            var frm = new FormNewDish();
+            frm.ShowDialog();
+
+            foreach (var item in frm.NewDishList)
+            {
+                var obj = new ListViewItem(item.Name) { Tag = item };
+                this.listView1.Items.Add(obj);
+            }
+        }
+
+        private void btnUpdateDish_Click(object sender, EventArgs e)
+        {
+            foreach (var item in this.listView1.SelectedItems)
+            {
+                var obj = item as ListViewItem;
+                var dish = obj.Tag as Dish;
+                var frm = new FormUpdateDish(dish);
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    obj.Text = dish.Name;
+                }
+            }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.btnUpdateDish.Enabled = this.listView1.SelectedItems.Count > 0;
         }
     }
 }

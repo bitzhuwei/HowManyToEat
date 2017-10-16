@@ -74,6 +74,21 @@ namespace HowManyToEat
         private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             this.btnDelete.Enabled = this.listView1.SelectedItems.Count > 0;
+            this.btnUpdate.Enabled = this.listView1.SelectedItems.Count > 0;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            foreach (var item in this.listView1.SelectedItems)
+            {
+                var obj = item as ListViewItem;
+                var dish = obj.Tag as Dish;
+                var frm = new FormUpdateDish(dish);
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    obj.Text = dish.Name;
+                }
+            }
         }
 
     }

@@ -12,6 +12,17 @@ namespace HowManyToEat
     public partial class FormNewIngrendient : Form
     {
         private const string newOne = "新建...";
+
+        private IList<Ingredient> newIngrendientList = new List<Ingredient>();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public IList<Ingredient> NewIngrendientList
+        {
+            get { return newIngrendientList; }
+        }
+
         public FormNewIngrendient()
         {
             InitializeComponent();
@@ -120,6 +131,8 @@ namespace HowManyToEat
             {
                 ingredientDict.Add(ingredient.Id, ingredient);
                 Ingredient.SaveDatabase(typeof(Ingredient).Name);
+
+                this.newIngrendientList.Add(ingredient);
             }
 
             return true;
