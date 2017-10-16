@@ -54,7 +54,9 @@ namespace HowManyToEat
 
             if (list.Count > 0 && lastIndex + 1 < list.Count)
             {
-                builder.Append(list[list.Count - 1]);
+                var weighted = list[list.Count - 1];
+                builder.Append(string.Format(
+                    "{0}:{1}{2}", weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit));
             }
 
             string str = builder.ToString();
@@ -112,7 +114,7 @@ namespace HowManyToEat
             }
 
             var list = (from item in ingredientDict.Values
-                        orderby item.Ingredient.Category.Priority
+                        orderby item.Ingredient.Category.Priority ascending
                         select item).ToList();
             return list;
         }
