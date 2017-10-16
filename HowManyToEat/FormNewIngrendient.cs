@@ -28,7 +28,10 @@ namespace HowManyToEat
         {
             this.cmbCategory.Items.Clear();
             IDictionary<string, IngredientCategory> dict = IngredientCategory.GetAll();
-            foreach (var item in dict.Values)
+            var list = from item in dict.Values
+                       orderby item.Priority ascending
+                       select item;
+            foreach (var item in list)
             {
                 this.cmbCategory.Items.Add(item);
             }

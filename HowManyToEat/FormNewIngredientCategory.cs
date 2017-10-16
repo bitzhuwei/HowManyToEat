@@ -24,7 +24,7 @@ namespace HowManyToEat
         {
             IDictionary<string, IngredientCategory> ingredientDict = IngredientCategory.GetAll();
             var list = from item in ingredientDict.Values
-                       orderby item.Priority descending
+                       orderby item.Priority ascending
                        select item;
             foreach (var item in list)
             {
@@ -64,20 +64,21 @@ namespace HowManyToEat
                 return false;
             }
 
-            int priority = 0;
-            var category = new IngredientCategory() { Name = name, Priority = priority };
-
+            IDictionary<string, IngredientCategory> ingredientDict = IngredientCategory.GetAll();
+            if (ingredientDict.ContainsKey(this.newCatetory.Name))
             {
-                IDictionary<string, IngredientCategory> ingredientDict = IngredientCategory.GetAll();
-                if (ingredientDict.ContainsKey(category.Name))
-                {
-                    MessageBox.Show(string.Format("已存在名为【{0}】的食材类别！", name), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
-                }
-
-                ingredientDict.Add(category.Name, category);
-                IngredientCategory.SaveDatabase(typeof(IngredientCategory).Name);
+                MessageBox.Show(string.Format("已存在名为【{0}】的食材类别！", name), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
             }
+
+            for (int i = 0; i < this.lstCategory.Items.Count; i++)
+            {
+                var obj = this.lstCategory.Items[i] as IngredientCategory;
+                obj.Priority = i;
+            }
+
+            ingredientDict.Add(this.newCatetory.Name, this.newCatetory);
+            IngredientCategory.SaveDatabase(typeof(IngredientCategory).Name);
 
             return true;
         }

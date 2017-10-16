@@ -185,7 +185,7 @@
             this.cmbCategory.Location = new System.Drawing.Point(123, 47);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(392, 27);
-            this.cmbCategory.TabIndex = 16;
+            this.cmbCategory.TabIndex = 1;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
             // FormNewIngrendient

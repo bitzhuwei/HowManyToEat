@@ -49,7 +49,7 @@
             this.btnCancel.Location = new System.Drawing.Point(437, 528);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 23);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -110,7 +110,7 @@
             this.btnOK.Location = new System.Drawing.Point(302, 528);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(129, 23);
-            this.btnOK.TabIndex = 2;
+            this.btnOK.TabIndex = 6;
             this.btnOK.Text = "确定";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -126,7 +126,7 @@
             this.lstCategory.Location = new System.Drawing.Point(17, 115);
             this.lstCategory.Name = "lstCategory";
             this.lstCategory.Size = new System.Drawing.Size(326, 403);
-            this.lstCategory.TabIndex = 16;
+            this.lstCategory.TabIndex = 1;
             // 
             // btnHighest
             // 
@@ -135,7 +135,7 @@
             this.btnHighest.Location = new System.Drawing.Point(349, 115);
             this.btnHighest.Name = "btnHighest";
             this.btnHighest.Size = new System.Drawing.Size(197, 37);
-            this.btnHighest.TabIndex = 17;
+            this.btnHighest.TabIndex = 2;
             this.btnHighest.Text = "设置为最高优先级";
             this.btnHighest.UseVisualStyleBackColor = true;
             this.btnHighest.Click += new System.EventHandler(this.btnHighest_Click);
@@ -147,7 +147,7 @@
             this.btnHigher.Location = new System.Drawing.Point(349, 158);
             this.btnHigher.Name = "btnHigher";
             this.btnHigher.Size = new System.Drawing.Size(197, 37);
-            this.btnHigher.TabIndex = 17;
+            this.btnHigher.TabIndex = 3;
             this.btnHigher.Text = "提高一级优先级";
             this.btnHigher.UseVisualStyleBackColor = true;
             this.btnHigher.Click += new System.EventHandler(this.btnHigher_Click);
@@ -159,7 +159,7 @@
             this.btnLower.Location = new System.Drawing.Point(349, 201);
             this.btnLower.Name = "btnLower";
             this.btnLower.Size = new System.Drawing.Size(197, 37);
-            this.btnLower.TabIndex = 17;
+            this.btnLower.TabIndex = 4;
             this.btnLower.Text = "降低一级优先级";
             this.btnLower.UseVisualStyleBackColor = true;
             this.btnLower.Click += new System.EventHandler(this.btnLower_Click);
@@ -171,7 +171,7 @@
             this.btnLowest.Location = new System.Drawing.Point(349, 244);
             this.btnLowest.Name = "btnLowest";
             this.btnLowest.Size = new System.Drawing.Size(197, 37);
-            this.btnLowest.TabIndex = 17;
+            this.btnLowest.TabIndex = 5;
             this.btnLowest.Text = "设置为最低优先级";
             this.btnLowest.UseVisualStyleBackColor = true;
             this.btnLowest.Click += new System.EventHandler(this.btnLowest_Click);
