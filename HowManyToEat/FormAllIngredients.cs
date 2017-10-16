@@ -91,5 +91,19 @@ namespace HowManyToEat
         {
             this.btnDelete.Enabled = this.lstIngredient.SelectedItems.Count > 0;
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            foreach (var item in this.lstIngredient.SelectedItems)
+            {
+                var obj = item as ListViewItem;
+                var ingredient = obj.Tag as Ingredient;
+                var frm = new FormUpdateIngredient(ingredient);
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    obj.Text = ingredient.Name;
+                }
+            }
+        }
     }
 }

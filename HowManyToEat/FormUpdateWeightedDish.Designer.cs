@@ -1,6 +1,6 @@
 ﻿namespace HowManyToEat
 {
-    partial class FormModifyWeightedDish
+    partial class FormUpdateWeightedDish
     {
         /// <summary>
         /// Required designer variable.

@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace HowManyToEat
 {
-    public partial class FormModifyWeightedDish : Form
+    public partial class FormUpdateWeightedDish : Form
     {
         private WeightedDish weightedDish;
-        public FormModifyWeightedDish(WeightedDish weightedDish)
+        public FormUpdateWeightedDish(WeightedDish weightedDish)
         {
             InitializeComponent();
 

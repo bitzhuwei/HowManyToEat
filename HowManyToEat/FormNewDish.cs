@@ -124,7 +124,7 @@ namespace HowManyToEat
                 var obj = item as ListViewItem;
                 var name = obj.Text;
                 var weighted = obj.Tag as WeightedIngredient;
-                var frmModify = new FormModifyWeightedIngrendient(weighted);
+                var frmModify = new FormUpdateWeightedIngrendient(weighted);
                 if (frmModify.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     obj.Text = weighted.ToString();

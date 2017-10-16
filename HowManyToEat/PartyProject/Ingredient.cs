@@ -75,10 +75,10 @@ namespace HowManyToEat
             Guid id = new Guid(xml.Attribute(strId).Value);
             string name = xml.Attribute(strName).Value;
             IngredientCategory category = IngredientCategory.Select(new Guid(xml.Attribute(strCategory).Value));
-            IngredientUnit unitName = IngredientUnit.Select(new Guid(xml.Attribute(strUnitName).Value));
+            IngredientUnit unit = IngredientUnit.Select(new Guid(xml.Attribute(strUnitName).Value));
             float price = float.Parse(xml.Attribute(strPrice).Value);
 
-            return new Ingredient(id) { Name = name, Category = category, Unit = unitName, Price = price };
+            return new Ingredient(id) { Name = name, Category = category, Unit = unit, Price = price };
         }
 
         private static readonly Dictionary<Guid, Ingredient> dictionary = new Dictionary<Guid, Ingredient>();

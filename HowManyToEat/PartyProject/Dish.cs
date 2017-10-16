@@ -104,18 +104,18 @@ namespace HowManyToEat
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        internal static Dish Select(Guid name)
+        internal static Dish Select(Guid id)
         {
             Dish result;
-            if (dictionary.TryGetValue(name, out result))
+            if (dictionary.TryGetValue(id, out result))
             {
                 return result;
             }
             else
             {
-                throw new ArgumentException(string.Format("数据库中没有指定的【{0}】菜品！", name), "name");
+                throw new ArgumentException(string.Format("数据库中没有指定的【{0}】菜品！", id), "name");
             }
         }
 

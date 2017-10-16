@@ -42,7 +42,7 @@ namespace HowManyToEat
         {
             return new XElement(typeof(WeightedIngredient).Name,
                 new XAttribute(strWeight, this.Weight),
-                new XElement(typeof(Ingredient).Name, this.Ingredient.Id));
+                new XAttribute(typeof(Ingredient).Name, this.Ingredient.Id));
         }
 
         internal static WeightedIngredient Parse(XElement xml)
@@ -50,7 +50,8 @@ namespace HowManyToEat
             if (xml == null || xml.Name != typeof(WeightedIngredient).Name) { throw new ArgumentException(); }
 
             float weight = float.Parse(xml.Attribute(strWeight).Value);
-            Ingredient ingredient = Ingredient.Select(new Guid(xml.Element(typeof(Ingredient).Name).Value));
+            Guid id = new Guid(xml.Attribute(typeof(Ingredient).Name).Value);
+            Ingredient ingredient = Ingredient.Select(id);
 
             return new WeightedIngredient() { Weight = weight, Ingredient = ingredient };
         }

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace HowManyToEat
 {
-    public partial class FormModifyWeightedIngrendient : Form
+    public partial class FormUpdateWeightedIngrendient : Form
     {
         private WeightedIngredient weighted;
 
@@ -24,17 +24,16 @@ namespace HowManyToEat
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="weighted"></param>
-        public FormModifyWeightedIngrendient(WeightedIngredient weighted)
+        /// <param name="weightedIngredient"></param>
+        public FormUpdateWeightedIngrendient(WeightedIngredient weightedIngredient)
         {
             InitializeComponent();
 
-            this.weighted = weighted;
+            if (weightedIngredient == null) { throw new ArgumentNullException("weightedIngredient"); }
 
-            this.txtName.Text = weighted.Ingredient.Name;
-            this.txtCategory.Text = weighted.Ingredient.Category.ToString();
-            this.txtUnit.Text = weighted.Ingredient.Unit.ToString();
-            this.txtWeight.Text = weighted.Weight.ToString();
+            this.weighted = weightedIngredient;
+
+            this.FillView(weightedIngredient.Ingredient);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -54,6 +53,23 @@ namespace HowManyToEat
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+        }
+
+        private void btnUpdateIngredient_Click(object sender, EventArgs e)
+        {
+            var frm = new FormUpdateIngredient(this.weighted.Ingredient);
+            if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                FillView(this.weighted.Ingredient);
+            }
+        }
+
+        private void FillView(Ingredient ingredient)
+        {
+            this.txtName.Text = ingredient.Name;
+            this.txtCategory.Text = ingredient.Category.ToString();
+            this.txtUnit.Text = ingredient.Unit.ToString();
+            this.txtPrice.Text = ingredient.Price.ToString();
         }
     }
 }

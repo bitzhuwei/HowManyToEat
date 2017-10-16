@@ -58,23 +58,35 @@
     <Compile Include="FormMain.UpdateResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormModifyWeightedIngrendient.cs">
+    <Compile Include="FormUpdateWeightedIngrendient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormModifyWeightedIngrendient.Designer.cs">
-      <DependentUpon>FormModifyWeightedIngrendient.cs</DependentUpon>
+    <Compile Include="FormUpdateWeightedIngrendient.Designer.cs">
+      <DependentUpon>FormUpdateWeightedIngrendient.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormModifyWeightedDish.cs">
+    <Compile Include="FormUpdateWeightedDish.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormModifyWeightedDish.Designer.cs">
-      <DependentUpon>FormModifyWeightedDish.cs</DependentUpon>
+    <Compile Include="FormUpdateWeightedDish.Designer.cs">
+      <DependentUpon>FormUpdateWeightedDish.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewIngredientUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewIngredientUnit.Designer.cs">
+      <DependentUpon>FormNewIngredientUnit.cs</DependentUpon>
     </Compile>
     <Compile Include="FormNewIngredientCategory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormNewIngredientCategory.Designer.cs">
       <DependentUpon>FormNewIngredientCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateIngredient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateIngredient.Designer.cs">
+      <DependentUpon>FormUpdateIngredient.cs</DependentUpon>
     </Compile>
     <Compile Include="PartyProject\Dish.cs" />
     <Compile Include="FormNewDish.cs">
@@ -129,14 +141,20 @@
     <EmbeddedResource Include="FormAllIngredients.resx">
       <DependentUpon>FormAllIngredients.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormModifyWeightedIngrendient.resx">
-      <DependentUpon>FormModifyWeightedIngrendient.cs</DependentUpon>
+    <EmbeddedResource Include="FormUpdateWeightedIngrendient.resx">
+      <DependentUpon>FormUpdateWeightedIngrendient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNewDish.resx">
       <DependentUpon>FormNewDish.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormNewIngredientUnit.resx">
+      <DependentUpon>FormNewIngredientUnit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormNewIngredientCategory.resx">
       <DependentUpon>FormNewIngredientCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdateIngredient.resx">
+      <DependentUpon>FormUpdateIngredient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNewIngrendient.resx">
       <DependentUpon>FormNewIngrendient.cs</DependentUpon>
@@ -153,8 +171,8 @@
     <EmbeddedResource Include="FormPropertyGrid.resx">
       <DependentUpon>FormPropertyGrid.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormModifyWeightedDish.resx">
-      <DependentUpon>FormModifyWeightedDish.cs</DependentUpon>
+    <EmbeddedResource Include="FormUpdateWeightedDish.resx">
+      <DependentUpon>FormUpdateWeightedDish.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

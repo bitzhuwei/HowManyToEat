@@ -1,6 +1,6 @@
 ﻿namespace HowManyToEat
 {
-    partial class FormModifyWeightedIngrendient
+    partial class FormUpdateWeightedIngrendient
     {
         /// <summary>
         /// Required designer variable.
@@ -40,12 +40,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCategory = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnUpdateIngredient = new System.Windows.Forms.Button();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(292, 160);
+            this.btnOK.Location = new System.Drawing.Point(292, 242);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(109, 23);
             this.btnOK.TabIndex = 1;
@@ -57,7 +60,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(407, 161);
+            this.btnCancel.Location = new System.Drawing.Point(407, 242);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 23);
             this.btnCancel.TabIndex = 2;
@@ -96,7 +99,7 @@
             this.txtWeight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtWeight.Font = new System.Drawing.Font("宋体", 14F);
-            this.txtWeight.Location = new System.Drawing.Point(120, 117);
+            this.txtWeight.Location = new System.Drawing.Point(120, 207);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(396, 29);
             this.txtWeight.TabIndex = 0;
@@ -150,11 +153,45 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 14F);
-            this.label3.Location = new System.Drawing.Point(10, 120);
+            this.label3.Location = new System.Drawing.Point(10, 210);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 19);
             this.label3.TabIndex = 25;
             this.label3.Text = "食材数量：";
+            // 
+            // btnUpdateIngredient
+            // 
+            this.btnUpdateIngredient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateIngredient.Font = new System.Drawing.Font("宋体", 14F);
+            this.btnUpdateIngredient.Location = new System.Drawing.Point(354, 152);
+            this.btnUpdateIngredient.Name = "btnUpdateIngredient";
+            this.btnUpdateIngredient.Size = new System.Drawing.Size(162, 31);
+            this.btnUpdateIngredient.TabIndex = 1;
+            this.btnUpdateIngredient.Text = "修改食材信息";
+            this.btnUpdateIngredient.UseVisualStyleBackColor = true;
+            this.btnUpdateIngredient.Click += new System.EventHandler(this.btnUpdateIngredient_Click);
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPrice.Font = new System.Drawing.Font("宋体", 14F);
+            this.txtPrice.Location = new System.Drawing.Point(120, 117);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.ReadOnly = true;
+            this.txtPrice.Size = new System.Drawing.Size(396, 29);
+            this.txtPrice.TabIndex = 28;
+            this.txtPrice.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("宋体", 14F);
+            this.label4.Location = new System.Drawing.Point(10, 120);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 19);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "食材单价：";
             // 
             // FormModifyWeightedIngrendient
             // 
@@ -162,13 +199,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(528, 196);
+            this.ClientSize = new System.Drawing.Size(528, 277);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtWeight);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtUnit);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnUpdateIngredient);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtName);
@@ -194,5 +234,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCategory;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnUpdateIngredient;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -35,6 +35,21 @@ namespace HowManyToEat
         /// <param name="id"></param>
         public IngredientUnit(Guid id) { this.Id = id; }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null) { return false; }
+
+            var right = obj as IngredientUnit;
+            if (right == null) { return false; }
+
+            return (this.Id == right.Id);
+        }
+
+        public override int GetHashCode()
+        {
+            return string.Format("{0}", this.Id).GetHashCode();
+        }
+
         public override string ToString()
         {
             return string.Format("{0}", this.Name);
@@ -89,16 +104,16 @@ namespace HowManyToEat
             return dictionary;
         }
 
-        internal static IngredientUnit Select(Guid unitName)
+        internal static IngredientUnit Select(Guid id)
         {
             IngredientUnit result;
-            if (dictionary.TryGetValue(unitName, out result))
+            if (dictionary.TryGetValue(id, out result))
             {
                 return result;
             }
             else
             {
-                throw new ArgumentException(string.Format("数据库中没有指定的【{0}】单位名称！", unitName), "unitName");
+                throw new ArgumentException(string.Format("数据库中没有指定的【{0}】单位名称！", id), "unitName");
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace HowManyToEat
 {
-    partial class FormNewIngrendient
+    partial class FormUpdateIngredient
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btnCancel = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,11 +36,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
-            this.btnSaveAndContinue = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblSucessTip = new System.Windows.Forms.Label();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.cmbUnit = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
@@ -49,7 +47,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(406, 165);
+            this.btnCancel.Location = new System.Drawing.Point(406, 207);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 23);
             this.btnCancel.TabIndex = 5;
@@ -127,16 +125,16 @@
             this.txtPrice.TabIndex = 3;
             this.txtPrice.Text = "0";
             // 
-            // btnSaveAndContinue
+            // btnOK
             // 
-            this.btnSaveAndContinue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveAndContinue.Location = new System.Drawing.Point(271, 165);
-            this.btnSaveAndContinue.Name = "btnSaveAndContinue";
-            this.btnSaveAndContinue.Size = new System.Drawing.Size(129, 23);
-            this.btnSaveAndContinue.TabIndex = 4;
-            this.btnSaveAndContinue.Text = "保存并继续录入";
-            this.btnSaveAndContinue.UseVisualStyleBackColor = true;
-            this.btnSaveAndContinue.Click += new System.EventHandler(this.btnSaveAndContinue_Click);
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.Location = new System.Drawing.Point(271, 207);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(129, 23);
+            this.btnOK.TabIndex = 4;
+            this.btnOK.Text = "确定";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // label5
             // 
@@ -147,24 +145,6 @@
             this.label5.Size = new System.Drawing.Size(104, 19);
             this.label5.TabIndex = 15;
             this.label5.Text = "食材类别：";
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // lblSucessTip
-            // 
-            this.lblSucessTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblSucessTip.AutoSize = true;
-            this.lblSucessTip.Font = new System.Drawing.Font("宋体", 14F);
-            this.lblSucessTip.ForeColor = System.Drawing.Color.Green;
-            this.lblSucessTip.Location = new System.Drawing.Point(161, 164);
-            this.lblSucessTip.Name = "lblSucessTip";
-            this.lblSucessTip.Size = new System.Drawing.Size(104, 19);
-            this.lblSucessTip.TabIndex = 15;
-            this.lblSucessTip.Text = "保存成功！";
-            this.lblSucessTip.Visible = false;
             // 
             // cmbCategory
             // 
@@ -177,6 +157,17 @@
             this.cmbCategory.TabIndex = 1;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("宋体", 14F);
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(13, 160);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(446, 19);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "注意：修改食材信息将影响所有使用此食材的菜品！";
+            // 
             // cmbUnit
             // 
             this.cmbUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -185,32 +176,32 @@
             this.cmbUnit.Location = new System.Drawing.Point(123, 80);
             this.cmbUnit.Name = "cmbUnit";
             this.cmbUnit.Size = new System.Drawing.Size(392, 27);
-            this.cmbUnit.TabIndex = 2;
+            this.cmbUnit.TabIndex = 16;
             this.cmbUnit.SelectedIndexChanged += new System.EventHandler(this.cmbUnit_SelectedIndexChanged);
             // 
-            // FormNewIngrendient
+            // FormUpdateIngredient
             // 
-            this.AcceptButton = this.btnSaveAndContinue;
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(527, 200);
+            this.ClientSize = new System.Drawing.Size(527, 242);
             this.Controls.Add(this.cmbUnit);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.txtPrice);
-            this.Controls.Add(this.lblSucessTip);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnSaveAndContinue);
+            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Name = "FormNewIngrendient";
+            this.Name = "FormUpdateIngredient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "录入新食材";
+            this.Text = "修改食材信息";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,11 +217,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPrice;
-        private System.Windows.Forms.Button btnSaveAndContinue;
+        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label lblSucessTip;
         private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbUnit;
     }
 }

@@ -111,18 +111,18 @@ namespace HowManyToEat
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        internal static IngredientCategory Select(Guid name)
+        internal static IngredientCategory Select(Guid id)
         {
             IngredientCategory result;
-            if (dictionary.TryGetValue(name, out result))
+            if (dictionary.TryGetValue(id, out result))
             {
                 return result;
             }
             else
             {
-                throw new ArgumentException(string.Format("数据库中没有指定的【{0}】类别！", name), "name");
+                throw new ArgumentException(string.Format("数据库中没有指定的【{0}】类别！", id), "name");
             }
         }
 

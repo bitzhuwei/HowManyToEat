@@ -9,21 +9,61 @@ using System.Windows.Forms;
 
 namespace HowManyToEat
 {
-    public partial class FormNewIngrendient : Form
+    public partial class FormUpdateIngredient : Form
     {
         private const string newOne = "新建...";
-        public FormNewIngrendient()
+        private Ingredient currentIngredient;
+        public FormUpdateIngredient(Ingredient ingrendient)
         {
             InitializeComponent();
 
-            this.Load += FormNewIngrendient_Load;
+            this.currentIngredient = ingrendient;
+
+            this.Load += FormUpdateIngrendient_Load;
         }
 
-        void FormNewIngrendient_Load(object sender, EventArgs e)
+        void FormUpdateIngrendient_Load(object sender, EventArgs e)
         {
+            this.txtName.Text = this.currentIngredient.Name;
+
             this.ReloadIngredientCategory();
+            for (int i = 0; i < this.cmbCategory.Items.Count; i++)
+            {
+                var item = this.cmbCategory.Items[i] as IngredientCategory;
+                if (item != null && item.Id == this.currentIngredient.Category.Id)
+                {
+                    this.cmbCategory.SelectedIndex = i;
+                    break;
+                }
+            }
 
             this.ReloadIngredientUnit();
+            for (int i = 0; i < this.cmbUnit.Items.Count; i++)
+            {
+                var item = this.cmbUnit.Items[i] as IngredientUnit;
+                if (item != null && item.Id == this.currentIngredient.Unit.Id)
+                {
+                    this.cmbUnit.SelectedIndex = i;
+                    break;
+                }
+            }
+
+            this.txtPrice.Text = this.currentIngredient.Price.ToString();
+        }
+
+        private void ReloadIngredientUnit()
+        {
+            this.cmbUnit.Items.Clear();
+            IDictionary<Guid, IngredientUnit> dict = IngredientUnit.GetAll();
+            var list = from item in dict.Values
+                       select item;
+            foreach (var item in list)
+            {
+                this.cmbUnit.Items.Add(item);
+            }
+            {
+                this.cmbUnit.Items.Add(newOne);
+            }
         }
 
         private void ReloadIngredientCategory()
@@ -42,21 +82,6 @@ namespace HowManyToEat
             }
         }
 
-        private void ReloadIngredientUnit()
-        {
-            this.cmbUnit.Items.Clear();
-            IDictionary<Guid, IngredientUnit> dict = IngredientUnit.GetAll();
-            var list = from item in dict.Values
-                       select item;
-            foreach (var item in list)
-            {
-                this.cmbUnit.Items.Add(item);
-            }
-            {
-                this.cmbUnit.Items.Add(newOne);
-            }
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -64,18 +89,17 @@ namespace HowManyToEat
             this.Close();
         }
 
-        private void btnSaveAndContinue_Click(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
-            this.btnSaveAndContinue.Enabled = false;
-            if (TryAdd())
+            if (TryUpdate())
             {
-                this.lblSucessTip.Visible = true;
-                this.timer1.Enabled = true;
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+
+                this.Close();
             }
-            this.btnSaveAndContinue.Enabled = true;
         }
 
-        private bool TryAdd()
+        private bool TryUpdate()
         {
             string name = this.txtName.Text.Trim();
             if (string.IsNullOrEmpty(name))
@@ -105,30 +129,16 @@ namespace HowManyToEat
                 return false;
             }
 
-            var ingredient = new Ingredient() { Name = name, Category = category, Unit = unit, Price = price };
-            IDictionary<Guid, Ingredient> ingredientDict = Ingredient.GetAll();
             {
-                var result = from item in ingredientDict.Values
-                             where item.Name == ingredient.Name
-                             select item;
-                if (result.Count() > 0)
-                {
-                    MessageBox.Show(string.Format("已存在名为【{0}】的食材！", name), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
-                }
-            }
-            {
-                ingredientDict.Add(ingredient.Id, ingredient);
+                var ingredient = this.currentIngredient;
+                ingredient.Name = name;
+                ingredient.Category = category;
+                ingredient.Unit = unit;
+                ingredient.Price = price;
                 Ingredient.SaveDatabase(typeof(Ingredient).Name);
             }
 
             return true;
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            this.timer1.Enabled = false;
-            this.lblSucessTip.Visible = false;
         }
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -145,12 +155,9 @@ namespace HowManyToEat
                         if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
                             this.ReloadIngredientCategory();
-                            this.cmbCategory.SelectedItem = null;
                         }
-                        else
-                        {
-                            this.cmbCategory.SelectedIndex = -1;
-                        }
+
+                        this.cmbCategory.SelectedIndex = -1;
                     }
                 }
             }
