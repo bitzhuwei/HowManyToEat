@@ -12,6 +12,12 @@ namespace HowManyToEat
     /// </summary>
     public class Ingredient
     {
+        private const string strId = "Id";
+        /// <summary>
+        /// 
+        /// </summary>
+        public Guid Id { get; private set; }
+
         private const string strName = "Name";
         /// <summary>
         /// 名称。如“盐”，“猪肉”。
@@ -36,6 +42,17 @@ namespace HowManyToEat
         /// </summary>
         public float Price { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public Ingredient() { this.Id = Guid.NewGuid(); }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        public Ingredient(Guid id) { this.Id = id; }
+
         public override string ToString()
         {
             return string.Format("{0}({1})", this.Name, this.Unit);
@@ -44,6 +61,7 @@ namespace HowManyToEat
         public XElement ToXElement()
         {
             return new XElement(typeof(Ingredient).Name,
+                new XAttribute(strId, this.Id),
                 new XAttribute(strName, this.Name),
                 new XAttribute(strCategory, this.Category.Name),
                 new XAttribute(strUnitName, this.Unit.Name),
@@ -54,12 +72,13 @@ namespace HowManyToEat
         {
             if (xml == null || xml.Name != typeof(Ingredient).Name) { throw new ArgumentException(); }
 
+            Guid id = new Guid(xml.Attribute(strId).Value);
             string name = xml.Attribute(strName).Value;
             IngredientCategory category = IngredientCategory.Select(xml.Attribute(strCategory).Value);
             IngredientUnit unitName = IngredientUnit.Select(xml.Attribute(strUnitName).Value);
             float price = float.Parse(xml.Attribute(strPrice).Value);
 
-            return new Ingredient() { Name = name, Category = category, Unit = unitName, Price = price };
+            return new Ingredient(id) { Name = name, Category = category, Unit = unitName, Price = price };
         }
 
         private static readonly Dictionary<string, Ingredient> dictionary = new Dictionary<string, Ingredient>();

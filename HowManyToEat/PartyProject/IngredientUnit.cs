@@ -12,11 +12,28 @@ namespace HowManyToEat
     /// </summary>
     public class IngredientUnit
     {
+        private const string strId = "Id";
+        /// <summary>
+        /// 
+        /// </summary>
+        public Guid Id { get; private set; }
+
         private const string strUnitName = "UnitName";
         /// <summary>
         /// 
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public IngredientUnit() { this.Id = Guid.NewGuid(); }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        public IngredientUnit(Guid id) { this.Id = id; }
 
         public override string ToString()
         {
@@ -26,6 +43,7 @@ namespace HowManyToEat
         public XElement ToXElement()
         {
             return new XElement(typeof(IngredientUnit).Name,
+                new XAttribute(strId, this.Id),
                 new XAttribute(strUnitName, this.Name));
         }
 
@@ -33,9 +51,10 @@ namespace HowManyToEat
         {
             if (xml.Name != typeof(IngredientUnit).Name) { throw new ArgumentException(); }
 
+            Guid id = new Guid(xml.Attribute(strId).Value);
             string unitName = xml.Attribute(strUnitName).Value;
 
-            return new IngredientUnit() { Name = unitName };
+            return new IngredientUnit(id) { Name = unitName };
         }
 
         private static readonly Dictionary<string, IngredientUnit> dictionary = new Dictionary<string, IngredientUnit>();

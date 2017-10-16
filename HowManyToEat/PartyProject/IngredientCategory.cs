@@ -12,6 +12,12 @@ namespace HowManyToEat
     /// </summary>
     public class IngredientCategory
     {
+        private const string strId = "Id";
+        /// <summary>
+        /// 
+        /// </summary>
+        public Guid Id { get; private set; }
+
         private const string strName = "Name";
         /// <summary>
         /// 
@@ -24,6 +30,17 @@ namespace HowManyToEat
         /// </summary>
         public int Priority { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public IngredientCategory() { this.Id = Guid.NewGuid(); }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        public IngredientCategory(Guid id) { this.Id = id; }
+
         public override bool Equals(object obj)
         {
             if (obj == null) { return false; }
@@ -31,12 +48,12 @@ namespace HowManyToEat
             var right = obj as IngredientCategory;
             if (right == null) { return false; }
 
-            return (this.Name == right.Name && this.Priority == right.Priority);
+            return (this.Id == right.Id);
         }
 
         public override int GetHashCode()
         {
-            return string.Format("{0}#{1}", this.Name, this.Priority).GetHashCode();
+            return string.Format("{0}", this.Id).GetHashCode();
         }
 
         public override string ToString()
@@ -47,6 +64,7 @@ namespace HowManyToEat
         public XElement ToXElement()
         {
             return new XElement(typeof(IngredientCategory).Name,
+                new XAttribute(strId, this.Id),
                 new XAttribute(strName, this.Name),
                 new XAttribute(strPriority, this.Priority));
         }
@@ -55,10 +73,11 @@ namespace HowManyToEat
         {
             if (xml == null || xml.Name != typeof(IngredientCategory).Name) { throw new ArgumentException(); }
 
+            Guid id = new Guid(xml.Attribute(strId).Value);
             string name = xml.Attribute(strName).Value;
             int priority = int.Parse(xml.Attribute(strPriority).Value);
 
-            return new IngredientCategory() { Name = name, Priority = priority };
+            return new IngredientCategory(id) { Name = name, Priority = priority };
         }
 
         private static readonly Dictionary<string, IngredientCategory> dictionary = new Dictionary<string, IngredientCategory>();
