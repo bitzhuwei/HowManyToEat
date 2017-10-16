@@ -498,5 +498,10 @@ namespace HowManyToEat
         {
             (new FormAllIngredientCategory()).ShowDialog();
         }
+
+        private void 查看所有食材单位名称ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new FormAllIngredientUnit()).ShowDialog();
+        }
     }
 }

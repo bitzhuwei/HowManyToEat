@@ -50,6 +50,7 @@
             this.录入菜品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查看所有菜品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查看所有食材ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看所有食材类别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.内容CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.索引IToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,7 +105,7 @@
             this.剪切TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.复制CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.粘贴PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.查看所有食材类别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看所有食材单位名称ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.leftDishesMenuStrip.SuspendLayout();
@@ -225,7 +226,8 @@
             this.录入菜品ToolStripMenuItem,
             this.查看所有菜品ToolStripMenuItem,
             this.查看所有食材ToolStripMenuItem,
-            this.查看所有食材类别ToolStripMenuItem});
+            this.查看所有食材类别ToolStripMenuItem,
+            this.查看所有食材单位名称ToolStripMenuItem});
             this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
             this.工具TToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
             this.工具TToolStripMenuItem.Text = "工具(&T)";
@@ -234,43 +236,50 @@
             // 
             this.自定义CToolStripMenuItem.Enabled = false;
             this.自定义CToolStripMenuItem.Name = "自定义CToolStripMenuItem";
-            this.自定义CToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.自定义CToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.自定义CToolStripMenuItem.Text = "自定义(&C)";
             // 
             // 选项OToolStripMenuItem
             // 
             this.选项OToolStripMenuItem.Enabled = false;
             this.选项OToolStripMenuItem.Name = "选项OToolStripMenuItem";
-            this.选项OToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.选项OToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.选项OToolStripMenuItem.Text = "选项(&O)";
             // 
             // 录入食材ToolStripMenuItem
             // 
             this.录入食材ToolStripMenuItem.Name = "录入食材ToolStripMenuItem";
-            this.录入食材ToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.录入食材ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.录入食材ToolStripMenuItem.Text = "录入新食材";
             this.录入食材ToolStripMenuItem.Click += new System.EventHandler(this.录入食材ToolStripMenuItem_Click);
             // 
             // 录入菜品ToolStripMenuItem
             // 
             this.录入菜品ToolStripMenuItem.Name = "录入菜品ToolStripMenuItem";
-            this.录入菜品ToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.录入菜品ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.录入菜品ToolStripMenuItem.Text = "录入新菜品";
             this.录入菜品ToolStripMenuItem.Click += new System.EventHandler(this.录入菜品ToolStripMenuItem_Click);
             // 
             // 查看所有菜品ToolStripMenuItem
             // 
             this.查看所有菜品ToolStripMenuItem.Name = "查看所有菜品ToolStripMenuItem";
-            this.查看所有菜品ToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.查看所有菜品ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.查看所有菜品ToolStripMenuItem.Text = "查看所有 菜品";
             this.查看所有菜品ToolStripMenuItem.Click += new System.EventHandler(this.查看所有菜品ToolStripMenuItem_Click);
             // 
             // 查看所有食材ToolStripMenuItem
             // 
             this.查看所有食材ToolStripMenuItem.Name = "查看所有食材ToolStripMenuItem";
-            this.查看所有食材ToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.查看所有食材ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.查看所有食材ToolStripMenuItem.Text = "查看所有 食材";
             this.查看所有食材ToolStripMenuItem.Click += new System.EventHandler(this.查看所有食材ToolStripMenuItem_Click);
+            // 
+            // 查看所有食材类别ToolStripMenuItem
+            // 
+            this.查看所有食材类别ToolStripMenuItem.Name = "查看所有食材类别ToolStripMenuItem";
+            this.查看所有食材类别ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.查看所有食材类别ToolStripMenuItem.Text = "查看所有 食材类别";
+            this.查看所有食材类别ToolStripMenuItem.Click += new System.EventHandler(this.查看所有食材类别ToolStripMenuItem_Click);
             // 
             // 帮助HToolStripMenuItem
             // 
@@ -746,12 +755,12 @@
             this.粘贴PToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.粘贴PToolStripMenuItem.Text = "粘贴(&P)";
             // 
-            // 查看所有食材类别ToolStripMenuItem
+            // 查看所有食材单位名称ToolStripMenuItem
             // 
-            this.查看所有食材类别ToolStripMenuItem.Name = "查看所有食材类别ToolStripMenuItem";
-            this.查看所有食材类别ToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.查看所有食材类别ToolStripMenuItem.Text = "查看所有 食材类别";
-            this.查看所有食材类别ToolStripMenuItem.Click += new System.EventHandler(this.查看所有食材类别ToolStripMenuItem_Click);
+            this.查看所有食材单位名称ToolStripMenuItem.Name = "查看所有食材单位名称ToolStripMenuItem";
+            this.查看所有食材单位名称ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.查看所有食材单位名称ToolStripMenuItem.Text = "查看所有 食材单位名称";
+            this.查看所有食材单位名称ToolStripMenuItem.Click += new System.EventHandler(this.查看所有食材单位名称ToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -861,5 +870,6 @@
         private System.Windows.Forms.Button btnCalculate;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.ToolStripMenuItem 查看所有食材类别ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 查看所有食材单位名称ToolStripMenuItem;
     }
 }
