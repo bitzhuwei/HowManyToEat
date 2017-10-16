@@ -108,5 +108,74 @@ namespace HowManyToEat
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var selectedItem = this.lstCategory.SelectedItem;
+            if (selectedItem != null)
+            {
+                if (MessageBox.Show(string.Format("是否确认删除【{0}】类别？（这将同步删除使用此类别的食材和使用这些食材的菜品！）", selectedItem), "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    // 删除category
+                    var category = selectedItem as IngredientCategory;
+                    IDictionary<Guid, IngredientCategory> categoryDict = IngredientCategory.GetAll();
+                    categoryDict.Remove(category.Id);
+                    // 删除关联到category的食材ingredient
+                    IDictionary<Guid, Ingredient> ingredientDict = Ingredient.GetAll();
+                    var toBeDeletedIngredients = (from item in ingredientDict.Values
+                                                  where item.Category.Id == category.Id
+                                                  select item.Id).ToList();
+                    foreach (var id in toBeDeletedIngredients)
+                    {
+                        ingredientDict.Remove(id);
+                    }
+                    // 删除关联到食材ingredient的菜品dish
+                    IDictionary<Guid, Dish> dishDict = Dish.GetAll();
+                    var toBeDeletedDishes = new List<Dish>();
+                    foreach (var dish in dishDict.Values)
+                    {
+                        foreach (var weightedIngredient in dish)
+                        {
+                            if (toBeDeletedIngredients.Contains(weightedIngredient.Ingredient.Id))
+                            {
+                                toBeDeletedDishes.Add(dish);
+                                break;
+                            }
+                        }
+                    }
+                    foreach (var dish in toBeDeletedDishes)
+                    {
+                        dishDict.Remove(dish.Id);
+                    }
+
+                    IngredientCategory.SaveDatabase(typeof(IngredientCategory).Name);
+                    Ingredient.SaveDatabase(typeof(Ingredient).Name);
+                    Dish.SaveDatabase(typeof(Dish).Name);
+
+                    this.lstCategory.Items.Remove(selectedItem);
+                    MessageBox.Show("已删除此类别！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void lstCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.btnDelete.Enabled = this.lstCategory.SelectedItems.Count > 0;
+            this.btnUpdate.Enabled = this.lstCategory.SelectedItems.Count > 0;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            var index = this.lstCategory.SelectedIndex;
+            if (0 <= index && index < this.lstCategory.Items.Count)
+            {
+                var category = this.lstCategory.Items[index] as IngredientCategory;
+                var frm = new FormUpdateIngredientCategory(category);
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    this.lstCategory.Items[index] = category;
+                }
+            }
+        }
+
     }
 }

@@ -197,7 +197,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormNewIngredientCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "录入新食材";
+            this.Text = "录入新食材类别";
             this.ResumeLayout(false);
             this.PerformLayout();
 

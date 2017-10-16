@@ -32,6 +32,8 @@ namespace HowManyToEat
 
         void FormNewIngrendient_Load(object sender, EventArgs e)
         {
+            this.txtName.Text = string.Empty;
+
             this.ReloadIngredientCategory();
 
             this.ReloadIngredientUnit();

@@ -38,6 +38,8 @@
             this.btnHigher = new System.Windows.Forms.Button();
             this.btnLower = new System.Windows.Forms.Button();
             this.btnLowest = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -101,8 +103,9 @@
             this.lstCategory.ItemHeight = 19;
             this.lstCategory.Location = new System.Drawing.Point(17, 39);
             this.lstCategory.Name = "lstCategory";
-            this.lstCategory.Size = new System.Drawing.Size(326, 479);
+            this.lstCategory.Size = new System.Drawing.Size(326, 441);
             this.lstCategory.TabIndex = 1;
+            this.lstCategory.SelectedIndexChanged += new System.EventHandler(this.lstCategory_SelectedIndexChanged);
             // 
             // btnHighest
             // 
@@ -152,6 +155,30 @@
             this.btnLowest.UseVisualStyleBackColor = true;
             this.btnLowest.Click += new System.EventHandler(this.btnLowest_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Location = new System.Drawing.Point(16, 486);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(98, 23);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "删除";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnUpdate.Enabled = false;
+            this.btnUpdate.Location = new System.Drawing.Point(120, 486);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(98, 23);
+            this.btnUpdate.TabIndex = 6;
+            this.btnUpdate.Text = "修改";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // FormAllIngredientCategory
             // 
             this.AcceptButton = this.btnOK;
@@ -165,13 +192,15 @@
             this.Controls.Add(this.btnHighest);
             this.Controls.Add(this.lstCategory);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "FormAllIngredientCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "所有食材的类别";
+            this.Text = "查看所有食材的类别";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +218,7 @@
         private System.Windows.Forms.Button btnHigher;
         private System.Windows.Forms.Button btnLower;
         private System.Windows.Forms.Button btnLowest;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

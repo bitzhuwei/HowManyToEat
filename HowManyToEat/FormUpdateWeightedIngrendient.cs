@@ -34,6 +34,8 @@ namespace HowManyToEat
             this.weighted = weightedIngredient;
 
             this.FillView(weightedIngredient.Ingredient);
+
+            this.txtWeight.Text = weightedIngredient.Weight.ToString();
         }
 
         private void btnOK_Click(object sender, EventArgs e)

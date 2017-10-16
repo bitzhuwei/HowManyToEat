@@ -64,6 +64,12 @@
     <Compile Include="FormAllIngredientCategory.Designer.cs">
       <DependentUpon>FormAllIngredientCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUpdateIngredientCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateIngredientCategory.Designer.cs">
+      <DependentUpon>FormUpdateIngredientCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUpdateDish.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAllIngredientCategory.resx">
       <DependentUpon>FormAllIngredientCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdateIngredientCategory.resx">
+      <DependentUpon>FormUpdateIngredientCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUpdateDish.resx">
       <DependentUpon>FormUpdateDish.cs</DependentUpon>

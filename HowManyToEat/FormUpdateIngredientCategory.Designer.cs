@@ -1,6 +1,6 @@
 ﻿namespace HowManyToEat
 {
-    partial class FormNewIngredientUnit
+    partial class FormUpdateIngredientCategory
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -40,7 +41,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(212, 86);
+            this.btnCancel.Location = new System.Drawing.Point(264, 120);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 23);
             this.btnCancel.TabIndex = 7;
@@ -71,26 +72,37 @@
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.Font = new System.Drawing.Font("宋体", 14F);
-            this.txtName.Location = new System.Drawing.Point(17, 37);
+            this.txtName.Location = new System.Drawing.Point(12, 37);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(304, 29);
+            this.txtName.Size = new System.Drawing.Size(361, 29);
             this.txtName.TabIndex = 0;
-            this.txtName.Text = "斤";
+            this.txtName.Text = "海鲜";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 14F);
-            this.label2.Location = new System.Drawing.Point(13, 15);
+            this.label2.Location = new System.Drawing.Point(8, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 19);
+            this.label2.Size = new System.Drawing.Size(161, 19);
             this.label2.TabIndex = 15;
-            this.label2.Text = "食材单位：";
+            this.label2.Text = "食材类别的名称：";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("宋体", 14F);
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(8, 82);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(351, 19);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "注意：这将影响所有使用此类别的食材！";
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(77, 86);
+            this.btnOK.Location = new System.Drawing.Point(129, 120);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(129, 23);
             this.btnOK.TabIndex = 6;
@@ -98,22 +110,23 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // FormNewIngredientUnit
+            // FormUpdateIngredientCategory
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(333, 121);
+            this.ClientSize = new System.Drawing.Size(385, 155);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Name = "FormNewIngredientUnit";
+            this.Name = "FormUpdateIngredientCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "录入新食材单位名称";
+            this.Text = "修改食材类别信息";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,6 +139,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnOK;
     }
 }
