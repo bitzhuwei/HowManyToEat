@@ -22,6 +22,12 @@ namespace HowManyToEat
         /// </summary>
         public int Count { get; set; }
 
+        private const string strHiddenWhenPrinting = "HiddenWhenPrinting";
+        /// <summary>
+        /// 打印时隐藏（即不打印出来）
+        /// </summary>
+        public bool HiddenWhenPrinting { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -54,6 +60,7 @@ namespace HowManyToEat
         {
             return new XElement(typeof(WeightedDish).Name,
                 new XAttribute(strCount, this.Count),
+                new XAttribute(strHiddenWhenPrinting, this.HiddenWhenPrinting),
                 new XElement(typeof(Dish).Name, this.Dish.Id));
         }
 
@@ -63,9 +70,10 @@ namespace HowManyToEat
 
             int count = int.Parse(xml.Attribute(strCount).Value);
             Guid id = new Guid(xml.Element(typeof(Dish).Name).Value);
+            bool hidden = bool.Parse(xml.Attribute(strHiddenWhenPrinting).Value);
             Dish dish = Dish.Select(id);
 
-            return new WeightedDish(dish, count);
+            return new WeightedDish(dish, count) { HiddenWhenPrinting = hidden };
         }
     }
 }

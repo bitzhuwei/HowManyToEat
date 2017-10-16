@@ -266,7 +266,7 @@ namespace HowManyToEat
             foreach (var item in items)
             {
                 var weightedDish = item as WeightedDish;
-                weightedDish.Dish.HiddenWhenPrinting = true;
+                weightedDish.HiddenWhenPrinting = true;
             }
             this.lstLeftDishes.Invalidate();
         }
@@ -277,7 +277,7 @@ namespace HowManyToEat
             foreach (var item in items)
             {
                 var weightedDish = item as WeightedDish;
-                weightedDish.Dish.HiddenWhenPrinting = false;
+                weightedDish.HiddenWhenPrinting = false;
             }
             this.lstLeftDishes.Invalidate();
         }
@@ -360,7 +360,7 @@ namespace HowManyToEat
             foreach (var item in items)
             {
                 var weightedDish = item as WeightedDish;
-                weightedDish.Dish.HiddenWhenPrinting = true;
+                weightedDish.HiddenWhenPrinting = true;
             }
             this.lstRightDishes.Invalidate();
         }
@@ -371,7 +371,7 @@ namespace HowManyToEat
             foreach (var item in items)
             {
                 var weightedDish = item as WeightedDish;
-                weightedDish.Dish.HiddenWhenPrinting = false;
+                weightedDish.HiddenWhenPrinting = false;
             }
             this.lstRightDishes.Invalidate();
         }
@@ -423,7 +423,7 @@ namespace HowManyToEat
             if (0 <= index && index < listBox.Items.Count)
             {
                 var weightedDish = listBox.Items[e.Index] as WeightedDish;
-                if (weightedDish.Dish.HiddenWhenPrinting)
+                if (weightedDish.HiddenWhenPrinting)
                 {
                     e.Graphics.DrawString(weightedDish.ToString(), e.Font, this.grayBrush, e.Bounds);
                 }

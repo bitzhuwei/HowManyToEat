@@ -113,7 +113,7 @@ namespace HowManyToEat
                     var result = from item in dict.Values
                                  where item.Name == unit.Name
                                  select item;
-                    if (result.Count() > 0)
+                    if (result.Count() == 0)
                     {
                         dict.Add(unit.Id, unit);
                         IngredientUnit.SaveDatabase(typeof(IngredientUnit).Name);

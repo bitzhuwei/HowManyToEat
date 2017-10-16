@@ -164,7 +164,7 @@ namespace HowManyToEat
             {
                 for (int i = 0; i < weightedDishList.Count - 1; i++)
                 {
-                    if (!weightedDishList[i].Dish.HiddenWhenPrinting)
+                    if (!weightedDishList[i].HiddenWhenPrinting)
                     {
                         builder.Append(weightedDishList[i].Dish.Name);
                     }
