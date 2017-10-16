@@ -81,7 +81,7 @@
             this.printDialog1.Document = this.printDocument1;
             this.printDialog1.UseEXDialog = true;
             // 
-            // button1
+            // btnSavePicture
             // 
             this.btnSavePicture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSavePicture.Location = new System.Drawing.Point(149, 678);
@@ -98,8 +98,10 @@
             // 
             // FormPrintPreview
             // 
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(500, 713);
             this.Controls.Add(this.btnSavePicture);
             this.Controls.Add(this.btnOK);
