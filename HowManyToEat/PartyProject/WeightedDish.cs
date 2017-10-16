@@ -54,7 +54,7 @@ namespace HowManyToEat
         {
             return new XElement(typeof(WeightedDish).Name,
                 new XAttribute(strCount, this.Count),
-                new XElement(typeof(Dish).Name, this.Dish.Name));
+                new XElement(typeof(Dish).Name, this.Dish.Id));
         }
 
         internal static WeightedDish Parse(XElement xml)
@@ -62,8 +62,8 @@ namespace HowManyToEat
             if (xml == null || xml.Name != typeof(WeightedDish).Name) { throw new ArgumentException(); }
 
             int count = int.Parse(xml.Attribute(strCount).Value);
-            string dishName = xml.Element(typeof(Dish).Name).Value;
-            Dish dish = Dish.Select(dishName);
+            Guid id = new Guid(xml.Element(typeof(Dish).Name).Value);
+            Dish dish = Dish.Select(id);
 
             return new WeightedDish(dish, count);
         }

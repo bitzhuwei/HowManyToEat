@@ -27,7 +27,7 @@ namespace HowManyToEat
             this.lstIngredient.Items.Clear();
             this.lstSelectedIngredient.Items.Clear();
 
-            IDictionary<string, Ingredient> ingredientDict = Ingredient.GetAll();
+            IDictionary<Guid, Ingredient> ingredientDict = Ingredient.GetAll();
             var groupedIngredients = from item in ingredientDict.Values
                                      group item by item.Category into g
                                      orderby g.Key.Priority ascending
@@ -164,11 +164,16 @@ namespace HowManyToEat
                 return false;
             }
 
-            IDictionary<string, Dish> dishDict = Dish.GetAll();
-            if (dishDict.ContainsKey(dishName))
+            IDictionary<Guid, Dish> dishDict = Dish.GetAll();
             {
-                MessageBox.Show(string.Format("已存在名为【{0}】的菜品!", dishName), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false;
+                var result = from item in dishDict.Values
+                             where item.Name == dishName
+                             select item;
+                if (result.Count() > 0)
+                {
+                    MessageBox.Show(string.Format("已存在名为【{0}】的菜品!", dishName), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
             }
 
             var dish = new Dish() { Name = dishName };
@@ -178,7 +183,7 @@ namespace HowManyToEat
                 var weighted = obj.Tag as WeightedIngredient;
                 dish.Add(weighted);
             }
-            dishDict.Add(dishName, dish);
+            dishDict.Add(dish.Id, dish);
             Dish.SaveDatabase(typeof(Dish).Name);
 
             return true;

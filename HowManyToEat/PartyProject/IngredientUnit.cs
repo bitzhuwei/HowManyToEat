@@ -57,7 +57,7 @@ namespace HowManyToEat
             return new IngredientUnit(id) { Name = unitName };
         }
 
-        private static readonly Dictionary<string, IngredientUnit> dictionary = new Dictionary<string, IngredientUnit>();
+        private static readonly Dictionary<Guid, IngredientUnit> dictionary = new Dictionary<Guid, IngredientUnit>();
 
         /// <summary>
         /// 
@@ -73,10 +73,10 @@ namespace HowManyToEat
             foreach (var item in xml.Elements(typeof(IngredientUnit).Name))
             {
                 IngredientUnit unit = IngredientUnit.Parse(item);
-                if (dictionary.ContainsKey(unit.Name))
+                if (dictionary.ContainsKey(unit.Id))
                 { throw new Exception(string.Format("发现重复的单位名称【{0}】！", unit.Name)); }
 
-                dictionary.Add(unit.Name, unit);
+                dictionary.Add(unit.Id, unit);
             }
         }
 
@@ -84,12 +84,12 @@ namespace HowManyToEat
         /// 
         /// </summary>
         /// <returns></returns>
-        public static IDictionary<string, IngredientUnit> GetAll()
+        public static IDictionary<Guid, IngredientUnit> GetAll()
         {
             return dictionary;
         }
 
-        internal static IngredientUnit Select(string unitName)
+        internal static IngredientUnit Select(Guid unitName)
         {
             IngredientUnit result;
             if (dictionary.TryGetValue(unitName, out result))

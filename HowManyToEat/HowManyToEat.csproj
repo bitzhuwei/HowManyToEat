@@ -77,7 +77,6 @@
       <DependentUpon>FormNewIngredientCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="PartyProject\Dish.cs" />
-    <Compile Include="PartyProject\DishList.cs" />
     <Compile Include="FormNewDish.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,9 +178,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="preview.png" />
-    <Content Include="printPreview.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

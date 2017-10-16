@@ -81,7 +81,7 @@ namespace HowManyToEat
             return result;
         }
 
-        private static Dictionary<string, Dish> dictionary = new Dictionary<string, Dish>();
+        private static Dictionary<Guid, Dish> dictionary = new Dictionary<Guid, Dish>();
 
         /// <summary>
         /// 
@@ -97,14 +97,14 @@ namespace HowManyToEat
             foreach (var item in xml.Elements(typeof(Dish).Name))
             {
                 Dish dish = Dish.Parse(item);
-                if (dictionary.ContainsKey(dish.Name))
+                if (dictionary.ContainsKey(dish.Id))
                 { throw new Exception(string.Format("发现重复的食材【{0}】！", dish.Name)); }
 
-                dictionary.Add(dish.Name, dish);
+                dictionary.Add(dish.Id, dish);
             }
         }
 
-        public static IDictionary<string, Dish> GetAll()
+        public static IDictionary<Guid, Dish> GetAll()
         {
             return dictionary;
         }
@@ -114,7 +114,7 @@ namespace HowManyToEat
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        internal static Dish Select(string name)
+        internal static Dish Select(Guid name)
         {
             Dish result;
             if (dictionary.TryGetValue(name, out result))

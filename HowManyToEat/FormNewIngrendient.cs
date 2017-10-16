@@ -27,7 +27,7 @@ namespace HowManyToEat
         private void ReloadIngredientCategory()
         {
             this.cmbCategory.Items.Clear();
-            IDictionary<string, IngredientCategory> dict = IngredientCategory.GetAll();
+            IDictionary<Guid, IngredientCategory> dict = IngredientCategory.GetAll();
             var list = from item in dict.Values
                        orderby item.Priority ascending
                        select item;
@@ -97,22 +97,30 @@ namespace HowManyToEat
             var unit = new IngredientUnit() { Name = unitName };
             var ingredient = new Ingredient() { Name = name, Category = category, Unit = unit, Price = price };
             {
-                IDictionary<string, Ingredient> ingredientDict = Ingredient.GetAll();
-                if (ingredientDict.ContainsKey(ingredient.Name))
+                IDictionary<Guid, Ingredient> ingredientDict = Ingredient.GetAll();
                 {
-                    MessageBox.Show(string.Format("已存在名为【{0}】的食材！", name), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
+                    var result = from item in ingredientDict.Values
+                                 where item.Name == ingredient.Name
+                                 select item;
+                    if (result.Count() > 0)
+                    {
+                        MessageBox.Show(string.Format("已存在名为【{0}】的食材！", name), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return false;
+                    }
                 }
                 {
-                    IDictionary<string, IngredientUnit> dict = IngredientUnit.GetAll();
-                    if (!dict.ContainsKey(unit.Name))
+                    IDictionary<Guid, IngredientUnit> dict = IngredientUnit.GetAll();
+                    var result = from item in dict.Values
+                                 where item.Name == unit.Name
+                                 select item;
+                    if (result.Count() > 0)
                     {
-                        dict.Add(unit.Name, unit);
+                        dict.Add(unit.Id, unit);
                         IngredientUnit.SaveDatabase(typeof(IngredientUnit).Name);
                     }
                 }
                 {
-                    ingredientDict.Add(ingredient.Name, ingredient);
+                    ingredientDict.Add(ingredient.Id, ingredient);
                     Ingredient.SaveDatabase(typeof(Ingredient).Name);
                 }
             }

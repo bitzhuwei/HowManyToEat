@@ -31,11 +31,11 @@ namespace HowManyToEat
         {
             this.listView1.Items.Clear();
 
-            IDictionary<string, Dish> dict = Dish.GetAll();
+            IDictionary<Guid, Dish> dict = Dish.GetAll();
 
             foreach (var item in dict)
             {
-                var obj = new ListViewItem(item.Key) { Tag = item.Value };
+                var obj = new ListViewItem(item.Value.Name) { Tag = item.Value };
                 this.listView1.Items.Add(obj);
             }
         }
@@ -52,7 +52,7 @@ namespace HowManyToEat
             {
                 if (MessageBox.Show("是否删除选中的菜品？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    IDictionary<string, Dish> dict = Dish.GetAll();
+                    IDictionary<Guid, Dish> dict = Dish.GetAll();
 
                     var list = new List<ListViewItem>();
                     foreach (var item in items)
@@ -62,7 +62,7 @@ namespace HowManyToEat
                     }
                     foreach (var item in list)
                     {
-                        dict.Remove(item.Text);
+                        dict.Remove((item.Tag as Dish).Id);
                         this.listView1.Items.Remove(item);
                     }
 

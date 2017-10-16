@@ -31,11 +31,11 @@ namespace HowManyToEat
         {
             this.listView1.Items.Clear();
 
-            IDictionary<string, Dish> dishList = Dish.GetAll();
+            IDictionary<Guid, Dish> dishList = Dish.GetAll();
 
             foreach (var item in dishList)
             {
-                var obj = new ListViewItem(item.Key) { Tag = item.Value };
+                var obj = new ListViewItem(item.Value.Name) { Tag = item.Value };
                 this.listView1.Items.Add(obj);
             }
         }

@@ -22,7 +22,7 @@ namespace HowManyToEat
 
         void FormNewIngredientCategory_Load(object sender, EventArgs e)
         {
-            IDictionary<string, IngredientCategory> ingredientDict = IngredientCategory.GetAll();
+            IDictionary<Guid, IngredientCategory> ingredientDict = IngredientCategory.GetAll();
             var list = from item in ingredientDict.Values
                        orderby item.Priority ascending
                        select item;
@@ -64,8 +64,11 @@ namespace HowManyToEat
                 return false;
             }
 
-            IDictionary<string, IngredientCategory> ingredientDict = IngredientCategory.GetAll();
-            if (ingredientDict.ContainsKey(this.newCatetory.Name))
+            IDictionary<Guid, IngredientCategory> ingredientDict = IngredientCategory.GetAll();
+            var result = from item in ingredientDict.Values
+                         where item.Name == this.newCatetory.Name
+                         select item;
+            if (result.Count() > 0)
             {
                 MessageBox.Show(string.Format("已存在名为【{0}】的食材类别！", name), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
@@ -77,7 +80,7 @@ namespace HowManyToEat
                 obj.Priority = i;
             }
 
-            ingredientDict.Add(this.newCatetory.Name, this.newCatetory);
+            ingredientDict.Add(this.newCatetory.Id, this.newCatetory);
             IngredientCategory.SaveDatabase(typeof(IngredientCategory).Name);
 
             return true;

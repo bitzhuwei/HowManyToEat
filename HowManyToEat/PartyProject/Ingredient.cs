@@ -63,8 +63,8 @@ namespace HowManyToEat
             return new XElement(typeof(Ingredient).Name,
                 new XAttribute(strId, this.Id),
                 new XAttribute(strName, this.Name),
-                new XAttribute(strCategory, this.Category.Name),
-                new XAttribute(strUnitName, this.Unit.Name),
+                new XAttribute(strCategory, this.Category.Id),
+                new XAttribute(strUnitName, this.Unit.Id),
                 new XAttribute(strPrice, this.Price));
         }
 
@@ -74,14 +74,14 @@ namespace HowManyToEat
 
             Guid id = new Guid(xml.Attribute(strId).Value);
             string name = xml.Attribute(strName).Value;
-            IngredientCategory category = IngredientCategory.Select(xml.Attribute(strCategory).Value);
-            IngredientUnit unitName = IngredientUnit.Select(xml.Attribute(strUnitName).Value);
+            IngredientCategory category = IngredientCategory.Select(new Guid(xml.Attribute(strCategory).Value));
+            IngredientUnit unitName = IngredientUnit.Select(new Guid(xml.Attribute(strUnitName).Value));
             float price = float.Parse(xml.Attribute(strPrice).Value);
 
             return new Ingredient(id) { Name = name, Category = category, Unit = unitName, Price = price };
         }
 
-        private static readonly Dictionary<string, Ingredient> dictionary = new Dictionary<string, Ingredient>();
+        private static readonly Dictionary<Guid, Ingredient> dictionary = new Dictionary<Guid, Ingredient>();
 
         /// <summary>
         /// 
@@ -97,10 +97,10 @@ namespace HowManyToEat
             foreach (var item in xml.Elements(typeof(Ingredient).Name))
             {
                 Ingredient ingredient = Ingredient.Parse(item);
-                if (dictionary.ContainsKey(ingredient.Name))
+                if (dictionary.ContainsKey(ingredient.Id))
                 { throw new Exception(string.Format("发现重复的食材【{0}】！", ingredient.Name)); }
 
-                dictionary.Add(ingredient.Name, ingredient);
+                dictionary.Add(ingredient.Id, ingredient);
             }
         }
 
@@ -108,7 +108,7 @@ namespace HowManyToEat
         /// 
         /// </summary>
         /// <returns></returns>
-        public static IDictionary<string, Ingredient> GetAll()
+        public static IDictionary<Guid, Ingredient> GetAll()
         {
             return dictionary;
         }
@@ -116,18 +116,18 @@ namespace HowManyToEat
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        internal static Ingredient Select(string name)
+        internal static Ingredient Select(Guid id)
         {
             Ingredient result;
-            if (dictionary.TryGetValue(name, out result))
+            if (dictionary.TryGetValue(id, out result))
             {
                 return result;
             }
             else
             {
-                throw new ArgumentException(string.Format("数据库中没有指定的【{0}】食材(工具)！", name), "name");
+                throw new ArgumentException(string.Format("数据库中没有指定的【{0}】食材(工具)！", id), "name");
             }
         }
 

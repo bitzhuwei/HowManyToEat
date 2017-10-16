@@ -22,7 +22,7 @@ namespace HowManyToEat
         {
             this.lstIngredient.Items.Clear();
 
-            IDictionary<string, Ingredient> ingredientDict = Ingredient.GetAll();
+            IDictionary<Guid, Ingredient> ingredientDict = Ingredient.GetAll();
             var groupedIngredients = from item in ingredientDict.Values
                                      group item by item.Category into g
                                      orderby g.Key.Priority ascending
@@ -51,9 +51,9 @@ namespace HowManyToEat
                         var obj = item as ListViewItem;
                         selectedItems.Add(obj);
                     }
-                    IDictionary<string, Dish> dishDict = Dish.GetAll();
-                    IDictionary<string, Ingredient> ingredientDict = Ingredient.GetAll();
-                    var standByDishList = new List<string>();
+                    IDictionary<Guid, Dish> dishDict = Dish.GetAll();
+                    IDictionary<Guid, Ingredient> ingredientDict = Ingredient.GetAll();
+                    var standByDishList = new List<Guid>();
 
                     foreach (var item in selectedItems)
                     {
@@ -72,7 +72,7 @@ namespace HowManyToEat
                             }
                         }
 
-                        ingredientDict.Remove(ingredient.Name);
+                        ingredientDict.Remove(ingredient.Id);
                         this.lstIngredient.Items.Remove(item);
                     }
 
