@@ -493,5 +493,10 @@ namespace HowManyToEat
         public Pen CurrentPen { get; set; }
 
         public Brush CurrentBrush { get; set; }
+
+        private void 查看所有食材类别ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new FormAllIngredientCategory()).ShowDialog();
+        }
     }
 }
