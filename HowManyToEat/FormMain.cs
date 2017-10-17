@@ -76,6 +76,7 @@ namespace HowManyToEat
             IngredientUnit.LoadDatabase(typeof(IngredientUnit).Name + ".xml");
             Ingredient.LoadDatabase(typeof(Ingredient).Name + ".xml");
             Dish.LoadDatabase(typeof(Dish).Name + ".xml");
+
         }
 
         private void 新建NToolStripButton_Click(object sender, EventArgs e)
@@ -502,6 +503,46 @@ namespace HowManyToEat
         private void 查看所有食材单位名称ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (new FormAllIngredientUnit()).ShowDialog();
+        }
+
+        private void 关于AToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("席宴食材统计软件 东大街宴会大厅专用！", "祝威制作", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void 退出XToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.CurrentPartyProject.Fullname))
+            {
+                if (MessageBox.Show("是否保存当前方案？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    if (this.saveProjectDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        this.CurrentPartyProject.Fullname = this.saveProjectDlg.FileName;
+                        this.CurrentPartyProject.Save();
+                        this.UpdateTitle(this.CurrentPartyProject.Fullname);
+                        MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                    }
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("是否保存当前方案？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    this.CurrentPartyProject.Save();
+                    this.UpdateTitle(this.CurrentPartyProject.Fullname);
+                    MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }
