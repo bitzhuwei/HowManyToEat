@@ -456,14 +456,20 @@ namespace HowManyToEat
                 Calculate(ingredientDict, weightedDish, tableCount);
             }
 
-            var list = from item in ingredientDict.Values
-                       orderby item.Ingredient.Category.Priority
-                       select item;
+            var groupedIngredient = from item in ingredientDict.Values
+                                    group item by item.Ingredient.Category into g
+                                    orderby g.Key.Priority ascending
+                                    select g;
 
             var builder = new StringBuilder();
-            foreach (var item in list)
+            foreach (var item in groupedIngredient)
             {
-                builder.Append(item); builder.Append("， ");
+                builder.Append(item.Key.Name); builder.AppendLine("：");
+                foreach (var weightedIngredient in item)
+                {
+                    builder.Append(weightedIngredient); builder.Append("， ");
+                }
+                builder.AppendLine();
             }
 
             this.txtResult.Text = builder.ToString();

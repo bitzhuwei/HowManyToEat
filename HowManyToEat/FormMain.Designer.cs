@@ -85,6 +85,8 @@
             this.打印时显示rightDishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.leftDishesMenuStrip.SuspendLayout();
@@ -456,9 +458,9 @@
             this.lstLeftDishes.Font = new System.Drawing.Font("宋体", 18F);
             this.lstLeftDishes.FormattingEnabled = true;
             this.lstLeftDishes.ItemHeight = 24;
-            this.lstLeftDishes.Location = new System.Drawing.Point(12, 76);
+            this.lstLeftDishes.Location = new System.Drawing.Point(12, 104);
             this.lstLeftDishes.Name = "lstLeftDishes";
-            this.lstLeftDishes.Size = new System.Drawing.Size(234, 460);
+            this.lstLeftDishes.Size = new System.Drawing.Size(234, 436);
             this.lstLeftDishes.TabIndex = 6;
             this.lstLeftDishes.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lstbothDishes_DrawItem);
             this.lstLeftDishes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstLeftDishes_MouseDoubleClick);
@@ -472,9 +474,9 @@
             this.lstRightDishes.Font = new System.Drawing.Font("宋体", 18F);
             this.lstRightDishes.FormattingEnabled = true;
             this.lstRightDishes.ItemHeight = 24;
-            this.lstRightDishes.Location = new System.Drawing.Point(252, 76);
+            this.lstRightDishes.Location = new System.Drawing.Point(252, 104);
             this.lstRightDishes.Name = "lstRightDishes";
-            this.lstRightDishes.Size = new System.Drawing.Size(234, 460);
+            this.lstRightDishes.Size = new System.Drawing.Size(234, 436);
             this.lstRightDishes.TabIndex = 6;
             this.lstRightDishes.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lstbothDishes_DrawItem);
             this.lstRightDishes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstRightDishes_MouseDoubleClick);
@@ -569,6 +571,26 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 14F);
+            this.label2.Location = new System.Drawing.Point(10, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 19);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "左列菜单";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 14F);
+            this.label3.Location = new System.Drawing.Point(248, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 19);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "右列菜单";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -579,6 +601,8 @@
             this.Controls.Add(this.lstRightDishes);
             this.Controls.Add(this.lstLeftDishes);
             this.Controls.Add(this.numTableCount);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
@@ -658,5 +682,7 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.ToolStripMenuItem 查看所有食材类别ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查看所有食材单位名称ToolStripMenuItem;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
