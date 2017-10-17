@@ -27,7 +27,7 @@ namespace HowManyToEat
             var ingredient = this.Ingredient;
             if (ingredient == null)
             {
-                return string.Format("[没有指定食材]");
+                return string.Format("【没有指定食材】");
             }
             else
             {

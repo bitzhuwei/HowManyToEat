@@ -46,12 +46,11 @@ namespace HowManyToEat
             var dish = this.Dish;
             if (dish == null)
             {
-                return string.Format("【没有指定菜品]");
+                return string.Format("【没有指定菜品】");
             }
             else
             {
                 string name = dish.Name;
-                int count = this.Count;
                 return string.Format("{0}", name);
             }
         }
