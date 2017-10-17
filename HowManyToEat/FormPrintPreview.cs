@@ -57,6 +57,10 @@ namespace HowManyToEat
                     break;
                 }
             }
+
+            Bitmap image = partyProject.DumpBitmap(tableCount, this.CurrentFont, this.CurrentPen, this.CurrentBrush);
+            Rectangle destRect = new Rectangle(0, 0, image.Width, image.Height);
+            this.pictureBox1.BackgroundImage = image;
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
