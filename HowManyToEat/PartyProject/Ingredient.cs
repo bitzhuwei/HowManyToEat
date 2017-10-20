@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,12 @@ namespace HowManyToEat
         /// </summary>
         public IngredientUnit Unit { get; set; }
 
+        private const string strForeColor = "ForeColor";
+        /// <summary>
+        /// 
+        /// </summary>
+        public Color ForeColor { get; set; }
+
         private const string strPrice = "Price";
         /// <summary>
         /// 单价。
@@ -45,7 +52,7 @@ namespace HowManyToEat
         /// <summary>
         /// 
         /// </summary>
-        public Ingredient() { this.Id = Guid.NewGuid(); }
+        public Ingredient() { this.Id = Guid.NewGuid(); this.ForeColor = Color.Black; }
 
         /// <summary>
         /// 
@@ -65,6 +72,7 @@ namespace HowManyToEat
                 new XAttribute(strName, this.Name),
                 new XAttribute(strCategory, this.Category.Id),
                 new XAttribute(strUnitName, this.Unit.Id),
+                new XAttribute(strForeColor, string.Format("{0},{1},{2}", this.ForeColor.R, this.ForeColor.G, this.ForeColor.B)),
                 new XAttribute(strPrice, this.Price));
         }
 
@@ -76,9 +84,21 @@ namespace HowManyToEat
             string name = xml.Attribute(strName).Value;
             IngredientCategory category = IngredientCategory.Select(new Guid(xml.Attribute(strCategory).Value));
             IngredientUnit unit = IngredientUnit.Select(new Guid(xml.Attribute(strUnitName).Value));
+            Color color;
+            var colorAttr = xml.Attribute(strForeColor);
+            if (colorAttr != null)
+            {
+                string[] parts = colorAttr.Value.Split(',');
+                int r = int.Parse(parts[0]), g = int.Parse(parts[1]), b = int.Parse(parts[2]);
+                color = Color.FromArgb(r, g, b);
+            }
+            else
+            {
+                color = Color.Black;
+            }
             float price = float.Parse(xml.Attribute(strPrice).Value);
 
-            return new Ingredient(id) { Name = name, Category = category, Unit = unit, Price = price };
+            return new Ingredient(id) { Name = name, Category = category, Unit = unit, ForeColor = color, Price = price };
         }
 
         private static readonly Dictionary<Guid, Ingredient> dictionary = new Dictionary<Guid, Ingredient>();

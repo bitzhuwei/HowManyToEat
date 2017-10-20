@@ -62,6 +62,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSwitchView = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -113,7 +114,7 @@
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(12, 461);
+            this.btnDelete.Location = new System.Drawing.Point(117, 461);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(88, 23);
             this.btnDelete.TabIndex = 4;
@@ -125,7 +126,7 @@
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(106, 461);
+            this.btnUpdate.Location = new System.Drawing.Point(211, 461);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(88, 23);
             this.btnUpdate.TabIndex = 5;
@@ -145,12 +146,24 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // btnSwitchView
+            // 
+            this.btnSwitchView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSwitchView.Location = new System.Drawing.Point(12, 461);
+            this.btnSwitchView.Name = "btnSwitchView";
+            this.btnSwitchView.Size = new System.Drawing.Size(88, 23);
+            this.btnSwitchView.TabIndex = 4;
+            this.btnSwitchView.Text = "切换视图";
+            this.btnSwitchView.UseVisualStyleBackColor = true;
+            this.btnSwitchView.Click += new System.EventHandler(this.btnSwitchView_Click);
+            // 
             // FormAllDishes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(768, 496);
+            this.Controls.Add(this.btnSwitchView);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnCancel);
@@ -168,5 +181,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSwitchView;
     }
 }

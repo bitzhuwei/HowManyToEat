@@ -106,5 +106,14 @@ namespace HowManyToEat
                 }
             }
         }
+
+        private void btnCategoryOrder_Click(object sender, EventArgs e)
+        {
+            var frm = new FormAllIngredientCategory();
+            if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.FormAllIngredients_Load(sender, e);
+            }
+        }
     }
 }

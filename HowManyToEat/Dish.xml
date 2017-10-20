@@ -1,14 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Dish>
-  <Dish Name="一碗米饭">
-    <WeightedIngredient Weight="1">
-      <Ingredient Name="小碗" Category="餐具" UnitName="个" Price="0" />
-    </WeightedIngredient>
-    <WeightedIngredient Weight="1.2">
-      <Ingredient Name="筷子" Category="餐具" UnitName="双" Price="0" />
-    </WeightedIngredient>
-    <WeightedIngredient Weight="0.1">
-      <Ingredient Name="大米" Category="主粮" UnitName="斤" Price="0" />
-    </WeightedIngredient>
+  <Dish Id="5ce64467-d877-4a81-96c0-4ee676df4d53" Name="酱鸡">
+    <WeightedIngredient Weight="1" Ingredient="4eceee3d-eb67-4d32-a2c7-b096c1189a35" />
+  </Dish>
+  <Dish Id="616b7d3b-e4fd-4137-ba93-d9a823d90d7b" Name="小驴肉">
+    <WeightedIngredient Weight="0.7" Ingredient="7cdc2e5e-7a33-4e8a-b257-5c9b99032fe5" />
+  </Dish>
+  <Dish Id="b669418f-f6dd-4d82-952a-86c1c11427c1" Name="椒盐虾">
+    <WeightedIngredient Weight="0.125" Ingredient="3b74a767-0fa0-4414-abcd-e339f20d793d" />
+  </Dish>
+  <Dish Id="2780bb0c-db71-4a59-9ad0-ddaabe8b93a2" Name="地瓜丸">
+    <WeightedIngredient Weight="0.834" Ingredient="337aa746-bbe9-4869-8091-972c0add3901" />
+  </Dish>
+  <Dish Id="3b224184-f081-417b-a769-4a9e92e286c4" Name="葱泥耳丝">
+    <WeightedIngredient Weight="0.3" Ingredient="7432be9e-b1a2-4a3f-9dcf-ebb8cd025278" />
+  </Dish>
+  <Dish Id="95225d0d-18f3-4571-9041-dc7b423efa72" Name="碗菜">
+    <WeightedIngredient Weight="0.1" Ingredient="ba9b1655-cc8c-4b76-afb5-03115f5a8cdc" />
+    <WeightedIngredient Weight="0.1" Ingredient="568a428f-773e-4ef5-ae4a-72a53e1cf170" />
+    <WeightedIngredient Weight="0.1" Ingredient="c91998d7-f519-43b6-846c-8400729120d8" />
+    <WeightedIngredient Weight="0.2" Ingredient="abc154e3-fc58-4b1b-b880-6ec66af455bf" />
+    <WeightedIngredient Weight="0.1" Ingredient="194dcd6b-6c3a-410e-bf5c-1f3e112d5956" />
+    <WeightedIngredient Weight="0.06" Ingredient="2dd61027-c95d-47b8-8f37-1a5f004f1210" />
+    <WeightedIngredient Weight="0.1" Ingredient="22544574-1305-4e0d-94f0-c717c27a62a2" />
+  </Dish>
+  <Dish Id="90c37d4a-52bf-4b3f-a533-84231d886aba" Name="鸭块">
+    <WeightedIngredient Weight="0.5" Ingredient="0c87e678-538e-4e29-897d-d4b913db376e" />
+  </Dish>
+  <Dish Id="9f19d621-14b3-4073-91fa-16a2363050ae" Name="鲽鱼">
+    <WeightedIngredient Weight="0.05" Ingredient="22357ade-6f2d-4ace-b9c8-2a926cfd3aab" />
+    <WeightedIngredient Weight="0.1" Ingredient="e2a10fd5-56e2-473e-b846-9b341f06997f" />
+    <WeightedIngredient Weight="0.1" Ingredient="c15139a0-f973-489c-bc46-eff5cbbf5bc8" />
+  </Dish>
+  <Dish Id="05b0f587-895f-463f-b2b4-a69272858520" Name="肘子">
+    <WeightedIngredient Weight="1" Ingredient="36f9a798-251f-4c93-8514-59302ed45cc5" />
+  </Dish>
+  <Dish Id="43dc1785-3d62-4597-ac02-c308bb9ffcd3" Name="排骨">
+    <WeightedIngredient Weight="1" Ingredient="234b701d-d50f-4987-a3d3-753b71e272ef" />
+  </Dish>
+  <Dish Id="9e31dedc-8c18-453d-b778-71bcfbc89063" Name="萝卜牛肉">
+    <WeightedIngredient Weight="0.5" Ingredient="6e1ace35-6d38-44f9-a2c2-cea1ffe3eb19" />
+    <WeightedIngredient Weight="0.8" Ingredient="c8ffaf8d-b532-4e3b-ac25-3544c0e166d7" />
+  </Dish>
+  <Dish Id="4a3f5074-da7b-40dc-b09a-d26192c2fda6" Name="鱼香肉丝">
+    <WeightedIngredient Weight="0.2" Ingredient="e21da375-c6a2-4fca-b299-f3134119e9db" />
+    <WeightedIngredient Weight="0.2" Ingredient="e2048a57-db57-45e6-b0a3-683e8fd5a12d" />
+    <WeightedIngredient Weight="0.1" Ingredient="0f25c978-6dca-4329-b37b-4873b6409893" />
+    <WeightedIngredient Weight="0.3" Ingredient="8448023d-e55c-4bce-8eeb-7f32233c4e3f" />
+  </Dish>
+  <Dish Id="958acf27-6f3c-486a-853b-44f5f4ab2a21" Name="三鲜肚条">
+    <WeightedIngredient Weight="0.1" Ingredient="8030462a-9d9f-46f2-82cd-375f722d1130" />
+    <WeightedIngredient Weight="0.3" Ingredient="e21da375-c6a2-4fca-b299-f3134119e9db" />
+    <WeightedIngredient Weight="0.4" Ingredient="3eebb6ae-82f9-40a5-adbd-4091171847f2" />
   </Dish>
 </Dish>
