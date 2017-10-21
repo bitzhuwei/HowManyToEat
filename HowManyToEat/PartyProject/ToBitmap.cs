@@ -32,10 +32,78 @@ namespace HowManyToEat
                 DrawDishes(project, font, pen, brush, x, y, graphics, out maxWidth, out maxHeight);
                 // 所有的食材
                 List<WeightedIngredient> list = GetIngredientList(project);
-                // 找到右侧陈列的食材（最后一个食材的索引）
-                int lastIndex = GetLastIndex(tableCount, font, width, x, y, graphics, maxWidth, maxHeight, list);
-                DrawRightIngrendients(tableCount, font, brush, width, x, y, graphics, maxWidth, maxHeight, list, lastIndex);
-                DrawDownIngredients(tableCount, font, brush, width, x, y, graphics, maxHeight, list, lastIndex);
+                //// 找到右侧陈列的食材（最后一个食材的索引）
+                //int lastIndex = GetLastIndex(tableCount, font, width, x, y, graphics, maxWidth, maxHeight, list);
+                //DrawRightIngrendients(tableCount, font, brush, width, x, y, graphics, maxWidth, maxHeight, list, lastIndex);
+                //DrawDownIngredients(tableCount, font, brush, width, x, y, graphics, maxHeight, list, lastIndex);
+                var groupedIngredients = from item in list
+                                         group item by item.Ingredient.Category into g
+                                         select g;
+                var chunkList = new List<ChunkBase>();
+                //const string fontName = "宋体";
+                //const int fontSize = 32;
+                //const GraphicsUnit fontUnit = GraphicsUnit.Pixel;
+                //Font font = new Font(fontName, fontSize, fontUnit);
+                foreach (var group in groupedIngredients)
+                {
+                    {
+                        string str = string.Format("{0}:", group.Key.Name);
+                        var chunk = new StringChunk(str, font) { Tag = group.Key };
+                        chunkList.Add(chunk);
+                        chunkList.Add(new NewLineChunk());
+                    }
+                    foreach (var weighted in group)
+                    {
+                        string str = string.Format("{0} ", weighted);
+                        var chunk = new StringChunk(str, font) { Tag = weighted };
+                        chunkList.Add(chunk);
+                    }
+                    chunkList.Add(new NewLineChunk());
+                }
+                var page0 = new Page(width - x * 2 - (int)Math.Ceiling(maxWidth) * 2 - x * 2, (int)Math.Ceiling(maxHeight));
+                page0.Left = x * 2 + (int)Math.Ceiling(maxWidth) * 2;
+                page0.Top = y * 2;
+                var page1 = new Page(width - x * 2, height - y * 2 - (int)Math.Ceiling(maxHeight));
+                page1.Left = x * 2;
+                page1.Top = y * 2 + (int)Math.Ceiling(maxHeight);
+                var context = new PagesContext(page0, page1);
+                foreach (var item in chunkList)
+                {
+                    item.Put(context);
+                }
+
+                foreach (var item in chunkList)
+                {
+                    SizeF bigSize = graphics.MeasureString(item.Text, font);
+                    Bitmap bigImage = new Bitmap((int)bigSize.Width, (int)bigSize.Height);
+                    if (item.Tag is IngredientCategory)
+                    {
+                        using (var g = Graphics.FromImage(bigImage))
+                        { g.DrawString(item.Text, font, brush, 0, 0); }
+                    }
+                    else if (item.Tag is WeightedIngredient)
+                    {
+                        var weighted = item.Tag as WeightedIngredient;
+                        var ingredientBrush = new SolidBrush(weighted.Ingredient.ForeColor);
+                        using (var g = Graphics.FromImage(bigImage))
+                        { g.DrawString(item.Text, font, ingredientBrush, 0, 0); }
+                        ingredientBrush.Dispose();
+                    }
+
+                    graphics.DrawImage(bigImage,
+                        new Rectangle(
+                            item.LeftTop.X + context.Pages[item.PageIndex].Left,
+                            item.LeftTop.Y + context.Pages[item.PageIndex].Top,
+                            item.TheSize.Width,
+                            item.TheSize.Height),
+                        new Rectangle(
+                            (bigImage.Width - item.TheSize.Width) / 2,
+                            0,
+                            item.TheSize.Width,
+                            item.TheSize.Height),
+                        GraphicsUnit.Pixel);
+                    bigImage.Dispose();
+                }
             }
 
             return bitmap;
@@ -80,7 +148,7 @@ namespace HowManyToEat
             }
 
             string allStr = allBuilder.ToString();
-            SizeF size = graphics.MeasureString(allStr, font, width - x * 2 - y * 2);
+            SizeF size = graphics.MeasureString(allStr, font, width - x * 2);
             graphics.DrawString(allStr, font, brush, new RectangleF(
                 x * 2, y * 2 + maxHeight, size.Width, size.Height));
         }
@@ -97,7 +165,7 @@ namespace HowManyToEat
                 lineBuilder.Append(itemStr);
                 string lineStr = lineBuilder.ToString();
                 SizeF lineSize = graphics.MeasureString(lineStr, font);
-                if (lineSize.Width > width - x * 2 - (int)Math.Ceiling(maxWidth) * 2 - y * 2)
+                if (lineSize.Width > width - x * 2 - (int)Math.Ceiling(maxWidth) * 2)
                 {
                     allBuilder.AppendLine();
                     lineBuilder = new StringBuilder();
@@ -109,7 +177,7 @@ namespace HowManyToEat
             string allStr = allBuilder.ToString();
             graphics.DrawString(allStr, font, brush, new RectangleF(
                 x * 2 + maxWidth * 2, y * 2,
-                width - x * 2 - (int)Math.Ceiling(maxWidth) * 2 - y * 2, maxHeight));
+                width - x * 2 - (int)Math.Ceiling(maxWidth) * 2, maxHeight));
         }
 
         private static int GetLastIndex(int tableCount, Font font, int width, int x, int y, Graphics graphics, float maxWidth, float maxHeight, List<WeightedIngredient> list)

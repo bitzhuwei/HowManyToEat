@@ -13,38 +13,42 @@ namespace HowManyToEat
     /// </summary>
     public class NewLineChunk : ChunkBase
     {
+        private static readonly Font font = new Font("宋体", 32, GraphicsUnit.Pixel);
+
+        public NewLineChunk() : base(Environment.NewLine, font) { }
+
         public override void Put(PagesContext context)
         {
             if (context == null) { throw new ArgumentNullException("context"); }
             Graphics graphics = context.UnitGraphics;
             if (graphics == null) { throw new Exception("Context already disposed!"); }
 
-            if (context.Surfaces.Length <= context.CurrentIndex) // 页用完了。
+            if (context.Pages.Length <= context.CurrentIndex) // 页用完了。
             {
                 // 页索引超出范围，表示页不够用了。
                 return;
             }
 
-            Page page = context.Surfaces[context.CurrentIndex];
+            Page page = context.Pages[context.CurrentIndex];
             float height = context.MaxLineHeight;
 
             if (page.Height < context.CurrentLeftTop.Y + height) // 要换页了。
             {
                 context.CurrentIndex++;
-                if (context.Surfaces.Length <= context.CurrentIndex) // 页用完了。
+                if (context.Pages.Length <= context.CurrentIndex) // 页用完了。
                 {
                     return;
                 }
                 else // 用下一页。
                 {
                     context.CurrentLeftTop = new Point(0, 0);
-                    context.MaxLineHeight = 0;
+                    //context.MaxLineHeight = 0;
                 }
             }
             else // 仅仅换行，不换页。
             {
                 context.CurrentLeftTop = new Point(0, context.CurrentLeftTop.Y + (int)height);
-                context.MaxLineHeight = 0;
+                //context.MaxLineHeight = 0;
             }
         }
     }

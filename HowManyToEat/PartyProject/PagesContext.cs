@@ -11,7 +11,7 @@ namespace HowManyToEat
     /// <summary>
     /// 布局状态。
     /// </summary>
-    public abstract class PagesContext : IDisposable
+    public class PagesContext : IDisposable
     {
         private Page[] surfaces;
         private Image unitImage = new Bitmap(1, 1);
@@ -19,7 +19,7 @@ namespace HowManyToEat
         /// <summary>
         /// 画布列表。
         /// </summary>
-        public Page[] Surfaces
+        public Page[] Pages
         {
             get { return surfaces; }
             set { surfaces = value; }
@@ -102,6 +102,14 @@ namespace HowManyToEat
     /// </summary>
     public class Page
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Left { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Top { get; set; }
         /// <summary>
         /// 
         /// </summary>
