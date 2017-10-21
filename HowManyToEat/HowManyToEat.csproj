@@ -118,6 +118,10 @@
     <Compile Include="FormUpdateIngredient.Designer.cs">
       <DependentUpon>FormUpdateIngredient.cs</DependentUpon>
     </Compile>
+    <Compile Include="PartyProject\NewLineChunk.cs" />
+    <Compile Include="PartyProject\StringChunk.cs" />
+    <Compile Include="PartyProject\PagesContext.cs" />
+    <Compile Include="PartyProject\ChunkBase.cs" />
     <Compile Include="PartyProject\Dish.cs" />
     <Compile Include="FormNewDish.cs">
       <SubType>Form</SubType>
