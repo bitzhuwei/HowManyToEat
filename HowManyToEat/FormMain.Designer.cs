@@ -218,14 +218,14 @@
             // 
             this.录入食材ToolStripMenuItem.Name = "录入食材ToolStripMenuItem";
             this.录入食材ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.录入食材ToolStripMenuItem.Text = "录入新食材";
+            this.录入食材ToolStripMenuItem.Text = "录入 新食材";
             this.录入食材ToolStripMenuItem.Click += new System.EventHandler(this.录入食材ToolStripMenuItem_Click);
             // 
             // 录入菜品ToolStripMenuItem
             // 
             this.录入菜品ToolStripMenuItem.Name = "录入菜品ToolStripMenuItem";
             this.录入菜品ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.录入菜品ToolStripMenuItem.Text = "录入新菜品";
+            this.录入菜品ToolStripMenuItem.Text = "录入 新菜品";
             this.录入菜品ToolStripMenuItem.Click += new System.EventHandler(this.录入菜品ToolStripMenuItem_Click);
             // 
             // 查看所有菜品ToolStripMenuItem
@@ -267,7 +267,7 @@
             // 关于AToolStripMenuItem
             // 
             this.关于AToolStripMenuItem.Name = "关于AToolStripMenuItem";
-            this.关于AToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.关于AToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关于AToolStripMenuItem.Text = "关于(&A)...";
             this.关于AToolStripMenuItem.Click += new System.EventHandler(this.关于AToolStripMenuItem_Click);
             // 
