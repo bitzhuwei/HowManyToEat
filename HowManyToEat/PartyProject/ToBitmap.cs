@@ -6,6 +6,9 @@ using System.Text;
 
 namespace HowManyToEat
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class ToBitmap
     {
         /// <summary>
