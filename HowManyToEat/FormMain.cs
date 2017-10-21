@@ -152,7 +152,7 @@ namespace HowManyToEat
             if (project != null)
             {
                 int tableCount = (int)this.numTableCount.Value;
-                Bitmap image = project.DumpBitmap(tableCount, this.CurrentFont, this.CurrentPen, this.CurrentBrush);
+                Bitmap image = project.DumpBitmap(tableCount, this.CurrentFont, this.CurrentPen, this.CurrentBrush, false);
                 Rectangle destRect = new Rectangle(0, 0, image.Width, image.Height);
                 e.Graphics.DrawImage(image, destRect, destRect, GraphicsUnit.Pixel);
             }

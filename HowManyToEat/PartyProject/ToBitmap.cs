@@ -15,7 +15,7 @@ namespace HowManyToEat
         /// <param name="font"></param>
         /// <param name="brush"></param>
         /// <returns></returns>
-        public static Bitmap DumpBitmap(this PartyProject project, int tableCount, Font font, Pen pen, Brush brush)
+        public static Bitmap DumpBitmap(this PartyProject project, int tableCount, Font font, Pen pen, Brush brush, bool showRectangle)
         {
             if (project == null) { return null; }
 
@@ -96,12 +96,15 @@ namespace HowManyToEat
                             item.TheSize.Width,
                             item.TheSize.Height),
                         GraphicsUnit.Pixel);
-                    //graphics.DrawRectangle(pen,
-                    //    new Rectangle(
-                    //        (int)(item.LeftTop.X + context.Pages[item.PageIndex].Left),
-                    //        (int)(item.LeftTop.Y + context.Pages[item.PageIndex].Top),
-                    //        (int)(item.TheSize.Width),
-                    //        (int)(item.TheSize.Height)));
+                    if (showRectangle)
+                    {
+                        graphics.DrawRectangle(pen,
+                            new Rectangle(
+                                (int)(item.LeftTop.X + context.Pages[item.PageIndex].Left),
+                                (int)(item.LeftTop.Y + context.Pages[item.PageIndex].Top),
+                                (int)(item.TheSize.Width),
+                                (int)(item.TheSize.Height)));
+                    }
                     bigImage.Dispose();
                 }
             }

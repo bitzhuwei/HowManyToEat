@@ -58,7 +58,12 @@ namespace HowManyToEat
                 }
             }
 
-            Bitmap image = partyProject.DumpBitmap(tableCount, this.CurrentFont, this.CurrentPen, this.CurrentBrush);
+            ReloadImage(partyProject, tableCount);
+        }
+
+        private void ReloadImage(PartyProject partyProject, int tableCount)
+        {
+            Bitmap image = partyProject.DumpBitmap(tableCount, this.CurrentFont, this.CurrentPen, this.CurrentBrush, this.showRectangle);
             Rectangle destRect = new Rectangle(0, 0, image.Width, image.Height);
             this.pictureBox1.BackgroundImage = image;
         }
@@ -68,7 +73,7 @@ namespace HowManyToEat
             PartyProject project = this.CurrentProject;
             if (project != null)
             {
-                Bitmap image = project.DumpBitmap(this.TableCount, this.CurrentFont, this.CurrentPen, this.CurrentBrush);
+                Bitmap image = project.DumpBitmap(this.TableCount, this.CurrentFont, this.CurrentPen, this.CurrentBrush, this.showRectangle);
                 Rectangle destRect = new Rectangle(0, 0, image.Width, image.Height);
                 e.Graphics.DrawImage(image, destRect, destRect, GraphicsUnit.Pixel);
             }
@@ -90,7 +95,7 @@ namespace HowManyToEat
             {
                 if (this.saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    Bitmap image = project.DumpBitmap(this.TableCount, this.CurrentFont, this.CurrentPen, this.CurrentBrush);
+                    Bitmap image = project.DumpBitmap(this.TableCount, this.CurrentFont, this.CurrentPen, this.CurrentBrush, this.showRectangle);
                     image.Save(this.saveFileDialog1.FileName);
                     Process.Start("explorer", "/select," + this.saveFileDialog1.FileName);
                 }
@@ -100,6 +105,18 @@ namespace HowManyToEat
                 MessageBox.Show("没有指定方案，无法生成统计结果！");
             }
         }
+
+        private bool showRectangle = false;
+
+        private void pictureBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                this.showRectangle = !this.showRectangle;
+                this.ReloadImage(this.CurrentProject, this.TableCount);
+            }
+        }
+
 
     }
 }
