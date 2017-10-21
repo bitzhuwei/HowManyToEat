@@ -13,7 +13,7 @@ namespace HowManyToEat
     /// </summary>
     public class PagesContext : IDisposable
     {
-        private Page[] surfaces;
+        private Page[] pages;
         private Image unitImage = new Bitmap(1, 1);
 
         /// <summary>
@@ -21,12 +21,12 @@ namespace HowManyToEat
         /// </summary>
         public Page[] Pages
         {
-            get { return surfaces; }
-            set { surfaces = value; }
+            get { return pages; }
+            set { pages = value; }
         }
 
         /// <summary>
-        /// 当前正在使用的<see cref="surfaces"/>的索引。
+        /// 当前正在使用的<see cref="pages"/>的索引。
         /// </summary>
         public int CurrentIndex { get; set; }
 
@@ -43,15 +43,15 @@ namespace HowManyToEat
         /// <summary>
         /// 布局状态。
         /// </summary>
-        /// <param name="surfaces"></param>
-        public PagesContext(params Page[] surfaces)
+        /// <param name="pages"></param>
+        public PagesContext(params Page[] pages)
         {
-            if (surfaces == null || surfaces.Length < 1)
+            if (pages == null || pages.Length < 1)
             {
                 throw new ArgumentException();
             }
 
-            this.surfaces = surfaces;
+            this.pages = pages;
 
             this.UnitGraphics = Graphics.FromImage(this.unitImage);
         }
@@ -128,6 +128,11 @@ namespace HowManyToEat
         {
             this.Width = width;
             this.Height = height;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("left:{0}, top:{1}, width:{2}, height:{3}", this.Left, this.Top, this.Width, this.Height);
         }
     }
 }
