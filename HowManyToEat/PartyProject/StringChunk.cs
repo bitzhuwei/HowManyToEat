@@ -43,32 +43,35 @@ namespace HowManyToEat
             SizeF emptySize = graphics.MeasureString("丨丨", this.TheFont);
             var width = (bigSize.Width - emptySize.Width);
             var height = bigSize.Height;
-            if (page.Height < leftTop.Y + height) // 要换页了。
+            if (page.Width < leftTop.X + width) // 该换行了。
             {
-                context.CurrentIndex++;
-                if (context.Pages.Length <= context.CurrentIndex) // 页用完了。
+                if (page.Height < leftTop.Y + context.MaxLineHeight + height) // 要换页了。
                 {
-                    this.PageIndex = context.CurrentIndex;
+                    context.CurrentIndex++;
+                    if (context.Pages.Length <= context.CurrentIndex) // 页用完了。
+                    {
+                        this.PageIndex = context.CurrentIndex;
+                    }
+                    else // 用下一页。
+                    {
+                        this.LeftTop = new PointF(0, 0);
+                        this.TheSize = new SizeF(width, height);
+                        this.PageIndex = context.CurrentIndex;
+
+                        context.CurrentLeftTop = new Point(0, 0);
+                        //context.MaxLineHeight = 0;
+                    }
                 }
-                else // 用下一页。
+                else // 仅仅换行，不换页。
                 {
-                    this.LeftTop = new PointF(0, 0);
+                    leftTop = new PointF(0, leftTop.Y + context.MaxLineHeight);
+                    this.LeftTop = leftTop;
                     this.TheSize = new SizeF(width, height);
                     this.PageIndex = context.CurrentIndex;
 
-                    context.CurrentLeftTop = new Point(0, 0);
+                    context.CurrentLeftTop = new PointF(leftTop.X + width, leftTop.Y);
                     //context.MaxLineHeight = 0;
                 }
-            }
-            else if (page.Width < leftTop.X + width) // 仅仅换行，不换页。
-            {
-                leftTop = new PointF(0, leftTop.Y + context.MaxLineHeight);
-                this.LeftTop = leftTop;
-                this.TheSize = new SizeF(width, height);
-                this.PageIndex = context.CurrentIndex;
-
-                context.CurrentLeftTop = new PointF(leftTop.X + width, leftTop.Y);
-                //context.MaxLineHeight = 0;
             }
             else // 当前行还可以放下此chunk。
             {

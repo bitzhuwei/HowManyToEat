@@ -31,23 +31,34 @@ namespace HowManyToEat
 
             Page page = context.Pages[context.CurrentIndex];
             float height = context.MaxLineHeight;
+            PointF leftTop = context.CurrentLeftTop;
+            var width = 0.0f;
 
-            if (page.Height < context.CurrentLeftTop.Y + height) // 要换页了。
+            if (page.Height < leftTop.Y + context.MaxLineHeight + height) // 要换页了。
             {
                 context.CurrentIndex++;
                 if (context.Pages.Length <= context.CurrentIndex) // 页用完了。
                 {
-                    return;
+                    this.PageIndex = context.CurrentIndex;
                 }
                 else // 用下一页。
                 {
-                    context.CurrentLeftTop = new PointF(0, 0);
+                    this.LeftTop = new PointF(0, 0);
+                    this.TheSize = new SizeF(width, height);
+                    this.PageIndex = context.CurrentIndex;
+
+                    context.CurrentLeftTop = new Point(0, 0);
                     //context.MaxLineHeight = 0;
                 }
             }
             else // 仅仅换行，不换页。
             {
-                context.CurrentLeftTop = new PointF(0, context.CurrentLeftTop.Y + height);
+                leftTop = new PointF(0, leftTop.Y + context.MaxLineHeight);
+                this.LeftTop = leftTop;
+                this.TheSize = new SizeF(width, height);
+                this.PageIndex = context.CurrentIndex;
+
+                context.CurrentLeftTop = new PointF(leftTop.X + width, leftTop.Y);
                 //context.MaxLineHeight = 0;
             }
         }
