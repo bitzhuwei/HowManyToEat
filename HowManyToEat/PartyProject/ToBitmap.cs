@@ -32,18 +32,10 @@ namespace HowManyToEat
                 DrawDishes(project, font, pen, brush, x, y, graphics, out maxWidth, out maxHeight);
                 // 所有的食材
                 List<WeightedIngredient> list = GetIngredientList(project);
-                //// 找到右侧陈列的食材（最后一个食材的索引）
-                //int lastIndex = GetLastIndex(tableCount, font, width, x, y, graphics, maxWidth, maxHeight, list);
-                //DrawRightIngrendients(tableCount, font, brush, width, x, y, graphics, maxWidth, maxHeight, list, lastIndex);
-                //DrawDownIngredients(tableCount, font, brush, width, x, y, graphics, maxHeight, list, lastIndex);
                 var groupedIngredients = from item in list
                                          group item by item.Ingredient.Category into g
                                          select g;
                 var chunkList = new List<ChunkBase>();
-                //const string fontName = "宋体";
-                //const int fontSize = 32;
-                //const GraphicsUnit fontUnit = GraphicsUnit.Pixel;
-                //Font font = new Font(fontName, fontSize, fontUnit);
                 foreach (var group in groupedIngredients)
                 {
                     {
@@ -93,12 +85,12 @@ namespace HowManyToEat
                     }
 
                     graphics.DrawImage(bigImage,
-                        new Rectangle(
+                        new RectangleF(
                             item.LeftTop.X + context.Pages[item.PageIndex].Left,
                             item.LeftTop.Y + context.Pages[item.PageIndex].Top,
                             item.TheSize.Width,
                             item.TheSize.Height),
-                        new Rectangle(
+                        new RectangleF(
                             (bigImage.Width - item.TheSize.Width) / 2,
                             0,
                             item.TheSize.Width,
@@ -109,109 +101,6 @@ namespace HowManyToEat
             }
 
             return bitmap;
-        }
-
-        private static void DrawDownIngredients(int tableCount, Font font, Brush brush, int width, int x, int y, Graphics graphics, float maxHeight, List<WeightedIngredient> list, int lastIndex)
-        {
-            var allBuilder = new StringBuilder();
-            var lineBuilder = new StringBuilder();
-            for (int i = lastIndex + 1; i < list.Count - 1; i++)
-            {
-                WeightedIngredient weighted = list[i];
-                string itemStr = string.Format(
-                    "{0}:{1}{2}, ", weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit);
-                lineBuilder.Append(itemStr);
-                string lineStr = lineBuilder.ToString();
-                SizeF lineSize = graphics.MeasureString(lineStr, font);
-                if (lineSize.Width > width - x * 2 - y * 2)
-                {
-                    allBuilder.AppendLine();
-                    lineBuilder = new StringBuilder();
-                    lineBuilder.Append(itemStr);
-                }
-                allBuilder.Append(itemStr);
-            }
-
-            if (list.Count > 0 && lastIndex + 1 < list.Count)
-            {
-                var weighted = list[list.Count - 1];
-                string itemStr = string.Format(
-                    "{0}:{1}{2}", weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit);
-                lineBuilder.Append(itemStr);
-                string lineStr = lineBuilder.ToString();
-                SizeF lineSize = graphics.MeasureString(lineStr, font);
-                if (lineSize.Width > width - x * 2 - y * 2)
-                {
-                    allBuilder.AppendLine();
-                    lineBuilder = new StringBuilder();
-                    lineBuilder.Append(itemStr);
-                }
-                allBuilder.Append(itemStr);
-            }
-
-            string allStr = allBuilder.ToString();
-            SizeF size = graphics.MeasureString(allStr, font, width - x * 2);
-            graphics.DrawString(allStr, font, brush, new RectangleF(
-                x * 2, y * 2 + maxHeight, size.Width, size.Height));
-        }
-
-        private static void DrawRightIngrendients(int tableCount, Font font, Brush brush, int width, int x, int y, Graphics graphics, float maxWidth, float maxHeight, List<WeightedIngredient> list, int lastIndex)
-        {
-            var allBuilder = new StringBuilder();
-            var lineBuilder = new StringBuilder();
-            for (int i = 0; i < lastIndex + 1; i++)
-            {
-                WeightedIngredient weighted = list[i];
-                string itemStr = string.Format(
-                    "{0}:{1}{2}, ", weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit);
-                lineBuilder.Append(itemStr);
-                string lineStr = lineBuilder.ToString();
-                SizeF lineSize = graphics.MeasureString(lineStr, font);
-                if (lineSize.Width > width - x * 2 - (int)Math.Ceiling(maxWidth) * 2)
-                {
-                    allBuilder.AppendLine();
-                    lineBuilder = new StringBuilder();
-                    lineBuilder.Append(itemStr);
-                }
-                allBuilder.Append(itemStr);
-            }
-
-            string allStr = allBuilder.ToString();
-            graphics.DrawString(allStr, font, brush, new RectangleF(
-                x * 2 + maxWidth * 2, y * 2,
-                width - x * 2 - (int)Math.Ceiling(maxWidth) * 2, maxHeight));
-        }
-
-        private static int GetLastIndex(int tableCount, Font font, int width, int x, int y, Graphics graphics, float maxWidth, float maxHeight, List<WeightedIngredient> list)
-        {
-            int lastIndex = -1;
-
-            var allBuilder = new StringBuilder();
-            var lineBuilder = new StringBuilder();
-            for (int i = 0; i < list.Count; i++)
-            {
-                var weighted = list[i];
-                string itemStr = string.Format(
-                    "{0}:{1}{2}, ", weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit);
-                lineBuilder.Append(itemStr);
-                string lineStr = lineBuilder.ToString();
-                SizeF lineSize = graphics.MeasureString(lineStr, font);
-                if (lineSize.Width > width - x * 2 - (int)Math.Ceiling(maxWidth) * 2 - y * 2)
-                {
-                    allBuilder.AppendLine();
-                    lineBuilder = new StringBuilder();
-                    lineBuilder.Append(itemStr);
-                }
-                allBuilder.Append(itemStr);
-                string allStr = allBuilder.ToString();
-                SizeF allSize = graphics.MeasureString(allStr, font, width - x * 2 - (int)Math.Ceiling(maxWidth) * 2 - y * 2);
-                if (maxHeight < allSize.Height)
-                {
-                    lastIndex = i - 1;
-                    break;
-                }
-            }
-            return lastIndex;
         }
 
         private static List<WeightedIngredient> GetIngredientList(PartyProject project)

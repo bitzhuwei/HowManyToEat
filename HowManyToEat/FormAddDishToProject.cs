@@ -91,5 +91,17 @@ namespace HowManyToEat
         {
             this.btnUpdateDish.Enabled = this.listView1.SelectedItems.Count > 0;
         }
+
+        private int curentViewIndex = 3;
+        private static readonly View[] views = new View[] { View.Details, View.LargeIcon, View.List, View.SmallIcon, View.Tile };
+        private void btnSwitchView_Click(object sender, EventArgs e)
+        {
+            this.listView1.View = views[(curentViewIndex + 1) % views.Length];
+            curentViewIndex++;
+            if (curentViewIndex > 1000)
+            {
+                curentViewIndex = curentViewIndex % views.Length;
+            }
+        }
     }
 }

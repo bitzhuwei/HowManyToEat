@@ -22,7 +22,7 @@ namespace HowManyToEat
 
         public Font TheFont { get; private set; }
 
-        public Size TheSize { get; set; }
+        public SizeF TheSize { get; set; }
 
         public Point LeftTop { get; set; }
 
