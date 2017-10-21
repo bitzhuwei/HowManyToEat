@@ -43,50 +43,55 @@ namespace HowManyToEat
                 }
 
                 // 根据Chunk记录的位置信息，画图。
-                foreach (var item in chunkList)
-                {
-                    SizeF bigSize = graphics.MeasureString("丨" + item.Text + "丨", item.TheFont);
-                    Bitmap bigImage = new Bitmap((int)bigSize.Width, (int)bigSize.Height);
-                    if (item.Tag is IngredientCategory)
-                    {
-                        using (var g = Graphics.FromImage(bigImage))
-                        { g.DrawString("丨" + item.Text + "丨", item.TheFont, brush, 0, 0); }
-                    }
-                    else if (item.Tag is WeightedIngredient)
-                    {
-                        var weighted = item.Tag as WeightedIngredient;
-                        var ingredientBrush = new SolidBrush(weighted.Ingredient.ForeColor);
-                        using (var g = Graphics.FromImage(bigImage))
-                        { g.DrawString("丨" + item.Text + "丨", item.TheFont, ingredientBrush, 0, 0); }
-                        ingredientBrush.Dispose();
-                    }
-
-                    graphics.DrawImage(bigImage, // 把带有左右多余内容的bigImage的中间部分画到目标上。
-                        new RectangleF(
-                            item.LeftTop.X + context.Pages[item.PageIndex].Left,
-                            item.LeftTop.Y + context.Pages[item.PageIndex].Top,
-                            item.TheSize.Width,
-                            item.TheSize.Height),
-                        new RectangleF(
-                            (bigImage.Width - item.TheSize.Width) / 2,
-                            0,
-                            item.TheSize.Width,
-                            item.TheSize.Height),
-                        GraphicsUnit.Pixel);
-                    if (showRectangle) // 用矩形框起来，方便调试。
-                    {
-                        graphics.DrawRectangle(rectPen,
-                            new Rectangle(
-                                (int)(item.LeftTop.X + context.Pages[item.PageIndex].Left),
-                                (int)(item.LeftTop.Y + context.Pages[item.PageIndex].Top),
-                                (int)(item.TheSize.Width),
-                                (int)(item.TheSize.Height)));
-                    }
-                    bigImage.Dispose();
-                }
+                Draw(chunkList, context, graphics, brush, showRectangle);
             }
 
             return bitmap;
+        }
+
+        private static void Draw(List<ChunkBase> chunkList, PagesContext context, Graphics graphics, Brush brush, bool showRectangle)
+        {
+            foreach (var item in chunkList)
+            {
+                SizeF bigSize = graphics.MeasureString("丨" + item.Text + "丨", item.TheFont);
+                Bitmap bigImage = new Bitmap((int)bigSize.Width, (int)bigSize.Height);
+                if (item.Tag is IngredientCategory)
+                {
+                    using (var g = Graphics.FromImage(bigImage))
+                    { g.DrawString("丨" + item.Text + "丨", item.TheFont, brush, 0, 0); }
+                }
+                else if (item.Tag is WeightedIngredient)
+                {
+                    var weighted = item.Tag as WeightedIngredient;
+                    var ingredientBrush = new SolidBrush(weighted.Ingredient.ForeColor);
+                    using (var g = Graphics.FromImage(bigImage))
+                    { g.DrawString("丨" + item.Text + "丨", item.TheFont, ingredientBrush, 0, 0); }
+                    ingredientBrush.Dispose();
+                }
+
+                graphics.DrawImage(bigImage, // 把带有左右多余内容的bigImage的中间部分画到目标上。
+                    new RectangleF(
+                        item.LeftTop.X + context.Pages[item.PageIndex].Left,
+                        item.LeftTop.Y + context.Pages[item.PageIndex].Top,
+                        item.TheSize.Width,
+                        item.TheSize.Height),
+                    new RectangleF(
+                        (bigImage.Width - item.TheSize.Width) / 2,
+                        0,
+                        item.TheSize.Width,
+                        item.TheSize.Height),
+                    GraphicsUnit.Pixel);
+                if (showRectangle) // 用矩形框起来，方便调试。
+                {
+                    graphics.DrawRectangle(rectPen,
+                        new Rectangle(
+                            (int)(item.LeftTop.X + context.Pages[item.PageIndex].Left),
+                            (int)(item.LeftTop.Y + context.Pages[item.PageIndex].Top),
+                            (int)(item.TheSize.Width),
+                            (int)(item.TheSize.Height)));
+                }
+                bigImage.Dispose();
+            }
         }
 
         private static PagesContext GetPagesContext(int width, int height, int x, int y, float maxWidth, float maxHeight)
