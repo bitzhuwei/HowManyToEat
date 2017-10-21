@@ -54,7 +54,9 @@ namespace HowManyToEat
                     }
                     foreach (var weighted in group)
                     {
-                        string str = string.Format("{0} ", weighted);
+                        string str = string.Format(
+                            "{0}:{1}{2}, ",
+                            weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit);
                         var chunk = new StringChunk(str, font) { Tag = weighted };
                         chunkList.Add(chunk);
                     }
