@@ -24,7 +24,7 @@ namespace HowManyToEat
 
         public SizeF TheSize { get; set; }
 
-        public Point LeftTop { get; set; }
+        public PointF LeftTop { get; set; }
 
         /// <summary>
         /// 如果页索引超出范围，就表示页不够用了。

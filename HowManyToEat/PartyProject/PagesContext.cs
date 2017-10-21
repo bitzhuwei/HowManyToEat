@@ -33,12 +33,12 @@ namespace HowManyToEat
         /// <summary>
         /// 下一个字符要写到的位置（左上角）。
         /// </summary>
-        public Point CurrentLeftTop { get; set; }
+        public PointF CurrentLeftTop { get; set; }
 
         /// <summary>
         /// 当前行的最大高度。
         /// </summary>
-        public int MaxLineHeight { get; set; }
+        public float MaxLineHeight { get; set; }
 
         /// <summary>
         /// 布局状态。

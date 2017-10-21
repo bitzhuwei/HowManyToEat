@@ -38,7 +38,7 @@ namespace HowManyToEat
             }
 
             Page page = context.Pages[context.CurrentIndex];
-            Point leftTop = context.CurrentLeftTop;
+            PointF leftTop = context.CurrentLeftTop;
             SizeF bigSize = graphics.MeasureString("【" + this.Text + "】", this.TheFont);
             SizeF emptySize = graphics.MeasureString("【】", this.TheFont);
             var width = (bigSize.Width - emptySize.Width);
@@ -52,7 +52,7 @@ namespace HowManyToEat
                 }
                 else // 用下一页。
                 {
-                    this.LeftTop = new Point(0, 0);
+                    this.LeftTop = new PointF(0, 0);
                     this.TheSize = new SizeF(width, height);
                     this.PageIndex = context.CurrentIndex;
 
@@ -62,12 +62,12 @@ namespace HowManyToEat
             }
             else if (page.Width < leftTop.X + width) // 仅仅换行，不换页。
             {
-                leftTop = new Point(0, leftTop.Y + context.MaxLineHeight);
+                leftTop = new PointF(0, leftTop.Y + context.MaxLineHeight);
                 this.LeftTop = leftTop;
                 this.TheSize = new SizeF(width, height);
                 this.PageIndex = context.CurrentIndex;
 
-                context.CurrentLeftTop = new Point(leftTop.X + (int)width, leftTop.Y);
+                context.CurrentLeftTop = new PointF(leftTop.X + width, leftTop.Y);
                 //context.MaxLineHeight = 0;
             }
             else // 当前行还可以放下此chunk。
@@ -76,7 +76,7 @@ namespace HowManyToEat
                 this.TheSize = new SizeF(width, height);
                 this.PageIndex = context.CurrentIndex;
 
-                context.CurrentLeftTop = new Point(leftTop.X + (int)width, leftTop.Y);
+                context.CurrentLeftTop = new PointF(leftTop.X + width, leftTop.Y);
                 if (leftTop.X == 0 // 第一个字符（串）
                     || context.MaxLineHeight < (int)height)
                 {

@@ -41,13 +41,13 @@ namespace HowManyToEat
                 }
                 else // 用下一页。
                 {
-                    context.CurrentLeftTop = new Point(0, 0);
+                    context.CurrentLeftTop = new PointF(0, 0);
                     //context.MaxLineHeight = 0;
                 }
             }
             else // 仅仅换行，不换页。
             {
-                context.CurrentLeftTop = new Point(0, context.CurrentLeftTop.Y + (int)height);
+                context.CurrentLeftTop = new PointF(0, context.CurrentLeftTop.Y + height);
                 //context.MaxLineHeight = 0;
             }
         }
