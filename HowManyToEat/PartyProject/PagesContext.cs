@@ -105,26 +105,26 @@ namespace HowManyToEat
         /// <summary>
         /// 
         /// </summary>
-        public int Left { get; set; }
+        public float Left { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int Top { get; set; }
+        public float Top { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int Width { get; private set; }
+        public float Width { get; private set; }
         /// <summary>
         /// 
         /// </summary>
-        public int Height { get; private set; }
+        public float Height { get; private set; }
 
         /// <summary>
         /// 一页。将在上面写字（排列布局）。
         /// </summary>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public Page(int width, int height)
+        public Page(float width, float height)
         {
             this.Width = width;
             this.Height = height;

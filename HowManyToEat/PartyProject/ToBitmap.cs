@@ -32,40 +32,17 @@ namespace HowManyToEat
                 DrawDishes(project, font, pen, brush, x, y, graphics, out maxWidth, out maxHeight);
                 // 所有的食材
                 List<WeightedIngredient> list = GetIngredientList(project);
-                var groupedIngredients = from item in list
-                                         group item by item.Ingredient.Category into g
-                                         select g;
-                var chunkList = new List<ChunkBase>();
-                foreach (var group in groupedIngredients)
-                {
-                    {
-                        string str = string.Format("{0}:", group.Key.Name);
-                        var chunk = new StringChunk(str, font) { Tag = group.Key };
-                        chunkList.Add(chunk);
-                        chunkList.Add(new NewLineChunk());
-                    }
-                    foreach (var weighted in group)
-                    {
-                        string str = string.Format(
-                            "{0}:{1}{2}, ",
-                            weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit);
-                        var chunk = new StringChunk(str, font) { Tag = weighted };
-                        chunkList.Add(chunk);
-                    }
-                    chunkList.Add(new NewLineChunk());
-                }
-                var page0 = new Page(width - x * 2 - (int)Math.Ceiling(maxWidth) * 2 - x * 2, (int)Math.Ceiling(maxHeight));
-                page0.Left = x * 2 + (int)Math.Ceiling(maxWidth) * 2;
-                page0.Top = y * 2;
-                var page1 = new Page(width - x * 2, height - y * 2 - (int)Math.Ceiling(maxHeight));
-                page1.Left = x * 2;
-                page1.Top = y * 2 + (int)Math.Ceiling(maxHeight);
-                var context = new PagesContext(page0, page1);
+                // 转化为待处理的Chunk
+                List<ChunkBase> chunkList = GetChunkList(list, tableCount, font);
+                // 页集合的上下文。
+                PagesContext context = GetPagesContext(width, height, x, y, maxWidth, maxHeight);
+                // 处理：将Chunk放到正确的位置。
                 foreach (var item in chunkList)
                 {
                     item.Put(context);
                 }
 
+                // 根据Chunk记录的位置信息，画图。
                 foreach (var item in chunkList)
                 {
                     SizeF bigSize = graphics.MeasureString("丨" + item.Text + "丨", item.TheFont);
@@ -84,7 +61,7 @@ namespace HowManyToEat
                         ingredientBrush.Dispose();
                     }
 
-                    graphics.DrawImage(bigImage,
+                    graphics.DrawImage(bigImage, // 把带有左右多余内容的bigImage的中间部分画到目标上。
                         new RectangleF(
                             item.LeftTop.X + context.Pages[item.PageIndex].Left,
                             item.LeftTop.Y + context.Pages[item.PageIndex].Top,
@@ -96,7 +73,7 @@ namespace HowManyToEat
                             item.TheSize.Width,
                             item.TheSize.Height),
                         GraphicsUnit.Pixel);
-                    if (showRectangle)
+                    if (showRectangle) // 用矩形框起来，方便调试。
                     {
                         graphics.DrawRectangle(rectPen,
                             new Rectangle(
@@ -110,6 +87,50 @@ namespace HowManyToEat
             }
 
             return bitmap;
+        }
+
+        private static PagesContext GetPagesContext(int width, int height, int x, int y, float maxWidth, float maxHeight)
+        {
+            var page0 = new Page(width - x * 2 - (float)Math.Ceiling(maxWidth) * 2 - x * 2, (float)Math.Ceiling(maxHeight));
+            page0.Left = x * 2 + (float)Math.Ceiling(maxWidth) * 2;
+            page0.Top = y * 2;
+
+            var page1 = new Page(width - x * 2, height - y * 2 - (float)Math.Ceiling(maxHeight));
+            page1.Left = x * 2;
+            page1.Top = y * 2 + (float)Math.Ceiling(maxHeight);
+
+            var context = new PagesContext(page0, page1);
+
+            return context;
+        }
+
+        private static List<ChunkBase> GetChunkList(List<WeightedIngredient> list, int tableCount, Font font)
+        {
+            var result = new List<ChunkBase>();
+
+            var groupedIngredients = from item in list
+                                     group item by item.Ingredient.Category into g
+                                     select g;
+            foreach (var group in groupedIngredients)
+            {
+                {
+                    string str = string.Format("{0}:", group.Key.Name);
+                    var chunk = new StringChunk(str, font) { Tag = group.Key };
+                    result.Add(chunk);
+                    result.Add(new NewLineChunk());
+                }
+                foreach (var weighted in group)
+                {
+                    string str = string.Format(
+                        "{0}:{1}{2}, ",
+                        weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit);
+                    var chunk = new StringChunk(str, font) { Tag = weighted };
+                    result.Add(chunk);
+                }
+                result.Add(new NewLineChunk());
+            }
+
+            return result;
         }
 
         private static Pen rectPen = new Pen(Color.Red, 1);
