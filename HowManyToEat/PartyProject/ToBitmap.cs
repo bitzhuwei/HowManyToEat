@@ -98,7 +98,7 @@ namespace HowManyToEat
                         GraphicsUnit.Pixel);
                     if (showRectangle)
                     {
-                        graphics.DrawRectangle(pen,
+                        graphics.DrawRectangle(rectPen,
                             new Rectangle(
                                 (int)(item.LeftTop.X + context.Pages[item.PageIndex].Left),
                                 (int)(item.LeftTop.Y + context.Pages[item.PageIndex].Top),
@@ -112,7 +112,7 @@ namespace HowManyToEat
             return bitmap;
         }
 
-        private static Pen pen = new Pen(Color.Green);
+        private static Pen rectPen = new Pen(Color.Red, 1);
 
         private static List<WeightedIngredient> GetIngredientList(PartyProject project)
         {
