@@ -45,7 +45,7 @@ namespace HowManyToEat
             this.TableCount = tableCount;
             this.CurrentProject = partyProject;
 
-            this.CurrentFont = new Font("宋体", 32, GraphicsUnit.Pixel);
+            this.CurrentFont = new Font("仿宋", 22, GraphicsUnit.Pixel);
             this.CurrentBrush = new SolidBrush(Color.Black);
             this.CurrentPen = new Pen(this.CurrentBrush);
 
@@ -58,7 +58,7 @@ namespace HowManyToEat
                 }
             }
 
-            ReloadImage(partyProject, tableCount);
+            this.ReloadImage(this.CurrentProject, this.TableCount);
         }
 
         private void ReloadImage(PartyProject partyProject, int tableCount)
@@ -113,6 +113,15 @@ namespace HowManyToEat
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 this.showRectangle = !this.showRectangle;
+                this.ReloadImage(this.CurrentProject, this.TableCount);
+            }
+        }
+
+        private void btnFont_Click(object sender, EventArgs e)
+        {
+            if (this.fontDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.CurrentFont = this.fontDialog1.Font;
                 this.ReloadImage(this.CurrentProject, this.TableCount);
             }
         }

@@ -35,6 +35,8 @@
             this.btnSavePicture = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnFont = new System.Windows.Forms.Button();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,13 +91,26 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(476, 660);
+            this.pictureBox1.Size = new System.Drawing.Size(397, 660);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDoubleClick);
+            // 
+            // btnFont
+            // 
+            this.btnFont.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFont.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnFont.Location = new System.Drawing.Point(415, 12);
+            this.btnFont.Name = "btnFont";
+            this.btnFont.Size = new System.Drawing.Size(73, 26);
+            this.btnFont.TabIndex = 8;
+            this.btnFont.Text = "字体";
+            this.btnFont.UseVisualStyleBackColor = true;
+            this.btnFont.Click += new System.EventHandler(this.btnFont_Click);
             // 
             // FormPrintPreview
             // 
@@ -104,6 +119,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(500, 713);
+            this.Controls.Add(this.btnFont);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSavePicture);
             this.Controls.Add(this.btnOK);
@@ -125,5 +141,7 @@
         private System.Windows.Forms.Button btnSavePicture;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnFont;
+        private System.Windows.Forms.FontDialog fontDialog1;
     }
 }
