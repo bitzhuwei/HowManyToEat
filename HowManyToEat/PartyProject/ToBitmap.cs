@@ -172,20 +172,20 @@ namespace HowManyToEat
             }
         }
 
-        private static string GetDishesString(WeightedDishList weightedDishList)
+        private static string GetDishesString(WeightedDishList list)
         {
             var builder = new StringBuilder();
-            if (weightedDishList != null && weightedDishList.Count > 0)
+            if (list != null && list.Count > 0)
             {
-                for (int i = 0; i < weightedDishList.Count - 1; i++)
+                for (int i = 0; i < list.Count - 1; i++)
                 {
-                    if (!weightedDishList[i].HiddenWhenPrinting)
+                    if (!list[i].HiddenWhenPrinting)
                     {
-                        builder.Append(weightedDishList[i].Dish.Name);
+                        builder.Append(list[i].Dish.Name);
                     }
                     builder.AppendLine();
                 }
-                builder.Append(weightedDishList[weightedDishList.Count - 1].Dish.Name);
+                builder.Append(list[list.Count - 1].Dish.Name);
             }
 
             return builder.ToString();
