@@ -41,13 +41,17 @@
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbUnit = new System.Windows.Forms.ComboBox();
+            this.lblColorDisplay = new System.Windows.Forms.Label();
+            this.lblColor = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(406, 207);
+            this.btnCancel.Location = new System.Drawing.Point(406, 224);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 23);
             this.btnCancel.TabIndex = 5;
@@ -108,7 +112,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("宋体", 14F);
-            this.label4.Location = new System.Drawing.Point(13, 120);
+            this.label4.Location = new System.Drawing.Point(13, 146);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 19);
             this.label4.TabIndex = 15;
@@ -119,7 +123,7 @@
             this.txtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrice.Font = new System.Drawing.Font("宋体", 14F);
-            this.txtPrice.Location = new System.Drawing.Point(123, 117);
+            this.txtPrice.Location = new System.Drawing.Point(123, 143);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(392, 29);
             this.txtPrice.TabIndex = 3;
@@ -128,7 +132,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(271, 207);
+            this.btnOK.Location = new System.Drawing.Point(271, 224);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(129, 23);
             this.btnOK.TabIndex = 4;
@@ -164,7 +168,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 14F);
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(13, 160);
+            this.label6.Location = new System.Drawing.Point(12, 175);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(446, 19);
             this.label6.TabIndex = 15;
@@ -183,13 +187,47 @@
             this.cmbUnit.TabIndex = 16;
             this.cmbUnit.SelectedIndexChanged += new System.EventHandler(this.cmbUnit_SelectedIndexChanged);
             // 
+            // lblColorDisplay
+            // 
+            this.lblColorDisplay.BackColor = System.Drawing.Color.Black;
+            this.lblColorDisplay.Font = new System.Drawing.Font("宋体", 14F);
+            this.lblColorDisplay.Location = new System.Drawing.Point(122, 115);
+            this.lblColorDisplay.Name = "lblColorDisplay";
+            this.lblColorDisplay.Size = new System.Drawing.Size(79, 19);
+            this.lblColorDisplay.TabIndex = 17;
+            this.lblColorDisplay.Click += new System.EventHandler(this.lblColorDisplay_Click);
+            // 
+            // lblColor
+            // 
+            this.lblColor.AutoSize = true;
+            this.lblColor.Font = new System.Drawing.Font("宋体", 14F);
+            this.lblColor.Location = new System.Drawing.Point(207, 115);
+            this.lblColor.Name = "lblColor";
+            this.lblColor.Size = new System.Drawing.Size(139, 19);
+            this.lblColor.TabIndex = 18;
+            this.lblColor.Text = "R:0, G:0, B:0";
+            this.lblColor.Click += new System.EventHandler(this.lblColorDisplay_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("宋体", 14F);
+            this.label7.Location = new System.Drawing.Point(12, 115);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(104, 19);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "打印颜色：";
+            // 
             // FormUpdateIngredient
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(527, 242);
+            this.ClientSize = new System.Drawing.Size(527, 259);
+            this.Controls.Add(this.lblColorDisplay);
+            this.Controls.Add(this.lblColor);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.cmbUnit);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.txtPrice);
@@ -226,5 +264,9 @@
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbUnit;
+        private System.Windows.Forms.Label lblColorDisplay;
+        private System.Windows.Forms.Label lblColor;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }

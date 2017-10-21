@@ -48,6 +48,11 @@ namespace HowManyToEat
                 }
             }
 
+            Color color = this.currentIngredient.ForeColor;
+            this.lblColorDisplay.BackColor = color;
+            this.lblColor.Text = string.Format("R:{0}, G:{1}, B:{2}", color.R, color.G, color.B);
+            this.txtName.ForeColor = color;
+
             this.txtPrice.Text = this.currentIngredient.Price.ToString();
         }
 
@@ -134,6 +139,7 @@ namespace HowManyToEat
                 ingredient.Name = name;
                 ingredient.Category = category;
                 ingredient.Unit = unit;
+                ingredient.ForeColor = this.lblColorDisplay.BackColor;
                 ingredient.Price = price;
                 Ingredient.SaveDatabase(typeof(Ingredient).Name);
             }
@@ -185,6 +191,17 @@ namespace HowManyToEat
                         }
                     }
                 }
+            }
+        }
+
+        private void lblColorDisplay_Click(object sender, EventArgs e)
+        {
+            if (this.colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Color color = this.colorDialog1.Color;
+                this.lblColorDisplay.BackColor = color;
+                this.lblColor.Text = string.Format("R:{0}, G:{1}, B:{2}", color.R, color.G, color.B);
+                this.txtName.ForeColor = color;
             }
         }
     }

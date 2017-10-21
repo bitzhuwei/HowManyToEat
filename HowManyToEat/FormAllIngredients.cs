@@ -33,6 +33,8 @@ namespace HowManyToEat
                 this.lstIngredient.Groups.Add(listViewGroup);
                 foreach (var ingredient in group)
                 {
+                    var item = new ListViewItem(ingredient.Name, listViewGroup) { Tag = ingredient };
+                    item.ForeColor = ingredient.ForeColor;
                     this.lstIngredient.Items.Add(new ListViewItem(ingredient.Name, listViewGroup) { Tag = ingredient });
                 }
             }
@@ -103,6 +105,7 @@ namespace HowManyToEat
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     obj.Text = ingredient.Name;
+                    obj.ForeColor = ingredient.ForeColor;
                 }
             }
         }
