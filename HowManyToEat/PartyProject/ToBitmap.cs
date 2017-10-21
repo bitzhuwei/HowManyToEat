@@ -68,19 +68,19 @@ namespace HowManyToEat
 
                 foreach (var item in chunkList)
                 {
-                    SizeF bigSize = graphics.MeasureString(item.Text, font);
+                    SizeF bigSize = graphics.MeasureString("丨" + item.Text + "丨", item.TheFont);
                     Bitmap bigImage = new Bitmap((int)bigSize.Width, (int)bigSize.Height);
                     if (item.Tag is IngredientCategory)
                     {
                         using (var g = Graphics.FromImage(bigImage))
-                        { g.DrawString(item.Text, font, brush, 0, 0); }
+                        { g.DrawString("丨" + item.Text + "丨", item.TheFont, brush, 0, 0); }
                     }
                     else if (item.Tag is WeightedIngredient)
                     {
                         var weighted = item.Tag as WeightedIngredient;
                         var ingredientBrush = new SolidBrush(weighted.Ingredient.ForeColor);
                         using (var g = Graphics.FromImage(bigImage))
-                        { g.DrawString(item.Text, font, ingredientBrush, 0, 0); }
+                        { g.DrawString("丨" + item.Text + "丨", item.TheFont, ingredientBrush, 0, 0); }
                         ingredientBrush.Dispose();
                     }
 
@@ -96,12 +96,20 @@ namespace HowManyToEat
                             item.TheSize.Width,
                             item.TheSize.Height),
                         GraphicsUnit.Pixel);
+                    //graphics.DrawRectangle(pen,
+                    //    new Rectangle(
+                    //        (int)(item.LeftTop.X + context.Pages[item.PageIndex].Left),
+                    //        (int)(item.LeftTop.Y + context.Pages[item.PageIndex].Top),
+                    //        (int)(item.TheSize.Width),
+                    //        (int)(item.TheSize.Height)));
                     bigImage.Dispose();
                 }
             }
 
             return bitmap;
         }
+
+        private static Pen pen = new Pen(Color.Green);
 
         private static List<WeightedIngredient> GetIngredientList(PartyProject project)
         {

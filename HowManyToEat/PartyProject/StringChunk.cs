@@ -39,8 +39,8 @@ namespace HowManyToEat
 
             Page page = context.Pages[context.CurrentIndex];
             PointF leftTop = context.CurrentLeftTop;
-            SizeF bigSize = graphics.MeasureString("【" + this.Text + "】", this.TheFont);
-            SizeF emptySize = graphics.MeasureString("【】", this.TheFont);
+            SizeF bigSize = graphics.MeasureString("丨" + this.Text + "丨", this.TheFont);
+            SizeF emptySize = graphics.MeasureString("丨丨", this.TheFont);
             var width = (bigSize.Width - emptySize.Width);
             var height = bigSize.Height;
             if (page.Height < leftTop.Y + height) // 要换页了。
