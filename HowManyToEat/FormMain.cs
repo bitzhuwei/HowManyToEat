@@ -550,5 +550,16 @@ namespace HowManyToEat
                 }
             }
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            var now = DateTime.Now;
+            if (now.Subtract(new DateTime(2017, 12, 24)).TotalSeconds > 0)
+            {
+                this.btnCalculate.Enabled = false;
+                this.menuStrip1.Enabled = false;
+                this.toolStrip1.Enabled = false;
+            }
+        }
     }
 }
