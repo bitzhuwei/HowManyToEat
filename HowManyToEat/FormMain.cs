@@ -525,7 +525,8 @@ namespace HowManyToEat
         {
             if (string.IsNullOrEmpty(this.CurrentPartyProject.Fullname))
             {
-                if (MessageBox.Show("是否保存当前方案？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                var result = MessageBox.Show("是否保存当前方案？", "询问", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     if (this.saveProjectDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
@@ -539,14 +540,31 @@ namespace HowManyToEat
                         e.Cancel = true;
                     }
                 }
+                else if (result == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    // nothig to do.
+                }
             }
             else
             {
-                if (MessageBox.Show("是否保存当前方案？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                var result = MessageBox.Show("是否保存当前方案？", "询问", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     this.CurrentPartyProject.Save();
                     this.UpdateTitle(this.CurrentPartyProject.Fullname);
                     MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (result == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    // nothing to do.
                 }
             }
         }
