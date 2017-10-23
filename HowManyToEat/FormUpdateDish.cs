@@ -11,8 +11,8 @@ namespace HowManyToEat
 {
     public partial class FormUpdateDish : Form
     {
-        private List<string> selectedIngredientList = new List<string>();
-        private Dictionary<string, ListViewGroup> groups = new Dictionary<string, ListViewGroup>();
+        private List<Guid> selectedIngredientList = new List<Guid>();
+        private Dictionary<Guid, ListViewGroup> groups = new Dictionary<Guid, ListViewGroup>();
 
         public FormUpdateDish(Dish dish)
         {
@@ -43,7 +43,9 @@ namespace HowManyToEat
                     this.lstSelectedIngredient.Groups.Add(listViewGroup);
                     foreach (var weighted in group)
                     {
-                        this.lstSelectedIngredient.Items.Add(new ListViewItem(weighted.ToString(), listViewGroup) { Tag = weighted });
+                        var item = new ListViewItem(weighted.ToString(), listViewGroup) { Tag = weighted };
+                        item.ForeColor = weighted.Ingredient.ForeColor;
+                        this.lstSelectedIngredient.Items.Add(item);
                     }
                 }
             }
@@ -63,7 +65,9 @@ namespace HowManyToEat
                 this.lstIngredient.Groups.Add(listViewGroup);
                 foreach (var ingredient in group)
                 {
-                    this.lstIngredient.Items.Add(new ListViewItem(ingredient.Name, listViewGroup) { Tag = ingredient });
+                    var item = new ListViewItem(ingredient.Name, listViewGroup) { Tag = ingredient };
+                    item.ForeColor = ingredient.ForeColor;
+                    this.lstIngredient.Items.Add(item);
                 }
             }
         }
@@ -97,21 +101,22 @@ namespace HowManyToEat
             foreach (var item in items)
             {
                 var obj = item as ListViewItem;
-                string name = obj.Text;
-                if (!this.selectedIngredientList.Contains(name))
+                var ingredient = obj.Tag as Ingredient;
+                if (!this.selectedIngredientList.Contains(ingredient.Id))
                 {
-                    var ingredient = obj.Tag as Ingredient;
-                    string category = ingredient.Category.Name;
-                    if (!this.groups.ContainsKey(category))
+                    Guid categoryId = ingredient.Category.Id;
+                    if (!this.groups.ContainsKey(categoryId))
                     {
-                        var group = new ListViewGroup(category);
-                        this.groups.Add(category, group);
+                        var group = new ListViewGroup(ingredient.Category.Name);
+                        this.groups.Add(categoryId, group);
                         this.lstSelectedIngredient.Groups.Add(group);
                     }
 
                     var weighted = new WeightedIngredient() { Ingredient = ingredient, Weight = 0 };
-                    this.lstSelectedIngredient.Items.Add(new ListViewItem(weighted.ToString(), this.groups[category]) { Tag = weighted });
-                    this.selectedIngredientList.Add(name);
+                    var listViewItem = new ListViewItem(weighted.ToString(), this.groups[categoryId]) { Tag = weighted };
+                    listViewItem.ForeColor = ingredient.ForeColor;
+                    this.lstSelectedIngredient.Items.Add(listViewItem);
+                    this.selectedIngredientList.Add(ingredient.Id);
                 }
             }
         }
@@ -122,8 +127,9 @@ namespace HowManyToEat
             {
                 var obj = item as ListViewItem;
                 var name = obj.Text;
+                var weightedIngredient = obj.Tag as WeightedIngredient;
                 this.lstSelectedIngredient.Items.Remove(obj);
-                this.selectedIngredientList.Remove(name);
+                this.selectedIngredientList.Remove(weightedIngredient.Ingredient.Id);
             }
         }
 

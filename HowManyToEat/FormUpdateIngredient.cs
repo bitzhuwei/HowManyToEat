@@ -24,7 +24,9 @@ namespace HowManyToEat
 
         void FormUpdateIngrendient_Load(object sender, EventArgs e)
         {
+            Color color = this.currentIngredient.ForeColor;
             this.txtName.Text = this.currentIngredient.Name;
+            this.txtName.ForeColor = color;
 
             this.ReloadIngredientCategory();
             for (int i = 0; i < this.cmbCategory.Items.Count; i++)
@@ -48,10 +50,8 @@ namespace HowManyToEat
                 }
             }
 
-            Color color = this.currentIngredient.ForeColor;
             this.lblColorDisplay.BackColor = color;
             this.lblColor.Text = string.Format("R:{0}, G:{1}, B:{2}", color.R, color.G, color.B);
-            this.txtName.ForeColor = color;
 
             this.txtPrice.Text = this.currentIngredient.Price.ToString();
         }
