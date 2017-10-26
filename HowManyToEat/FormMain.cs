@@ -81,12 +81,32 @@ namespace HowManyToEat
 
         private void 新建NToolStripButton_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(this.CurrentPartyProject.Fullname))
+            var result = MessageBox.Show("是否保存当前的方案？", "询问", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                if (MessageBox.Show("是否保存当前的方案？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                if (string.IsNullOrEmpty(this.CurrentPartyProject.Fullname))
                 {
-                    this.CurrentPartyProject.Save();
+                    if (this.saveProjectDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        this.CurrentPartyProject.Fullname = this.saveProjectDlg.FileName;
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
+
+                this.CurrentPartyProject.Save();
+                this.UpdateTitle(this.CurrentPartyProject.Fullname);
+                MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (result == System.Windows.Forms.DialogResult.Cancel)
+            {
+                return;
+            }
+            else
+            {
+                // nothing to do.
             }
 
             this.CurrentPartyProject = new PartyProject();
@@ -571,13 +591,13 @@ namespace HowManyToEat
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            var now = DateTime.Now;
-            if (now.Subtract(new DateTime(2017, 12, 24)).TotalSeconds > 0)
-            {
-                this.btnCalculate.Enabled = false;
-                this.menuStrip1.Enabled = false;
-                this.toolStrip1.Enabled = false;
-            }
+            //    var now = DateTime.Now;
+            //    if (now.Subtract(new DateTime(2017, 12, 24)).TotalSeconds > 0)
+            //    {
+            //        this.btnCalculate.Enabled = false;
+            //        this.menuStrip1.Enabled = false;
+            //        this.toolStrip1.Enabled = false;
+            //    }
         }
     }
 }
