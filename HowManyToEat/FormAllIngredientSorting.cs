@@ -77,11 +77,9 @@ namespace HowManyToEat
             var list = from item in ingredientDict.Values
                        orderby item.Priority ascending
                        select item;
-            int index = 0;
             foreach (var item in list)
             {
                 this.lstIngredient.Items.Add(item);
-
             }
         }
 
