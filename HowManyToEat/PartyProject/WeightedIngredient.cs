@@ -34,7 +34,7 @@ namespace HowManyToEat
                 string name = ingredient.Name;
                 string unit = ingredient.Unit.Name;
                 float weight = this.Weight;
-                return string.Format("{0}:{1}{2}", name, weight, unit);
+                return string.Format("{0}:{1:0.##}{2}", name, weight, unit);
             }
         }
 

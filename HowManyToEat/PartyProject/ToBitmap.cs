@@ -127,12 +127,23 @@ namespace HowManyToEat
                     result.Add(chunk);
                     result.Add(new NewLineChunk());
                 }
+                WeightedIngredient last = null;
                 foreach (var weighted in group)
                 {
                     string str = string.Format(
-                        "{0}:{1}{2}, ",
+                        "{0}:{1:0.##}{2}, ",
                         weighted.Ingredient.Name, weighted.Weight * tableCount, weighted.Ingredient.Unit);
                     var chunk = new StringChunk(str, font) { Tag = weighted };
+                    result.Add(chunk);
+                    last = weighted;
+                }
+                if (last != null)
+                {
+                    string str = string.Format(
+                        "{0}:{1:0.##}{2}。",
+                        last.Ingredient.Name, last.Weight * tableCount, last.Ingredient.Unit);
+                    var chunk = new StringChunk(str, font) { Tag = last };
+                    result.RemoveAt(result.Count - 1);
                     result.Add(chunk);
                 }
                 result.Add(new NewLineChunk());
