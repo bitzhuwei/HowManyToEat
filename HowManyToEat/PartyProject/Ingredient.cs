@@ -49,6 +49,12 @@ namespace HowManyToEat
         /// </summary>
         public float Price { get; set; }
 
+        private const string strPriority = "Priority";
+        /// <summary>
+        /// 数量越小越优先。
+        /// </summary>
+        public int Priority { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -62,7 +68,7 @@ namespace HowManyToEat
 
         public override string ToString()
         {
-            return string.Format("{0}({1})", this.Name, this.Unit);
+            return string.Format("{0}", this.Name);//, this.Unit);
         }
 
         public XElement ToXElement()
@@ -73,7 +79,8 @@ namespace HowManyToEat
                 new XAttribute(strCategory, this.Category.Id),
                 new XAttribute(strUnitName, this.Unit.Id),
                 new XAttribute(strForeColor, string.Format("{0},{1},{2}", this.ForeColor.R, this.ForeColor.G, this.ForeColor.B)),
-                new XAttribute(strPrice, this.Price));
+                new XAttribute(strPrice, this.Price),
+                new XAttribute(strPriority, this.Priority));
         }
 
         public static Ingredient Parse(XElement xml)
@@ -98,7 +105,12 @@ namespace HowManyToEat
             }
             float price = float.Parse(xml.Attribute(strPrice).Value);
 
-            return new Ingredient(id) { Name = name, Category = category, Unit = unit, ForeColor = color, Price = price };
+            int priority = 0;
+            {
+                XAttribute attr = xml.Attribute(strPriority);
+                if (attr != null) { priority = int.Parse(attr.Value); }
+            }
+            return new Ingredient(id) { Name = name, Category = category, Unit = unit, ForeColor = color, Price = price, Priority = priority };
         }
 
         private static readonly Dictionary<Guid, Ingredient> dictionary = new Dictionary<Guid, Ingredient>();

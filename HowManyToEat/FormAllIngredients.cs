@@ -119,5 +119,14 @@ namespace HowManyToEat
                 this.FormAllIngredients_Load(sender, e);
             }
         }
+
+        private void btnIngredientSort_Click(object sender, EventArgs e)
+        {
+            var frm = new FormAllIngredientSorting();
+            if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.FormAllIngredients_Load(sender, e);
+            }
+        }
     }
 }

@@ -48,6 +48,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnCategoryOrder = new System.Windows.Forms.Button();
+            this.btnIngredientSort = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstIngredient
@@ -136,13 +137,24 @@
             // btnCategoryOrder
             // 
             this.btnCategoryOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCategoryOrder.Location = new System.Drawing.Point(200, 532);
+            this.btnCategoryOrder.Location = new System.Drawing.Point(315, 532);
             this.btnCategoryOrder.Name = "btnCategoryOrder";
             this.btnCategoryOrder.Size = new System.Drawing.Size(88, 23);
             this.btnCategoryOrder.TabIndex = 2;
             this.btnCategoryOrder.Text = "类别排序...";
             this.btnCategoryOrder.UseVisualStyleBackColor = true;
             this.btnCategoryOrder.Click += new System.EventHandler(this.btnCategoryOrder_Click);
+            // 
+            // btnIngredientSort
+            // 
+            this.btnIngredientSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnIngredientSort.Location = new System.Drawing.Point(200, 532);
+            this.btnIngredientSort.Name = "btnIngredientSort";
+            this.btnIngredientSort.Size = new System.Drawing.Size(88, 23);
+            this.btnIngredientSort.TabIndex = 2;
+            this.btnIngredientSort.Text = "食材排序...";
+            this.btnIngredientSort.UseVisualStyleBackColor = true;
+            this.btnIngredientSort.Click += new System.EventHandler(this.btnIngredientSort_Click);
             // 
             // FormAllIngredients
             // 
@@ -152,6 +164,7 @@
             this.ClientSize = new System.Drawing.Size(742, 567);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnCategoryOrder);
+            this.Controls.Add(this.btnIngredientSort);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lstIngredient);
@@ -169,5 +182,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnCategoryOrder;
+        private System.Windows.Forms.Button btnIngredientSort;
     }
 }
