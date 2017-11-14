@@ -485,9 +485,13 @@ namespace HowManyToEat
             foreach (var item in groupedIngredient)
             {
                 builder.Append(item.Key.Name); builder.AppendLine("：");
-                foreach (var weightedIngredient in item)
+                List<WeightedIngredient> list = item.ToList();
+                for (int i = 0; i < list.Count - 1; i++)
                 {
-                    builder.Append(weightedIngredient); builder.Append("， ");
+                    builder.Append(list[i]); builder.Append("， ");
+                }
+                {
+                    builder.Append(list[list.Count - 1]); builder.Append("。");
                 }
                 builder.AppendLine();
             }
