@@ -41,7 +41,7 @@ namespace HowManyToEat
 
         void lstIngredient_DragDrop(object sender, DragEventArgs e)
         {
-            Point point = lstIngredient.PointToClient(new Point(e.X, e.Y));
+            Point point = this.lstIngredient.PointToClient(new Point(e.X, e.Y));
             int index = this.lstIngredient.IndexFromPoint(point);
             if (index < 0)
             {
