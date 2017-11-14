@@ -20,6 +20,23 @@ namespace HowManyToEat
             this.lstIngredient.MouseDown += lstIngredient_MouseDown;
             this.lstIngredient.DragOver += lstIngredient_DragOver;
             this.lstIngredient.DragDrop += lstIngredient_DragDrop;
+
+            this.lstIngredient.DrawItem += lstIngredient_DrawItem;
+        }
+
+        void lstIngredient_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+
+            var listBox = sender as ListBox;
+            int index = e.Index;
+            if (0 <= index && index < listBox.Items.Count)
+            {
+                var ingredient = listBox.Items[e.Index] as Ingredient;
+                e.Graphics.DrawString(ingredient.ToString(), e.Font, new SolidBrush(ingredient.ForeColor), e.Bounds);
+            }
+
+            e.DrawFocusRectangle();
         }
 
         void lstIngredient_DragDrop(object sender, DragEventArgs e)
@@ -60,9 +77,11 @@ namespace HowManyToEat
             var list = from item in ingredientDict.Values
                        orderby item.Priority ascending
                        select item;
+            int index = 0;
             foreach (var item in list)
             {
                 this.lstIngredient.Items.Add(item);
+
             }
         }
 
@@ -181,12 +200,6 @@ namespace HowManyToEat
                     MessageBox.Show("已删除此食材！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-        }
-
-        private void lstCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.btnDelete.Enabled = this.lstIngredient.SelectedItems.Count > 0;
-            this.btnUpdate.Enabled = this.lstIngredient.SelectedItems.Count > 0;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
