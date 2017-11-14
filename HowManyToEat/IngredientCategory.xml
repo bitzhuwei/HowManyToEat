@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <IngredientCategory>
-  <IngredientCategory Id="eabbfd0c-110a-4cd7-b579-c791f9ca3125" Name="调料" Priority="0" />
-  <IngredientCategory Id="54da036e-f36a-4207-9db1-c85a2686c250" Name="小物件" Priority="1" />
-  <IngredientCategory Id="a1fa6065-e811-416b-97a7-6f35acc12ce9" Name="鲜菜" Priority="2" />
-  <IngredientCategory Id="16be6eac-a0fb-4add-bfd8-7b5f059a832a" Name="熟食 提前订" Priority="3" />
-  <IngredientCategory Id="b270e280-85d8-4ff4-9a5f-84fafd7575ca" Name="鲜肉 提前订" Priority="4" />
-  <IngredientCategory Id="13dc7e39-f6f6-4a5f-9b1f-535cd2681605" Name="水产石家庄 提前订" Priority="5" />
-  <IngredientCategory Id="88a96a9d-ab12-415c-9c2c-852998eb45b5" Name="水产 提前订" Priority="6" />
-  <IngredientCategory Id="63d586d2-c729-4558-9439-c4cacd462c60" Name="干菜" Priority="7" />
-  <IngredientCategory Id="8f2ccc74-6c0d-4654-8bb9-c582f5c84999" Name="鲜菜 提前订" Priority="8" />
-  <IngredientCategory Id="1d437677-cf41-4bd9-ad11-705aea8c7f0c" Name="熟食" Priority="9" />
+  <IngredientCategory Id="f0bcaa9c-f92d-4bf4-bc50-4c923d9bffac" Name="肉" Priority="0" />
+  <IngredientCategory Id="927db683-8a92-45d4-aa79-9e188e6263ba" Name="熟食" Priority="1" />
+  <IngredientCategory Id="f3e2c74a-76c9-4990-84a0-3d272d118aef" Name="水产楼边" Priority="2" />
+  <IngredientCategory Id="b261145e-5362-41fa-b712-249f5ec3f9ba" Name="水产其他" Priority="3" />
+  <IngredientCategory Id="d9e89de1-382e-4801-993a-303becec459a" Name="水产石家庄" Priority="4" />
+  <IngredientCategory Id="cd4d0430-f382-4908-8346-d2bb0291fbc1" Name="米面粮油" Priority="5" />
+  <IngredientCategory Id="f7b5b7e8-1223-4e9d-aa5c-5e8e24fd95ae" Name="调料" Priority="6" />
+  <IngredientCategory Id="cfe82959-26b3-49c5-8db3-34b7cc89639b" Name="菜" Priority="7" />
 </IngredientCategory>

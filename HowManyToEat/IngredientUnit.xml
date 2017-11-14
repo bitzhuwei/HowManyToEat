@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <IngredientUnit>
-  <IngredientUnit Id="c2b9c66e-318d-4985-aade-dba048c15035" UnitName="斤" />
-  <IngredientUnit Id="8be89409-97aa-4cf9-9841-71f9049d5d31" UnitName="桶" />
-  <IngredientUnit Id="fb98539c-01fd-444a-89ee-3ed9067ec0c8" UnitName="瓶" />
-  <IngredientUnit Id="cd66eed0-8239-46b4-853f-10b657f851aa" UnitName="包" />
-  <IngredientUnit Id="a3ec5a3c-6a39-442c-b412-3ebcdab4fa39" UnitName="袋" />
-  <IngredientUnit Id="e031a754-b7e6-41f6-a19d-1c726a0ccba6" UnitName="个" />
-  <IngredientUnit Id="6c4d6a65-75c7-4e61-92cd-3f15239bb5b5" UnitName="箱" />
-  <IngredientUnit Id="ee0b6aeb-e2c4-4440-abea-041f2b689b22" UnitName="盒" />
+  <IngredientUnit Id="56245d61-f095-418a-a9b0-14cd26313e22" UnitName="个" />
+  <IngredientUnit Id="555d063a-b021-4741-9eaf-a69fa6f123bd" UnitName="斤" />
+  <IngredientUnit Id="ebcca24a-a29f-4fda-a696-e32791145705" UnitName="盒" />
+  <IngredientUnit Id="1ce8609e-df51-4c2a-8cdc-ea4fb8861bbc" UnitName="箱" />
+  <IngredientUnit Id="4f4df415-b202-40bd-b400-ddd1bd70bd48" UnitName="袋" />
+  <IngredientUnit Id="0d120a92-30e3-4654-8ccd-d6eb97272579" UnitName="桶" />
+  <IngredientUnit Id="aa81e653-0445-4d0d-974f-f69b5dc1e84d" UnitName="瓶" />
+  <IngredientUnit Id="32169d50-e6f4-42e9-a884-68bc64c39bd8" UnitName="条" />
+  <IngredientUnit Id="7401b35d-9808-4ef0-a7f4-ea22046be27b" UnitName="席" />
 </IngredientUnit>

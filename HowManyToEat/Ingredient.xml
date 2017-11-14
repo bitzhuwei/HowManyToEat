@@ -1,86 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Ingredient>
-  <Ingredient Id="b4775a35-0165-4ff5-8a6e-8fea33b13437" Name="生抽" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="8be89409-97aa-4cf9-9841-71f9049d5d31" Price="0" />
-  <Ingredient Id="2ecddc16-b4a1-4d21-962c-6851b87045b7" Name="老抽" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="8be89409-97aa-4cf9-9841-71f9049d5d31" Price="0" />
-  <Ingredient Id="c7681666-5fdf-40bd-914b-7880d10a4630" Name="鸡粉" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="8be89409-97aa-4cf9-9841-71f9049d5d31" Price="0" />
-  <Ingredient Id="3f8d617f-7673-45d0-8529-439bfb5d20d7" Name="面酱" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="8be89409-97aa-4cf9-9841-71f9049d5d31" Price="0" />
-  <Ingredient Id="6c5e4b96-c2f4-4441-bec4-90ad4d931863" Name="豆瓣酱" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="8be89409-97aa-4cf9-9841-71f9049d5d31" Price="0" />
-  <Ingredient Id="4aa7a7bf-bf1e-4a22-ba9d-a8a23e4797a3" Name="吉士粉" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="8be89409-97aa-4cf9-9841-71f9049d5d31" Price="0" />
-  <Ingredient Id="b25fac31-ad17-431c-ad95-2831fad2dcfc" Name="番茄酱" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="8be89409-97aa-4cf9-9841-71f9049d5d31" Price="0" />
-  <Ingredient Id="40c68dcb-8949-49f0-8d9a-936bf77e6593" Name="味精1" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="f1abf9d0-9252-4a0f-809d-9e1bf0c789a1" Name="盐" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="84db6b8b-5620-4e58-a1cf-60f04fe0c99c" Name="全料" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="03d4e921-8a20-4744-abde-1d6030f0847f" Name="大料" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="b7bc2e3d-770e-438b-8115-059f88bf6208" Name="花椒" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="af0ee705-3ef7-49ce-82f3-e9beba747b46" Name="辣椒" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="d305c4b9-5d30-4f25-bc97-c7faadc62dd0" Name="白糖" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="152a36f7-c316-4766-b7a5-94587257c3b5" Name="淀粉" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="88b5bcd1-90b6-4cda-a769-c3bd1c0720a9" Name="粉面" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="f251ea48-bcb1-4628-8275-b190073dfd0a" Name="黄花" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="4bdfd318-67dd-401d-92e7-d446add055b8" Name="海带" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="059935fe-8a23-484a-b2fc-7c0f67dd1ce9" Name="木耳" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="f9590abc-6e0c-4e13-8d57-56cd4487b52e" Name="筷子" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="4a16d6e5-ffaa-45b5-9a98-ade180622fdd" Name="桌布" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="ace1a3ab-f1ea-4fdc-8fc2-deb9d96d9ecc" Name="纸杯" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="cd66eed0-8239-46b4-853f-10b657f851aa" Price="0" />
-  <Ingredient Id="885e78e6-a2d2-42c3-ad6e-edc3f66bd025" Name="芹菜" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="230e2db1-c01b-4c3f-9e72-e9f097afeafa" Name="绿豆芽" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="0f25c978-6dca-4329-b37b-4873b6409893" Name="胡萝卜" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="c8ffaf8d-b532-4e3b-ac25-3544c0e166d7" Name="白萝卜" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="a722f85b-b09d-412e-857c-8f52a057d7f0" Name="黄豆芽" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="c1398442-edf3-4d15-b786-45830dcb8acc" Name="香菜" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="f219b8a9-676d-4c35-9de2-6ef9ba815dda" Name="生菜" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="8bdb1d99-60fd-4354-b470-fcc5d2aa192f" Name="青菜" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="53e96b6e-befb-4dd9-819f-e2f893cd9249" Name="白菜" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="9d044ce0-eb3e-4357-aadd-4214b08aef73" Name="葱" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="b7036582-de1c-44ab-8648-15a331b8a644" Name="姜" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="3b4d76ab-4c03-49ab-8f27-c3d2e672ce88" Name="剥皮蒜" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="4eceee3d-eb67-4d32-a2c7-b096c1189a35" Name="酱鸡" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="e031a754-b7e6-41f6-a19d-1c726a0ccba6" Price="0" />
-  <Ingredient Id="950a50f8-e390-41ed-8486-3a2eea9c1048" Name="盐焗鸡" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="e031a754-b7e6-41f6-a19d-1c726a0ccba6" Price="0" />
-  <Ingredient Id="7432be9e-b1a2-4a3f-9dcf-ebb8cd025278" Name="耳朵" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="7cdc2e5e-7a33-4e8a-b257-5c9b99032fe5" Name="驴肉" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="544d4e65-f6af-4d89-974c-421e1b611eee" Name="朱家驴肉" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="5ab538ed-2322-4297-bf3a-d737834c7bd0" Name="香肠" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="a3ec5a3c-6a39-442c-b412-3ebcdab4fa39" Price="0" />
-  <Ingredient Id="77bc6ff7-c411-4533-900d-2ad679ce903a" Name="鲤鱼" Category="b270e280-85d8-4ff4-9a5f-84fafd7575ca" UnitName="e031a754-b7e6-41f6-a19d-1c726a0ccba6" Price="0" />
-  <Ingredient Id="36f9a798-251f-4c93-8514-59302ed45cc5" Name="肘子" Category="b270e280-85d8-4ff4-9a5f-84fafd7575ca" UnitName="e031a754-b7e6-41f6-a19d-1c726a0ccba6" Price="0" />
-  <Ingredient Id="234b701d-d50f-4987-a3d3-753b71e272ef" Name="排骨" Category="b270e280-85d8-4ff4-9a5f-84fafd7575ca" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="6e1ace35-6d38-44f9-a2c2-cea1ffe3eb19" Name="牛肉" Category="b270e280-85d8-4ff4-9a5f-84fafd7575ca" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="15118bec-f93e-4ca4-9283-d7e8f2c661a8" Name="猪肉" Category="b270e280-85d8-4ff4-9a5f-84fafd7575ca" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="38345e8d-212d-408a-ac9d-fd74ddec72d6" Name="芝麻球" Category="88a96a9d-ab12-415c-9c2c-852998eb45b5" UnitName="a3ec5a3c-6a39-442c-b412-3ebcdab4fa39" Price="0" />
-  <Ingredient Id="4268c525-cbbc-4e26-af5d-e44022183f53" Name="八宝鱼" Category="88a96a9d-ab12-415c-9c2c-852998eb45b5" UnitName="a3ec5a3c-6a39-442c-b412-3ebcdab4fa39" Price="0" />
-  <Ingredient Id="a7ba814a-bdcd-4156-8632-adc3f0b61c1d" Name="腰果" Category="88a96a9d-ab12-415c-9c2c-852998eb45b5" UnitName="a3ec5a3c-6a39-442c-b412-3ebcdab4fa39" Price="0" />
-  <Ingredient Id="dfb0c8ec-f99b-40a2-a724-bd3f4220b4f5" Name="杏仁" Category="88a96a9d-ab12-415c-9c2c-852998eb45b5" UnitName="a3ec5a3c-6a39-442c-b412-3ebcdab4fa39" Price="0" />
-  <Ingredient Id="337aa746-bbe9-4869-8091-972c0add3901" Name="地瓜丸" Category="88a96a9d-ab12-415c-9c2c-852998eb45b5" UnitName="a3ec5a3c-6a39-442c-b412-3ebcdab4fa39" Price="0" />
-  <Ingredient Id="5b1bc7af-18d0-4c77-bca6-513aea165624" Name="海参" Category="88a96a9d-ab12-415c-9c2c-852998eb45b5" UnitName="6c4d6a65-75c7-4e61-92cd-3f15239bb5b5" Price="0" />
-  <Ingredient Id="64f9a728-4355-434d-b98d-4d68752ea67f" Name="扇贝" Category="88a96a9d-ab12-415c-9c2c-852998eb45b5" UnitName="6c4d6a65-75c7-4e61-92cd-3f15239bb5b5" Price="0" />
-  <Ingredient Id="e2af038c-e817-4e1b-b273-c4153efd8155" Name="鲍鱼" Category="13dc7e39-f6f6-4a5f-9b1f-535cd2681605" UnitName="6c4d6a65-75c7-4e61-92cd-3f15239bb5b5" Price="0" />
-  <Ingredient Id="c15139a0-f973-489c-bc46-eff5cbbf5bc8" Name="鲽鱼" Category="13dc7e39-f6f6-4a5f-9b1f-535cd2681605" UnitName="6c4d6a65-75c7-4e61-92cd-3f15239bb5b5" Price="0" />
-  <Ingredient Id="3eebb6ae-82f9-40a5-adbd-4091171847f2" Name="猪肚" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="3cf3bb77-77b1-4bbc-a08c-1ef3bd4e7277" Name="大米" Category="63d586d2-c729-4558-9439-c4cacd462c60" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="3b74a767-0fa0-4414-abcd-e339f20d793d" Name="小虾" Category="88a96a9d-ab12-415c-9c2c-852998eb45b5" UnitName="ee0b6aeb-e2c4-4440-abea-041f2b689b22" Price="0" />
-  <Ingredient Id="c95ea345-e53c-4938-af3d-624e8c10e9ec" Name="花生" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="1188b292-cd4b-4af7-a717-e1d0c6b9b357" Name="枣儿" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="f508603f-f7e6-443b-bab0-980f58551035" Name="栗子" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="0c87e678-538e-4e29-897d-d4b913db376e" Name="鸭子" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="e031a754-b7e6-41f6-a19d-1c726a0ccba6" Price="0" />
-  <Ingredient Id="f25bdcf9-f77d-4956-b35c-1c1541ae48e0" Name="肉片" Category="b270e280-85d8-4ff4-9a5f-84fafd7575ca" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="8448023d-e55c-4bce-8eeb-7f32233c4e3f" Name="肉丝" Category="b270e280-85d8-4ff4-9a5f-84fafd7575ca" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="8bfe1d57-b905-4cc0-bd4f-08502c873523" Name="面条" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="688e0d08-c4bf-4f47-a630-cb32d2ba35d3" Name="虾仁" Category="88a96a9d-ab12-415c-9c2c-852998eb45b5" UnitName="6c4d6a65-75c7-4e61-92cd-3f15239bb5b5" Price="0" />
-  <Ingredient Id="8030462a-9d9f-46f2-82cd-375f722d1130" Name="彩椒" Category="8f2ccc74-6c0d-4654-8bb9-c582f5c84999" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="e21da375-c6a2-4fca-b299-f3134119e9db" Name="青椒" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="e2048a57-db57-45e6-b0a3-683e8fd5a12d" Name="葱头" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="f0984b91-61b3-4ffc-9086-ae61450a8ff1" Name="西兰花" Category="8f2ccc74-6c0d-4654-8bb9-c582f5c84999" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="abc154e3-fc58-4b1b-b880-6ec66af455bf" Name="黄瓜" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="7fa31a90-177b-4ed0-ae2b-2300ad048b83" Name="豆角" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="47deda0f-1e7d-46b9-9a3f-e345fed4f7b9" Name="鸡柳" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="a3ec5a3c-6a39-442c-b412-3ebcdab4fa39" Price="0" />
-  <Ingredient Id="344975a0-9011-4591-93a2-a00970ed56b6" Name="八头红虾" Category="13dc7e39-f6f6-4a5f-9b1f-535cd2681605" UnitName="ee0b6aeb-e2c4-4440-abea-041f2b689b22" Price="0" />
-  <Ingredient Id="0780d569-2162-4b67-90ef-a8b77ed7ce10" Name="蹄筋" Category="16be6eac-a0fb-4add-bfd8-7b5f059a832a" UnitName="ee0b6aeb-e2c4-4440-abea-041f2b689b22" Price="0" />
-  <Ingredient Id="d14bf5f5-5f37-454f-ac81-8fb37f0bd354" Name="金瓜" Category="8f2ccc74-6c0d-4654-8bb9-c582f5c84999" UnitName="e031a754-b7e6-41f6-a19d-1c726a0ccba6" Price="0" />
-  <Ingredient Id="c91998d7-f519-43b6-846c-8400729120d8" Name="小西红柿" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="ba9b1655-cc8c-4b76-afb5-03115f5a8cdc" Name="尖椒" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="568a428f-773e-4ef5-ae4a-72a53e1cf170" Name="紫甘蓝" Category="a1fa6065-e811-416b-97a7-6f35acc12ce9" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="22544574-1305-4e0d-94f0-c717c27a62a2" Name="鹌鹑蛋" Category="1d437677-cf41-4bd9-ad11-705aea8c7f0c" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="194dcd6b-6c3a-410e-bf5c-1f3e112d5956" Name="银耳" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="c2b9c66e-318d-4985-aade-dba048c15035" Price="0" />
-  <Ingredient Id="2dd61027-c95d-47b8-8f37-1a5f004f1210" Name="腐竹" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="a3ec5a3c-6a39-442c-b412-3ebcdab4fa39" Price="0" />
-  <Ingredient Id="22357ade-6f2d-4ace-b9c8-2a926cfd3aab" Name="美极鲜" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="fb98539c-01fd-444a-89ee-3ed9067ec0c8" Price="0" />
-  <Ingredient Id="e2a10fd5-56e2-473e-b846-9b341f06997f" Name="蒸鱼豉油" Category="eabbfd0c-110a-4cd7-b579-c791f9ca3125" UnitName="fb98539c-01fd-444a-89ee-3ed9067ec0c8" Price="0" />
+  <Ingredient Id="c462e335-6195-4ab0-aadd-624e0be54bd1" Name="酱鸡" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="56245d61-f095-418a-a9b0-14cd26313e22" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="2b47ae98-3bb9-4ab1-8a42-10e7c99ee710" Name="猪肚" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="9610cabd-aaa1-45ad-89fc-c233e6ba1bd1" Name="盐焗鸡" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="3653dc92-cc84-4c0b-a994-4e45c31f078a" Name="驴肉" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="b6f11a46-41ac-47ce-9f8b-dbb08146c24d" Name="朱家裕驴肉" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="699fe87b-3a56-4182-8a87-d940d26cb4e4" Name="香肠" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="e7461786-f96e-4ee6-8e6c-33ebd1434801" Name="鸭子" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="6b547d40-55a0-49b5-98cd-69402fd624f8" Name="杂拌" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="4f5e75bc-f0ba-4119-a72d-be8122dd15c8" Name="朱家裕杂拌" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="7d415255-7eef-4732-bfca-b3c1d66eadeb" Name="猪耳朵" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="1a3dbb74-c0db-42a2-a070-7943fd0af488" Name="牛肚" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="3f7793c4-2896-43d3-820a-e9c2dc0481aa" Name="驴肚" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="1ff583e1-4179-4d6e-9700-6fb158674643" Name="蹄筋" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="5c647053-b4c5-46ff-84ce-148c1d72c603" Name="虾70" Category="f3e2c74a-76c9-4990-84a0-3d272d118aef" UnitName="ebcca24a-a29f-4fda-a696-e32791145705" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="06f52438-5c74-4e8c-98d7-dd99ffdfacdb" Name="河虾" Category="f3e2c74a-76c9-4990-84a0-3d272d118aef" UnitName="1ce8609e-df51-4c2a-8cdc-ea4fb8861bbc" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="625a1fac-e7ff-4ce8-9554-313197acbd48" Name="芝麻球" Category="f3e2c74a-76c9-4990-84a0-3d272d118aef" UnitName="4f4df415-b202-40bd-b400-ddd1bd70bd48" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="34b9374c-2096-49af-88a0-d4014a73d37f" Name="银耳" Category="f3e2c74a-76c9-4990-84a0-3d272d118aef" UnitName="56245d61-f095-418a-a9b0-14cd26313e22" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="3863a419-906f-4d20-b2dd-2ae39380dc87" Name="腐竹" Category="f3e2c74a-76c9-4990-84a0-3d272d118aef" UnitName="4f4df415-b202-40bd-b400-ddd1bd70bd48" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="51c365b0-9a9a-42da-bced-052ec0b2c287" Name="地瓜丸" Category="f3e2c74a-76c9-4990-84a0-3d272d118aef" UnitName="4f4df415-b202-40bd-b400-ddd1bd70bd48" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="019dc47e-2e16-4d29-b34e-e5ad797ecc00" Name="八宝鱼" Category="f3e2c74a-76c9-4990-84a0-3d272d118aef" UnitName="1ce8609e-df51-4c2a-8cdc-ea4fb8861bbc" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="d8c4672b-2b18-4d9e-9550-2e26e3d0f2f4" Name="扇贝" Category="f3e2c74a-76c9-4990-84a0-3d272d118aef" UnitName="1ce8609e-df51-4c2a-8cdc-ea4fb8861bbc" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="2a618568-07af-462f-a8f9-2f2cb005d7e1" Name="海参" Category="f3e2c74a-76c9-4990-84a0-3d272d118aef" UnitName="1ce8609e-df51-4c2a-8cdc-ea4fb8861bbc" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="08e08cf8-e942-4e3a-8706-760c6c299aa7" Name="鸡柳" Category="b261145e-5362-41fa-b712-249f5ec3f9ba" UnitName="4f4df415-b202-40bd-b400-ddd1bd70bd48" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="7a2e33ce-2353-4a9e-978c-d20d9cc226d6" Name="虾仁" Category="f3e2c74a-76c9-4990-84a0-3d272d118aef" UnitName="4f4df415-b202-40bd-b400-ddd1bd70bd48" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="e3f903f0-19be-4aaa-b165-f82c98fa4804" Name="八头虾" Category="d9e89de1-382e-4801-993a-303becec459a" UnitName="ebcca24a-a29f-4fda-a696-e32791145705" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="f1ddc20e-28c2-4114-b336-0f98a73f4a3f" Name="螃蟹" Category="d9e89de1-382e-4801-993a-303becec459a" UnitName="56245d61-f095-418a-a9b0-14cd26313e22" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="be16058c-175b-47c1-9176-8081bb156fdb" Name="鲽鱼" Category="d9e89de1-382e-4801-993a-303becec459a" UnitName="1ce8609e-df51-4c2a-8cdc-ea4fb8861bbc" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="4b0bee81-e9e1-48d6-8287-1de256bb59e0" Name="大米" Category="cd4d0430-f382-4908-8346-d2bb0291fbc1" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="c32a85a6-7d1f-4d1e-8254-44c577a81e0d" Name="油" Category="cd4d0430-f382-4908-8346-d2bb0291fbc1" UnitName="0d120a92-30e3-4654-8ccd-d6eb97272579" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="d4d03342-9cd1-416a-ac5b-eff2172a2caf" Name="花生" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="81a0790b-1253-43d7-8092-778b81ac9f92" Name="枣儿" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="46d5e29d-cd12-4d5e-932d-9ee6938cb065" Name="栗子" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="e233729a-e443-468a-8db8-d97092dcf231" Name="小枣儿" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="e051975b-f44b-464b-89bb-2ab15b446c26" Name="江米" Category="cd4d0430-f382-4908-8346-d2bb0291fbc1" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="34a12c76-185e-45dd-ba0c-c44e2008be37" Name="香炸粉" Category="f7b5b7e8-1223-4e9d-aa5c-5e8e24fd95ae" UnitName="4f4df415-b202-40bd-b400-ddd1bd70bd48" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="41ad7028-75f2-4795-b23e-a9131d687abb" Name="椒盐" Category="f7b5b7e8-1223-4e9d-aa5c-5e8e24fd95ae" UnitName="aa81e653-0445-4d0d-974f-f69b5dc1e84d" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="87728749-8a5f-4832-a8f3-390342184b9a" Name="吉士粉" Category="f7b5b7e8-1223-4e9d-aa5c-5e8e24fd95ae" UnitName="0d120a92-30e3-4654-8ccd-d6eb97272579" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="64e91907-990f-487f-8522-70d990513c0f" Name="葱" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="27065ae6-4731-4966-8036-470180eaa92d" Name="黄瓜" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="3d87fc12-678f-4d8d-b75a-a8cc352abe7b" Name="姜" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="b24e88ff-94a5-4d5b-92ce-c2b170d4cf6c" Name="蒜" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="46b38571-135c-4a32-abc7-0fe2b77d632f" Name="芹菜" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="f013854d-ddf8-40fe-8e3b-364dfa839a10" Name="生菜" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="ab0941e1-c996-449b-b427-b2cfb26f3ffd" Name="香菜" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="3d3fe1ce-8620-4d9c-a925-772aaea23711" Name="青菜" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="83eb6d8e-2c87-4e3f-89a7-2ef43136bc60" Name="青椒" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="bf43a6b1-fd68-4f0f-8918-67e53046ef9d" Name="胡萝卜" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="9f82ce49-7bd2-40d7-bde3-4a60f92087ff" Name="白萝卜" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="1b8f7ea0-982e-436a-946d-81f2a84d25fd" Name="葱头" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="2daa693b-28a9-45d1-b3c5-be92ae57264c" Name="豆角" Category="cfe82959-26b3-49c5-8db3-34b7cc89639b" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="93b66aef-3f1f-4524-84f7-1f694a4edc5a" Name="脆皮鱼" Category="f0bcaa9c-f92d-4bf4-bc50-4c923d9bffac" UnitName="32169d50-e6f4-42e9-a884-68bc64c39bd8" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="c095963d-1832-42a1-8f6a-f332310646b4" Name="肘子" Category="f0bcaa9c-f92d-4bf4-bc50-4c923d9bffac" UnitName="56245d61-f095-418a-a9b0-14cd26313e22" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="3b5e0e9e-59bf-4154-b612-d32802b1c52b" Name="排骨" Category="f0bcaa9c-f92d-4bf4-bc50-4c923d9bffac" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="57a805fa-de20-4e86-9272-819e1f83a11e" Name="牛肉" Category="f0bcaa9c-f92d-4bf4-bc50-4c923d9bffac" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="0e881250-2afc-4cc3-9179-001d8a57a99b" Name="羊肉" Category="f0bcaa9c-f92d-4bf4-bc50-4c923d9bffac" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="d55ae42f-939b-4528-ab75-cc38cb2fc49a" Name="猪肉" Category="f0bcaa9c-f92d-4bf4-bc50-4c923d9bffac" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="4c088a04-051e-4b1d-b18d-9b3bb49284a8" Name="肉丝" Category="f0bcaa9c-f92d-4bf4-bc50-4c923d9bffac" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="9a145dc0-0da6-48f1-b171-fc80a6c23d60" Name="肉片" Category="f0bcaa9c-f92d-4bf4-bc50-4c923d9bffac" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="a76fc254-0f4f-4cc5-9a3a-a4c150114ce7" Name="四喜丸子" Category="f0bcaa9c-f92d-4bf4-bc50-4c923d9bffac" UnitName="56245d61-f095-418a-a9b0-14cd26313e22" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="ff37dfb2-d49e-4eee-8edf-083e5e71d376" Name="十喜丸子" Category="f0bcaa9c-f92d-4bf4-bc50-4c923d9bffac" UnitName="56245d61-f095-418a-a9b0-14cd26313e22" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="5f42068b-c441-460e-b247-74ef4e48314d" Name="木耳" Category="f3e2c74a-76c9-4990-84a0-3d272d118aef" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="4ed52fca-9463-44de-956b-f8b1c9b5ecbc" Name="蒸锅" Category="f0bcaa9c-f92d-4bf4-bc50-4c923d9bffac" UnitName="7401b35d-9808-4ef0-a7f4-ea22046be27b" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="8fe4526e-f4c0-46df-bf1c-678be123941b" Name="江米条" Category="927db683-8a92-45d4-aa79-9e188e6263ba" UnitName="4f4df415-b202-40bd-b400-ddd1bd70bd48" ForeColor="255,0,0" Price="0" />
+  <Ingredient Id="6341f78c-9b6d-4a41-9bf3-52ce9a3932e2" Name="面条" Category="cd4d0430-f382-4908-8346-d2bb0291fbc1" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
+  <Ingredient Id="868669e6-4a34-445c-a369-f70b178cc2a8" Name="盐" Category="f7b5b7e8-1223-4e9d-aa5c-5e8e24fd95ae" UnitName="555d063a-b021-4741-9eaf-a69fa6f123bd" ForeColor="0,0,0" Price="0" />
 </Ingredient>
