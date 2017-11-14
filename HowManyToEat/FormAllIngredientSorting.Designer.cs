@@ -78,9 +78,9 @@
             this.label4.Font = new System.Drawing.Font("宋体", 14F);
             this.label4.Location = new System.Drawing.Point(12, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(351, 19);
+            this.label4.Size = new System.Drawing.Size(503, 19);
             this.label4.TabIndex = 15;
-            this.label4.Text = "食材的优先级：（最上方的优先级最高）";
+            this.label4.Text = "食材的优先级：（最上方的优先级最高，可直接拖拽排序）";
             // 
             // btnOK
             // 
@@ -95,6 +95,7 @@
             // 
             // lstIngredient
             // 
+            this.lstIngredient.AllowDrop = true;
             this.lstIngredient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));

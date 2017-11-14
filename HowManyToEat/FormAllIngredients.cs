@@ -27,11 +27,14 @@ namespace HowManyToEat
                                      group item by item.Category into g
                                      orderby g.Key.Priority ascending
                                      select g;
-            foreach (var group in groupedIngredients)
+            foreach (var grouped in groupedIngredients)
             {
-                var listViewGroup = new ListViewGroup(group.Key.Name);
+                var listViewGroup = new ListViewGroup(grouped.Key.Name);
                 this.lstIngredient.Groups.Add(listViewGroup);
-                foreach (var ingredient in group)
+                var ingredients = from item in grouped
+                                  orderby item.Priority ascending
+                                  select item;
+                foreach (var ingredient in ingredients)
                 {
                     var item = new ListViewItem(ingredient.Name, listViewGroup);
                     item.ForeColor = ingredient.ForeColor;

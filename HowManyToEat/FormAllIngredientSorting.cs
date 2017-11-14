@@ -16,6 +16,42 @@ namespace HowManyToEat
             InitializeComponent();
 
             this.Load += FormAllIngredientSorting_Load;
+
+            this.lstIngredient.MouseDown += lstIngredient_MouseDown;
+            this.lstIngredient.DragOver += lstIngredient_DragOver;
+            this.lstIngredient.DragDrop += lstIngredient_DragDrop;
+        }
+
+        void lstIngredient_DragDrop(object sender, DragEventArgs e)
+        {
+            Point point = lstIngredient.PointToClient(new Point(e.X, e.Y));
+            int index = this.lstIngredient.IndexFromPoint(point);
+            if (index < 0)
+            {
+                index = this.lstIngredient.Items.Count - 1;
+            }
+            //获取拖放的数据内容
+            object data = e.Data.GetData(typeof(Ingredient));
+            //删除元数据
+            this.lstIngredient.Items.Remove(data);
+            //插入目标数据
+            this.lstIngredient.Items.Insert(index, data);
+        }
+
+        void lstIngredient_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        void lstIngredient_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.lstIngredient.SelectedItem == null)
+            {
+                return;
+            }
+            //开始拖放操作，DragDropEffects为枚举类型。
+            //DragDropEffects.Move 为将源数据移动到目标数据
+            this.lstIngredient.DoDragDrop(this.lstIngredient.SelectedItem, DragDropEffects.Move);
         }
 
         void FormAllIngredientSorting_Load(object sender, EventArgs e)
