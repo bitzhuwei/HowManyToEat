@@ -66,7 +66,7 @@ namespace HowManyToEat
                         var ingredient = item.Tag as Ingredient;
                         foreach (var keyValuePair in dishDict)
                         {
-                            foreach (var weightedDish in keyValuePair.Value)
+                            foreach (var weightedDish in keyValuePair.Value.WeightedIngredientList)
                             {
                                 if (weightedDish.Ingredient.Name == ingredient.Name)
                                 {

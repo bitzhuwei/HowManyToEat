@@ -52,6 +52,12 @@
     <Compile Include="FormAllDishes.Designer.cs">
       <DependentUpon>FormAllDishes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAllDishSorting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAllDishSorting.Designer.cs">
+      <DependentUpon>FormAllDishSorting.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAllIngredientSorting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     <Compile Include="PartyProject\WeightedIngredient.cs" />
     <EmbeddedResource Include="FormAllDishes.resx">
       <DependentUpon>FormAllDishes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAllDishSorting.resx">
+      <DependentUpon>FormAllDishSorting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAllIngredientSorting.resx">
       <DependentUpon>FormAllIngredientSorting.cs</DependentUpon>

@@ -193,7 +193,7 @@ namespace HowManyToEat
             {
                 var obj = item as ListViewItem;
                 var weighted = obj.Tag as WeightedIngredient;
-                dish.Add(weighted);
+                dish.WeightedIngredientList.Add(weighted);
             }
             dishDict.Add(dish.Id, dish);
             Dish.SaveDatabase(typeof(Dish).Name);

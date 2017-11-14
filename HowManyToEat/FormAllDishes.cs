@@ -32,10 +32,12 @@ namespace HowManyToEat
             this.listView1.Items.Clear();
 
             IDictionary<Guid, Dish> dict = Dish.GetAll();
-
-            foreach (var item in dict)
+            var dishes = from item in dict.Values
+                         orderby item.Priority
+                         select item;
+            foreach (var item in dishes)
             {
-                var obj = new ListViewItem(item.Value.Name) { Tag = item.Value };
+                var obj = new ListViewItem(item.Name) { Tag = item };
                 this.listView1.Items.Add(obj);
             }
         }
@@ -50,7 +52,17 @@ namespace HowManyToEat
             var items = this.listView1.SelectedItems;
             if (items.Count > 0)
             {
-                if (MessageBox.Show("是否删除选中的菜品？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                string msg = string.Empty;
+                if (items.Count == 1)
+                {
+                    msg = string.Format("是否删除选中的菜品【{0}】？", (items[0].Tag as Dish).Name);
+                }
+                else
+                {
+                    msg = "是否删除选中的菜品？";
+                }
+
+                if (MessageBox.Show(msg, "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
                     IDictionary<Guid, Dish> dict = Dish.GetAll();
 
@@ -100,6 +112,15 @@ namespace HowManyToEat
             if (curentViewIndex > 1000)
             {
                 curentViewIndex = curentViewIndex % views.Length;
+            }
+        }
+
+        private void btnDishSort_Click(object sender, EventArgs e)
+        {
+            var frm = new FormAllDishSorting();
+            if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.FormAddDishToProject_Load(sender, e);
             }
         }
 

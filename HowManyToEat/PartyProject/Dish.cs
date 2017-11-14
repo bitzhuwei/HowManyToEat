@@ -10,7 +10,7 @@ namespace HowManyToEat
     /// <summary>
     /// 一道菜由若干食材组成。
     /// </summary>
-    public class Dish : List<WeightedIngredient>
+    public class Dish// : List<WeightedIngredient>
     {
         private const string strId = "Id";
         /// <summary>
@@ -23,6 +23,21 @@ namespace HowManyToEat
         /// 
         /// </summary>
         public string Name { get; set; }
+
+        private List<WeightedIngredient> weightedIngredientList = new List<WeightedIngredient>();
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<WeightedIngredient> WeightedIngredientList
+        {
+            get { return weightedIngredientList; }
+        }
+
+        private const string strPriority = "Priority";
+        /// <summary>
+        /// 数量越小越优先。
+        /// </summary>
+        public int Priority { get; set; }
 
         /// <summary>
         /// 
@@ -49,7 +64,8 @@ namespace HowManyToEat
             return new XElement(typeof(Dish).Name,
                 new XAttribute(strId, this.Id),
                 new XAttribute(strName, this.Name),
-                from item in this select item.ToXElement());
+                new XAttribute(strPriority, this.Priority),
+                from item in this.weightedIngredientList select item.ToXElement());
         }
 
         /// <summary>
@@ -62,12 +78,20 @@ namespace HowManyToEat
             if (xml == null || xml.Name != typeof(Dish).Name) { throw new ArgumentException(); }
 
             Guid id = new Guid(xml.Attribute(strId).Value);
+
             string name = xml.Attribute(strName).Value;
-            Dish result = new Dish(id) { Name = name };
+
+            int priority = 0;
+            {
+                XAttribute attr = xml.Attribute(strPriority);
+                if (attr != null) { priority = int.Parse(attr.Value); }
+            }
+            Dish result = new Dish(id) { Name = name, Priority = priority };
+
             foreach (var item in xml.Elements(typeof(WeightedIngredient).Name))
             {
                 WeightedIngredient ingredient = WeightedIngredient.Parse(item);
-                result.Add(ingredient);
+                result.weightedIngredientList.Add(ingredient);
             }
 
             return result;

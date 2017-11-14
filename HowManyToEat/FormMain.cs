@@ -498,7 +498,7 @@ namespace HowManyToEat
         private static void Calculate(Dictionary<string, WeightedIngredient> ingredientDict, WeightedDish weightedDish, int tableCount)
         {
             int count = weightedDish.Count;
-            foreach (var weightedIngredient in weightedDish.Dish)
+            foreach (var weightedIngredient in weightedDish.Dish.WeightedIngredientList)
             {
                 WeightedIngredient current;
                 if (ingredientDict.TryGetValue(weightedIngredient.Ingredient.Name, out current))

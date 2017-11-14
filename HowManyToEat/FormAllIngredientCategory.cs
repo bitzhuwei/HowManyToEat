@@ -169,7 +169,7 @@ namespace HowManyToEat
                     var toBeDeletedDishes = new List<Dish>();
                     foreach (var dish in dishDict.Values)
                     {
-                        foreach (var weightedIngredient in dish)
+                        foreach (var weightedIngredient in dish.WeightedIngredientList)
                         {
                             if (toBeDeletedIngredients.Contains(weightedIngredient.Ingredient.Id))
                             {

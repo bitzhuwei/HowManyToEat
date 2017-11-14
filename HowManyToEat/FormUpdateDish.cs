@@ -33,7 +33,7 @@ namespace HowManyToEat
 
             {
                 this.lstSelectedIngredient.Items.Clear();
-                var groupedIngredients = from weighted in this.currentDish
+                var groupedIngredients = from weighted in this.currentDish.WeightedIngredientList
                                          group weighted by weighted.Ingredient.Category into g
                                          orderby g.Key.Priority ascending
                                          select g;
@@ -186,12 +186,12 @@ namespace HowManyToEat
 
             var dish = this.currentDish;
             dish.Name = this.txtDishName.Text;
-            dish.Clear();
+            dish.WeightedIngredientList.Clear();
             foreach (var item in this.lstSelectedIngredient.Items)
             {
                 var obj = item as ListViewItem;
                 var weighted = obj.Tag as WeightedIngredient;
-                dish.Add(weighted);
+                dish.WeightedIngredientList.Add(weighted);
             }
             Dish.SaveDatabase(typeof(Dish).Name);
 
