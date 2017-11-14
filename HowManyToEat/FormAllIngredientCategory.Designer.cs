@@ -78,9 +78,9 @@
             this.label4.Font = new System.Drawing.Font("宋体", 14F);
             this.label4.Location = new System.Drawing.Point(12, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(389, 19);
+            this.label4.Size = new System.Drawing.Size(541, 19);
             this.label4.TabIndex = 15;
-            this.label4.Text = "食材类别的优先级：（最上方的优先级最高）";
+            this.label4.Text = "食材类别的优先级：（最上方的优先级最高，可直接拖拽排序）";
             // 
             // btnOK
             // 
@@ -95,6 +95,7 @@
             // 
             // lstCategory
             // 
+            this.lstCategory.AllowDrop = true;
             this.lstCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -105,7 +106,6 @@
             this.lstCategory.Name = "lstCategory";
             this.lstCategory.Size = new System.Drawing.Size(326, 441);
             this.lstCategory.TabIndex = 1;
-            this.lstCategory.SelectedIndexChanged += new System.EventHandler(this.lstCategory_SelectedIndexChanged);
             // 
             // btnHighest
             // 
@@ -158,7 +158,6 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDelete.Enabled = false;
             this.btnDelete.Location = new System.Drawing.Point(16, 486);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(98, 23);
@@ -170,7 +169,6 @@
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnUpdate.Enabled = false;
             this.btnUpdate.Location = new System.Drawing.Point(120, 486);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(98, 23);

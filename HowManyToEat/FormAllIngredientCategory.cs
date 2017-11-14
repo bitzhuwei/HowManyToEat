@@ -16,6 +16,42 @@ namespace HowManyToEat
             InitializeComponent();
 
             this.Load += FormNewIngredientCategory_Load;
+
+            this.lstCategory.MouseDown += lstIngredient_MouseDown;
+            this.lstCategory.DragOver += lstIngredient_DragOver;
+            this.lstCategory.DragDrop += lstIngredient_DragDrop;
+        }
+
+        void lstIngredient_DragDrop(object sender, DragEventArgs e)
+        {
+            Point point = this.lstCategory.PointToClient(new Point(e.X, e.Y));
+            int index = this.lstCategory.IndexFromPoint(point);
+            if (index < 0)
+            {
+                index = this.lstCategory.Items.Count - 1;
+            }
+            //获取拖放的数据内容
+            object data = e.Data.GetData(typeof(IngredientCategory));
+            //删除元数据
+            this.lstCategory.Items.Remove(data);
+            //插入目标数据
+            this.lstCategory.Items.Insert(index, data);
+        }
+
+        void lstIngredient_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        void lstIngredient_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.lstCategory.SelectedItem == null)
+            {
+                return;
+            }
+            //开始拖放操作，DragDropEffects为枚举类型。
+            //DragDropEffects.Move 为将源数据移动到目标数据
+            this.lstCategory.DoDragDrop(this.lstCategory.SelectedItem, DragDropEffects.Move);
         }
 
         void FormNewIngredientCategory_Load(object sender, EventArgs e)
@@ -155,12 +191,6 @@ namespace HowManyToEat
                     MessageBox.Show("已删除此类别！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-        }
-
-        private void lstCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.btnDelete.Enabled = this.lstCategory.SelectedItems.Count > 0;
-            this.btnUpdate.Enabled = this.lstCategory.SelectedItems.Count > 0;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
